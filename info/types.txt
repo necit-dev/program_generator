@@ -27,3 +27,8 @@
 8) manipulator: {type: manipulator, name: "<name_of_manip>"}
     example: {type: manipulator, name: "endl"}
     выглядит: endl
+
+9) sum: {type: primitive_operator, operator: "<operator>", first: <body_of_first_operand>, second:
+<body_of_second_operand>}
+    example: {type: sum, operator: "+", first: 5, second: 4}
+    выглядит: 5 + 4
