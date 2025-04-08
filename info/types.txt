@@ -1,0 +1,29 @@
+1) directive: {type: directive, keyword: "keyword_of_directive", name: "<name_of_directive>"}
+    example -  {type: directive, keyword: "include", name: "<iostream>"
+
+2) using namespace: {type: using_namespace, name: "name_of_namespace"
+    example - {type: using_namespace, name: "std"}
+
+3) function: {type: function, params: {"Пока без параметров"}, return_type: "int", body: [<array_of_body>]
+    example - Будет добавлено позже
+
+4) variable declaration: {type: var_declaration, value_type: "<value_type>", name: "<var_name>",
+              body: <number, string, object with math operations (or more) or empty>
+              }
+    example - {type: var, value_type: "int", name: "a", body: undefined}
+    выглядит: int a;
+
+5) variable_assigning: {type: var_assigning, name: "var_name", body: <not_undefined body>}
+    example: {type: var_assigning, name: "a", body: 10}
+    выглядит: a = 10;
+
+6) variable_using: {type: var_using, name: "var_name"}
+    example: {type: var_using, name: "a"}
+
+7) output: {type: output, name: "name_of_output", body: []
+    пример: {type: output, name: "cout", body: ["Hello world", {type: manipulator, name: "endl"}]
+    выглядит: cout << "Hello world" << endl;
+
+8) manipulator: {type: manipulator, name: "<name_of_manip>"}
+    example: {type: manipulator, name: "endl"}
+    выглядит: endl
