@@ -1,34 +1,43 @@
 1) directive: {type: directive, keyword: "keyword_of_directive", name: "<name_of_directive>"}
     example -  {type: directive, keyword: "include", name: "<iostream>"
+    is_completed: false
 
 2) using namespace: {type: using_namespace, name: "name_of_namespace"
     example - {type: using_namespace, name: "std"}
+    is_completed: false
 
 3) function: {type: function, params: {"Пока без параметров"}, return_type: "int", body: [<array_of_body>]
     example - Будет добавлено позже
+    is_completed: false
 
 4) variable declaration: {type: var_declaration, value_type: "<value_type>", name: "<var_name>",
               body: <number, string, object with math operations (or more) or empty>
               }
     example - {type: var, value_type: "int", name: "a", body: undefined}
     выглядит: int a;
+    is_completed: true
 
 5) variable_assigning: {type: var_assigning, name: "var_name", body: <not_undefined body>}
     example: {type: var_assigning, name: "a", body: 10}
     выглядит: a = 10;
+    is_completed: false
 
 6) variable_using: {type: var_using, name: "var_name"}
     example: {type: var_using, name: "a"}
+    is_completed: true
 
 7) output: {type: output, name: "name_of_output", body: []
     пример: {type: output, name: "cout", body: ["Hello world", {type: manipulator, name: "endl"}]
     выглядит: cout << "Hello world" << endl;
+    is_completed: true
 
 8) manipulator: {type: manipulator, name: "<name_of_manip>"}
     example: {type: manipulator, name: "endl"}
     выглядит: endl
+    is_completed: true
 
 9) sum: {type: primitive_operator, operator: "<operator>", first: <body_of_first_operand>, second:
 <body_of_second_operand>}
     example: {type: sum, operator: "+", first: 5, second: 4}
     выглядит: 5 + 4
+    is_completed: true
