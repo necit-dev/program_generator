@@ -1,4 +1,10 @@
-import {create_output, create_return, create_var_declaration, create_var_using} from "./generator.js";
+import {
+	create_manipulator,
+	create_output,
+	create_return,
+	create_var_declaration,
+	create_var_using
+} from "./generator.js";
 
 
 const nextChar = (ch) => {
@@ -20,7 +26,7 @@ const cout_declarations = (count_of_variables, lst) => {
 	let symbol = 'a'
 	for (let i = 0; i < count_of_variables; i++) {
 		lst.push(
-			create_output("std::cout", [create_var_using(symbol)])
+			create_output("std::cout", [create_var_using(symbol), create_manipulator("std::endl")])
 		)
 		symbol = nextChar(symbol);
 	}
