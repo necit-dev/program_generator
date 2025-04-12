@@ -6,7 +6,8 @@
     example - {type: using_namespace, name: "std"}
     is_completed: false
 
-3) function: {type: function, params: {"Пока без параметров"}, return_type: "int", body: [<array_of_body>]
+3) function: {type: function, name: "<name_func>" params: {"Пока без параметров"}, return_type: "int", body:
+[<array_of_body>]
     example - Будет добавлено позже
     is_completed: false
 
@@ -41,3 +42,5 @@
     example: {type: sum, operator: "+", first: 5, second: 4}
     выглядит: 5 + 4
     is_completed: true
+
+10) return: {type: return, body: {}}
