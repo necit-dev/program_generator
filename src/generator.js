@@ -6,11 +6,11 @@ export const create_return = (body) => {
 	}
 }
 
-export const create_directive = (keyword, name) => {
+export const create_directive = (keyword, value) => {
 	return {
 		type: 'directive',
 		keyword: keyword,
-		name: name
+		value: value
 	}
 }
 

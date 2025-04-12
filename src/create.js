@@ -1,5 +1,11 @@
 
 export const program = (program) => {
+	/** Обработка всей программы:
+	 *  Представляет собой обработку массива программы. В него входят:
+	 *  1) Директивы
+	 *  2) Функции (в том числе, main)
+	 *  3) using (пока еще не реализовано)
+	 * */
 	let string = "";
 	for (let i = 0; i < program.length; i++) {
 		string += choice(program[i]) + "\n\n";
@@ -8,11 +14,12 @@ export const program = (program) => {
 }
 
 const directive = (elem) => {
-	return "#" + elem.keyword + " " + elem.name;
+	/** Обработка директивы, т.е. его названия и "тела" (параметр "name") */
+	return "#" + elem.keyword + " " + elem.value;
 }
 
 const func = (elem) => {
-	/** Здесь происходит обработка функции, т.е. возвращаемое значение, параметры, тело функции */
+	/** Обработка функции, т.е. возвращаемое значение, параметры, тело функции */
 	let string = elem.return_type + " " + elem.name + "("
 	const params = Object.entries(elem.params)
 	if (params.length > 0) {
@@ -35,17 +42,17 @@ const func = (elem) => {
 }
 
 const var_assigning = (elem) => {
-	/** Здесь происходит обработка присваивания значений переменных */
+	/** Обработка присваивания значений переменных */
 	return elem.name + " = " + choice(elem.body) + ";"
 }
 
 const manipulator = (elem) => {
-	/** Здесь происходит обработка манипуляторов, таких как endl */
+	/** Обработка манипуляторов, таких как std::endl */
 	return elem.name;
 }
 
 const output = (elem) => {
-	/** Здесь происходит обработка потока вывода, в том числе cout */
+	/** Обработка потока вывода, в том числе std::cout */
 	let string = elem.name
 	elem.body.forEach((element) => {
 		string += " << " + choice(element)
@@ -54,23 +61,20 @@ const output = (elem) => {
 }
 
 const primitive_operator = (elem) => {
-	/** Здесь происходит обработка примитивных бинарных арифметических и логических операций (возможно, побитовых)
-	* Полный перечень:
+	/** Обработка примитивных бинарных арифметических и логических операций (возможно, побитовых)
+	* Полный перечень (хотя сейчас это не контролируется):
 	* 1) арифметические: + - * / %
 	* 2) логические < > <= >= == && || */
 	 return choice(elem.first) + " " + elem.operator + " " + choice(elem.second)
 }
 
 const returning = (elem) => {
+	/** Обработка return */
 	return "return " + choice(elem.body) + ";";
 }
 
-// const var_using = (body) => {
-// 	return body.name
-// }
-
 const var_declaration = (elem) => {
-	/** Здесь происходит обработка объявления переменных как с присваиванием, так и без */
+	/** Обработка объявления переменных как с присваиванием, так и без */
 	if (!elem.body && elem.body !== 0 && elem.body !== "") {
 		return elem.value_type + " " + elem.name + ";"
 	}

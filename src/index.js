@@ -1,6 +1,7 @@
 import {program} from "./create.js";
 
 import {random_generator} from "./random_generator.js";
+import {create_directive} from "./generator.js";
 
 const obj_func = {
 	type: 'func',
@@ -15,7 +16,8 @@ const obj_func = {
 
 
 const obj_program = [
-	{type: "directive", keyword: "include", name: "iostream"},
+	create_directive("include", "<iostream>"),
+	// {type: "directive", keyword: "include", name: "iostream"},
 	obj_func
 ]
 

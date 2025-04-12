@@ -1,4 +1,4 @@
-1) directive: {type: directive, keyword: "keyword_of_directive", name: "<name_of_directive>"}
+1) directive: {type: directive, keyword: "keyword_of_directive", value: "<value_of_directive>"}
     example -  {type: directive, keyword: "include", name: "<iostream>"
     is_completed: false
 
