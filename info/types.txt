@@ -11,7 +11,7 @@
     example - Будет добавлено позже
     is_completed: false
 
-4) variable declaration: {type: var_declaration, value_type: "<value_type>", name: "<var_name>",
+4) variable_declaration: {type: var_declaration, value_type: "<value_type>", name: "<var_name>",
               body: <number, string, object with math operations (or more) or empty>
               }
     example - {type: var, value_type: "int", name: "a", body: undefined}
@@ -37,10 +37,36 @@
     выглядит: endl
     is_completed: true
 
-9) sum: {type: primitive_operator, operator: "<operator>", first: <body_of_first_operand>, second:
-<body_of_second_operand>}
+9) primitive_operator: {type: primitive_operator, operator: "<operator>", first: <body_of_first_operand>, second:
+<body_of_second_operand>, withBraces: true}
     example: {type: sum, operator: "+", first: 5, second: 4}
     выглядит: 5 + 4
     is_completed: true
 
 10) return: {type: return, body: {}}
+    is_completed: true
+
+11) unary_operator: {type: unary_operator, operator: "-" (-, !, post++, post--, ++, --), body,
+elem.withBraces: true}
+
+12) loop_for: {
+    type: "for",
+    iterator: {type: var_declaration ...}
+    condition: {type: primitive_operator}
+    increment: {type: unary_operator, "post++", {type: variable_using, "i"}
+    body: []
+}
+
+//------------------------ Указатели (Pointers) ---------------------------- //
+
+1) array_declaration: {
+    type: "array_declaration",
+    value_type: "int",
+    name: "arr",
+    count: "5" (-1 for empty "[]". for example: int arr[] = {5, 2, -2, 0, 5}),
+    elems: [5,2,7,4] (or undefined)
+}
+    выглядит: int arr[5] = {5, 2, 7, 4}
+
+
+2)
