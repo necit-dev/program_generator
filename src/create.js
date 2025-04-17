@@ -13,12 +13,12 @@ export const program = (program) => {
 	return string;
 }
 
-const directive = (elem) => {
+const print_directive = (elem) => {
 	/** Обработка директивы, т.е. его названия и "тела" (параметр "name") */
 	return "#" + elem.keyword + " " + elem.value;
 }
 
-const func = (elem) => {
+const print_func = (elem) => {
 	/** Обработка функции, т.е. возвращаемое значение, параметры, тело функции */
 	let string = elem.return_type + " " + elem.name + "("
 	const params = Object.entries(elem.params)
@@ -41,12 +41,12 @@ const func = (elem) => {
 
 }
 
-const var_assigning = (elem) => {
+const print_var_assigning = (elem) => {
 	/** Обработка присваивания значений переменных */
 	return elem.name + " = " + choice(elem.body) + ";"
 }
 
-const array_declaration = (elem) => {
+const print_array_declaration = (elem) => {
 	const count = elem.count < 1 ? "": String(elem.count)
 	let string = elem.value_type + " " + elem.name + "[" + (count) + "]"
 	if (Array.isArray(elem.body) && elem.body.length > 0) {
@@ -64,14 +64,14 @@ const array_declaration = (elem) => {
 	return string;
 }
 
-const manipulator_and_keywords = (elem) => {
+const print_manipulator_and_keywords = (elem) => {
 	/** Обработка манипуляторов, таких как std::endl
 	 *  Также просто ключевые слова не в виде строки, типа nullptr,
 	 *  макросов, если надо будет. */
 	return elem.name;
 }
 
-const output = (elem) => {
+const print_output = (elem) => {
 	/** Обработка потока вывода, в том числе std::cout */
 	let string = elem.name
 	elem.body.forEach((element) => {
@@ -80,7 +80,7 @@ const output = (elem) => {
 	return string + ";"
 }
 
-const primitive_operator = (elem) => {
+const print_primitive_operator = (elem) => {
 	/** Обработка примитивных бинарных арифметических и логических операций (возможно, побитовых)
 	* Полный перечень (хотя сейчас это не контролируется):
 	* 1) арифметические: + - * / %
@@ -95,12 +95,12 @@ const primitive_operator = (elem) => {
 	}
 }
 
-const returning = (elem) => {
+const print_returning = (elem) => {
 	/** Обработка return */
 	return "return " + choice(elem.body) + ";";
 }
 
-const unary_operator = (elem) => {
+const print_unary_operator = (elem) => {
 	/** Обработка унарных операций. Это:
 	 * 1) Инкременты, декременты (++, --)
 	 * 2) Унарный минус и логическое НЕ (!)
@@ -122,7 +122,7 @@ const unary_operator = (elem) => {
 	}
 }
 
-const var_declaration = (elem) => {
+const print_var_declaration = (elem) => {
 	/** Обработка объявления переменных как с присваиванием, так и без */
 	if (!elem.body && elem.body !== 0 && elem.body !== "") {
 		return elem.value_type + " " + elem.name +elem.no_semicolon_point? '': ';'
@@ -132,7 +132,7 @@ const var_declaration = (elem) => {
 	return string;
 }
 
-const loop_for = (elem) => {
+const print_loop_for = (elem) => {
 	let string = "for (" + choice(elem.iterator) + "; " + choice(elem.condition)
 		+ "; " + choice(elem.increment) + ") { \n"
 	let tabs = '';
@@ -146,11 +146,11 @@ const loop_for = (elem) => {
 	return string;
 }
 
-const new_operator = (elem) => {
+const print_new_operator = (elem) => {
 	return "new" + elem.value_type + (elem.count > 0 ? elem.count : "");
 }
 
-const delete_operator = (elem) => {
+const print_delete_operator = (elem) => {
 	return "delete" + (elem.isArray? "[]": "") + choice(elem.body) + ";";
 }
 
@@ -164,46 +164,46 @@ export const choice = (elem) => {
 
 		switch (elem.type){
 			case 'directive':
-				return directive(elem);
+				return print_directive(elem);
 
 			case 'func':
-				return func(elem)
+				return print_func(elem)
 
 			case 'var_declaration':
-				return var_declaration(elem);
+				return print_var_declaration(elem);
 
 			case 'var_assigning':
-				return var_assigning(elem);
+				return print_var_assigning(elem);
 
 			case 'var_using':
 				return elem.name;
 
 			case 'primitive_operator':
-				return primitive_operator(elem);
+				return print_primitive_operator(elem);
 
 			case 'unary_operator':
-				return unary_operator(elem);
+				return print_unary_operator(elem);
 
 			case 'output':
-				return output(elem);
+				return print_output(elem);
 
 			case 'manipulator_and_keywords':
-				return manipulator_and_keywords(elem);
+				return print_manipulator_and_keywords(elem);
 
 			case 'return':
-				return returning(elem);
+				return print_returning(elem);
 
 			case 'for':
-				return loop_for(elem);
+				return print_loop_for(elem);
 
 			case 'array_declaration':
-				return array_declaration(elem)
+				return print_array_declaration(elem)
 
 			case 'new_operator':
-				return new_operator(elem)
+				return print_new_operator(elem)
 
 			case 'delete_operator':
-				return delete_operator(elem)
+				return print_delete_operator(elem)
 
 			default:
 				return elem;

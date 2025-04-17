@@ -58,7 +58,13 @@ elem.withBraces: true}
     body: []
 }
 
-//------------------------ Указатели (Pointers) ---------------------------- //
+13) call_func: {
+    type: "call_func",
+    name: "fibonacci",
+    params: ["param1"]
+}
+
+//-------------------- Указатели (Pointers) ------------------------ //
 
 1) array_declaration: {
     type: "array_declaration",
