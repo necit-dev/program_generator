@@ -47,11 +47,27 @@ const var_assigning = (elem) => {
 }
 
 const array_declaration = (elem) => {
-
+	const count = elem.count < 1 ? "": String(elem.count)
+	let string = elem.value_type + " " + elem.name + "[" + (count) + "]"
+	if (Array.isArray(elem.body) && elem.body.length > 0) {
+		string += " = {"
+		for (let i = 0; i < elem.body.length-1; i++) {
+			string += choice(elem.body[i]) + ", ";
+		}
+		if (elem.body.length > 0) {
+			string += choice(elem.body[elem.body.length-1]) + "}";
+		}
+	}else if (elem.body){
+		string += " = " + choice(elem.body);
+	}
+	string += ";";
+	return string;
 }
 
-const manipulator = (elem) => {
-	/** Обработка манипуляторов, таких как std::endl */
+const manipulator_and_keywords = (elem) => {
+	/** Обработка манипуляторов, таких как std::endl
+	 *  Также просто ключевые слова не в виде строки, типа nullptr,
+	 *  макросов, если надо будет. */
 	return elem.name;
 }
 
@@ -70,9 +86,12 @@ const primitive_operator = (elem) => {
 	* 1) арифметические: + - * / %
 	* 2) логические < > <= >= == && || */
 	if (elem.withBraces) {
-		return "(" + choice(elem.first) + " " + elem.operator + " " + choice(elem.second) + ")"
+		return "(" + choice(elem.first) + " "
+			+ elem.operator + " " + choice(elem.second) + ")"
+			+ (elem.semicolon_point? ";": "")
 	}else {
 		return choice(elem.first) + " " + elem.operator + " " + choice(elem.second)
+			+ (elem.semicolon_point? ";": "")
 	}
 }
 
@@ -84,7 +103,9 @@ const returning = (elem) => {
 const unary_operator = (elem) => {
 	/** Обработка унарных операций. Это:
 	 * 1) Инкременты, декременты (++, --)
-	 * 2) Унарный минус и логическое НЕ (!)*/
+	 * 2) Унарный минус и логическое НЕ (!)
+	 * 3) Взятие адреса (&) и разыменования (*)
+	 */
 	let pred = elem.operator
 	let post = ""
 	if (elem.operator === "post++"){
@@ -114,12 +135,25 @@ const var_declaration = (elem) => {
 const loop_for = (elem) => {
 	let string = "for (" + choice(elem.iterator) + "; " + choice(elem.condition)
 		+ "; " + choice(elem.increment) + ") { \n"
-	for (let i = 0; i < elem.body.length; i++) {
-		string += "\t" + choice(elem.body[i]) + "\n";
+	let tabs = '';
+	for (let i = 0; i < elem.inner_curly_braces_count; i++) {
+		tabs += '\t'
 	}
-	string += "}"
+	for (let i = 0; i < elem.body.length; i++) {
+		string += tabs + '\t' + choice(elem.body[i]) + "\n";
+	}
+	string += tabs + "}"
 	return string;
 }
+
+const new_operator = (elem) => {
+	return "new" + elem.value_type + (elem.count > 0 ? elem.count : "");
+}
+
+const delete_operator = (elem) => {
+	return "delete" + (elem.isArray? "[]": "") + choice(elem.body) + ";";
+}
+
 
 export const choice = (elem) => {
 	if (typeof (elem) === 'number' || typeof (elem) === 'boolean') {
@@ -153,14 +187,23 @@ export const choice = (elem) => {
 			case 'output':
 				return output(elem);
 
-			case 'manipulator':
-				return manipulator(elem);
+			case 'manipulator_and_keywords':
+				return manipulator_and_keywords(elem);
 
 			case 'return':
 				return returning(elem);
 
 			case 'for':
 				return loop_for(elem);
+
+			case 'array_declaration':
+				return array_declaration(elem)
+
+			case 'new_operator':
+				return new_operator(elem)
+
+			case 'delete_operator':
+				return delete_operator(elem)
 
 			default:
 				return elem;

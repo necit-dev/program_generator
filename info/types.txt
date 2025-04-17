@@ -32,8 +32,8 @@
     выглядит: cout << "Hello world" << endl;
     is_completed: true
 
-8) manipulator: {type: manipulator, name: "<name_of_manip>"}
-    example: {type: manipulator, name: "endl"}
+8) manipulator_and_keywords: {type: manipulator_and_keywords, name: "<name_of_manip>"}
+    example: {type: manipulator_and_keywords, name: "endl"}
     выглядит: endl
     is_completed: true
 
@@ -54,6 +54,7 @@ elem.withBraces: true}
     iterator: {type: var_declaration ...}
     condition: {type: primitive_operator}
     increment: {type: unary_operator, "post++", {type: variable_using, "i"}
+    inner_curly_braces_count: 1
     body: []
 }
 
@@ -64,9 +65,19 @@ elem.withBraces: true}
     value_type: "int",
     name: "arr",
     count: "5" (-1 for empty "[]". for example: int arr[] = {5, 2, -2, 0, 5}),
-    elems: [5,2,7,4] (or undefined)
+    // elems:
+    body: [5,2,7,4] (or body)
 }
     выглядит: int arr[5] = {5, 2, 7, 4}
 
+2) new_operator: {
+    type: "new",
+    value_type: "int"
+    count: 5 (если -1, то не будет квадратных скобок)
+}
 
-2)
+3) delete_operator: {
+    type: "delete",
+    isArray: false (если true, то будут добавлены квадратные скобки
+    body
+}
