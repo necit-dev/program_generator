@@ -1,6 +1,8 @@
 import {choice, program} from "./create.js";
 
-import {division_by_zero_simple, random_generator} from "./random_generator.js";
+import {
+ 	choice_div_zero_variant
+} from "./generators/div_by_zero.js";
 import {
 	array_declaration,
 	directive, func,
@@ -10,43 +12,43 @@ import {
 	var_using
 } from "./generator.js";
 
-const obj_func = {
-	type: 'func',
-	name: "main",
-	params: {
-		"argc": "int",
-		"argv": "char**"
-	},
-	return_type: "int",
-	body: random_generator()
-}
-
-
-const obj_program = [
-	directive("include", "<iostream>"),
-	// {type: "directive", keyword: "include", name: "iostream"},
-	obj_func
-]
+// const obj_func = {
+// 	type: 'func',
+// 	name: "main",
+// 	params: {
+// 		"argc": "int",
+// 		"argv": "char**"
+// 	},
+// 	return_type: "int",
+// 	body: random_generator()
+// }
+//
+//
+// const obj_program = [
+// 	directive("include", "<iostream>"),
+// 	// {type: "directive", keyword: "include", name: "iostream"},
+// 	obj_func
+// ]
 
 
 // console.log(program(obj_program))
 
-const unary_example = unary_operator(
-	"post++",
-	var_using("i"),
-	true
-)
-
-// console.log(choice(unary_example));
-
-const for_example = loop_for(
-	var_declaration("int", "i", 0, true),
-	primitive_operator("<", var_using("i"), 10),
-	unary_operator("post++", var_using("i")),
-	[
-		unary_operator("post++", var_using("a"), false, true),
-	]
-)
+// const unary_example = unary_operator(
+// 	"post++",
+// 	var_using("i"),
+// 	true
+// )
+//
+// // console.log(choice(unary_example));
+//
+// const for_example = loop_for(
+// 	var_declaration("int", "i", 0, true),
+// 	primitive_operator("<", var_using("i"), 10),
+// 	unary_operator("post++", var_using("i")),
+// 	[
+// 		unary_operator("post++", var_using("a"), false, true),
+// 	]
+// )
 // console.log(choice(for_example))
 // console.log(choice(0))
 
@@ -56,32 +58,37 @@ const for_example = loop_for(
 // console.log(choice(array_declaration("int", "arr", -1, [4, 6, 2, 8])))
 // console.log(choice(array_declaration("int", "arr2", 5)))
 
-const prog_example = [
-	directive("include", "<iostream>"),
-	func("main", [], "int", [
-		var_declaration("int", "N", 5),
-		var_declaration("int", "sum", 0),
-		loop_for(
-			var_declaration("int", "i", 0, true),
-			primitive_operator("<", var_using("i"), var_using("N")),
-			unary_operator("post++", var_using("i")),
-			[
-				primitive_operator("+=",
-					var_using("sum"),
-					primitive_operator("+",
-						var_using("i"), 1,
-						false
-					),
-					false,
-					true
-				)
-			],
-			1
-		),
-		output("std::cout", [var_using("sum"), manipulator_and_keywords("std::endl")]),
-		ret(0)
-	])
-]
+// const prog_example = [
+// 	directive("include", "<iostream>"),
+// 	func("main", [], "int", [
+// 		var_declaration("int", "N", 5),
+// 		var_declaration("int", "sum", 0),
+// 		loop_for(
+// 			var_declaration("int", "i", 0, true),
+// 			primitive_operator("<", var_using("i"), var_using("N")),
+// 			unary_operator("post++", var_using("i")),
+// 			[
+// 				primitive_operator("+=",
+// 					var_using("sum"),
+// 					primitive_operator("+",
+// 						var_using("i"), 1,
+// 						false
+// 					),
+// 					false,
+// 					true
+// 				)
+// 			],
+// 			1
+// 		),
+// 		output("std::cout", [var_using("sum"), manipulator_and_keywords("std::endl")]),
+// 		ret(0)
+// 	])
+// ]
 
-console.log(program(prog_example))
-console.log(program(division_by_zero_simple()))
+// console.log(program(prog_example))
+// console.log(program(division_by_zero_simple()))
+// const a = random_func_div_0(1)
+// console.log(a)
+// console.log(choice(a))
+
+console.log(program(choice_div_zero_variant()));

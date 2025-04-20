@@ -108,6 +108,7 @@ export const array_declaration = (value_type, name, count, body) => {
 
 export const new_operator = (value_type, count = -1) => {
 	return {
+		type: 'new',
 		value_type,
 		count,
 	}
@@ -115,7 +116,17 @@ export const new_operator = (value_type, count = -1) => {
 
 export const delete_operator = (isArray, body) => {
 	return {
+		type: 'delete',
 		isArray,
 		body
+	}
+}
+
+export const call_func = (name, params, semicolon_point = false) => {
+	return {
+		type: 'call_func',
+		name,
+		params,
+		semicolon_point
 	}
 }

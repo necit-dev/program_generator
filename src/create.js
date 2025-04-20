@@ -154,6 +154,19 @@ const print_delete_operator = (elem) => {
 	return "delete" + (elem.isArray? "[]": "") + choice(elem.body) + ";";
 }
 
+const call_func = (elem) => {
+	let str = elem.name + "("
+	const params = elem.params
+	if (params.length > 0) {
+		str += choice(params[0]);
+	}
+	for (let i = 1; i < params.length; i++) {
+		str += ", " + choice(params[i]);
+	}
+	str += ")"
+	return str
+}
+
 
 export const choice = (elem) => {
 	if (typeof (elem) === 'number' || typeof (elem) === 'boolean') {
@@ -168,6 +181,9 @@ export const choice = (elem) => {
 
 			case 'func':
 				return print_func(elem)
+
+			case 'call_func':
+				return call_func(elem)
 
 			case 'var_declaration':
 				return print_var_declaration(elem);
