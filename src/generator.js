@@ -24,7 +24,7 @@ export const directive = (keyword, value) => {
 	}
 }
 
-export const var_declaration = (value_type, name, body, no_semicolon_point = false) => {
+export const var_declaration = (value_type, name, body = undefined, no_semicolon_point = false) => {
 	return {
 		type: 'var_declaration',
 		value_type,
@@ -96,6 +96,15 @@ export const loop_for = (iterator, condition, increment, body, inner_curly_brace
 	}
 }
 
+export const condition_if = (condition, body, inner_curly_braces_count = 0) => {
+	return {
+		type: "if",
+		condition,
+		body,
+		inner_curly_braces_count
+	}
+}
+
 export const array_declaration = (value_type, name, count, body) => {
 	return {
 		type: 'array_declaration',
@@ -106,17 +115,17 @@ export const array_declaration = (value_type, name, count, body) => {
 	}
 }
 
-export const new_operator = (value_type, count = -1) => {
+export const new_operator = (value_type, value = null) => {
 	return {
-		type: 'new',
+		type: 'new_operator',
 		value_type,
-		count,
+		value,
 	}
 }
 
 export const delete_operator = (isArray, body) => {
 	return {
-		type: 'delete',
+		type: 'delete_operator',
 		isArray,
 		body
 	}

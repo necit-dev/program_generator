@@ -125,7 +125,7 @@ const print_unary_operator = (elem) => {
 const print_var_declaration = (elem) => {
 	/** Обработка объявления переменных как с присваиванием, так и без */
 	if (!elem.body && elem.body !== 0 && elem.body !== "") {
-		return elem.value_type + " " + elem.name +elem.no_semicolon_point? '': ';'
+		return elem.value_type + " " + elem.name + (elem.no_semicolon_point? '': ';')
 	}
 	let string = elem.value_type + " " + elem.name + " = ";
 	string += choice(elem.body) + (elem.no_semicolon_point? '': ';')
@@ -146,12 +146,31 @@ const print_loop_for = (elem) => {
 	return string;
 }
 
+const print_condition_if = (elem) => {
+	let string = "if (" + choice(elem.condition) + ") { \n"
+	let tabs = '';
+	for (let i = 0; i < elem.inner_curly_braces_count; i++) {
+		tabs += '\t'
+	}
+	for (let i = 0; i < elem.body.length; i++) {
+		string += tabs + '\t' + choice(elem.body[i]) + "\n";
+	}
+	string += tabs + "}"
+	return string;
+}
+
 const print_new_operator = (elem) => {
-	return "new" + elem.value_type + (elem.count > 0 ? elem.count : "");
+	if (typeof elem.value === "number") {
+		return "new " + elem.value_type + "(" + elem.value + ")"
+	}else if (Array.isArray(elem.value)) {
+		return "new " + elem.value_type + "[" + elem.value[0] + "]"
+	}else {
+		return "new " + elem.value_type;
+	}
 }
 
 const print_delete_operator = (elem) => {
-	return "delete" + (elem.isArray? "[]": "") + choice(elem.body) + ";";
+	return "delete" + (elem.isArray? "[] ": " ") + choice(elem.body) + ";";
 }
 
 const call_func = (elem) => {
@@ -211,6 +230,9 @@ export const choice = (elem) => {
 
 			case 'for':
 				return print_loop_for(elem);
+
+			case 'if':
+				return print_condition_if(elem)
 
 			case 'array_declaration':
 				return print_array_declaration(elem)

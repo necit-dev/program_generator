@@ -6,11 +6,13 @@ import {
 import {
 	array_declaration,
 	directive, func,
-	loop_for, manipulator_and_keywords, output, primitive_operator, ret,
+	loop_for, manipulator_and_keywords, new_operator, output, primitive_operator, ret,
 	unary_operator, var_assigning,
 	var_declaration,
 	var_using
 } from "./generator.js";
+import {isEmpty} from "./generators/utils.js";
+import {choice_deref_null_pointer} from "./generators/deref_null_pointer.js";
 
 // const obj_func = {
 // 	type: 'func',
@@ -91,4 +93,8 @@ import {
 // console.log(a)
 // console.log(choice(a))
 
-console.log(program(choice_div_zero_variant()));
+// console.log(program(choice_div_zero_variant()));
+// console.log(choice(new_operator("int", [10])))
+// console.log(isEmpty())
+console.log(program(choice_deref_null_pointer(4)))
+// console.log(choice(var_declaration("int*", "pa")))
