@@ -10,32 +10,10 @@ import {
 	var_declaration,
 	var_using
 } from "../generator.js";
-import {charNumber, nextChar} from "./utils.js";
+import {charNumber, find_func, nextChar} from "./utils.js";
 
 const null_pointer_function = () => {
-	const find_function = func("find", {
-		"arr": "int*",
-		"size": "int",
-		"target": "int",
-	}, "int*", [
-			loop_for(
-				var_declaration("int", "i", 0, true),
-				primitive_operator("<", var_using("i"), var_using("size")),
-				unary_operator("post++", var_using("i")),
-				[
-						condition_if(
-						primitive_operator("==", var_using("arr[i]"), var_using("target")),
-						[
-							ret(unary_operator("&", var_using("arr[i]")))
-						],
-						2
-					)
-				],
-				1
-			),
-			ret(manipulator_and_keywords("nullptr"))
-		],
-	)
+	const find_function = find_func
 
 	const array_length = Math.floor(Math.random()*5+3)
 	let body_array = []

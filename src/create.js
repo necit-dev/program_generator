@@ -183,6 +183,7 @@ const call_func = (elem) => {
 		str += ", " + choice(params[i]);
 	}
 	str += ")"
+	if (elem.semicolon_point) str += ";"
 	return str
 }
 

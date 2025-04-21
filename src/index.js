@@ -11,8 +11,9 @@ import {
 	var_declaration,
 	var_using
 } from "./generator.js";
-import {isEmpty} from "./generators/utils.js";
+import {isEmpty, print_array} from "./generators/utils.js";
 import {choice_deref_null_pointer} from "./generators/deref_null_pointer.js";
+import {choice_array_out_of_range} from "./generators/array_out_of_range.js";
 
 // const obj_func = {
 // 	type: 'func',
@@ -96,5 +97,6 @@ import {choice_deref_null_pointer} from "./generators/deref_null_pointer.js";
 // console.log(program(choice_div_zero_variant()));
 // console.log(choice(new_operator("int", [10])))
 // console.log(isEmpty())
-console.log(program(choice_deref_null_pointer(1)))
-// console.log(choice(var_declaration("int*", "pa")))
+// console.log(program(choice_deref_null_pointer(1)))
+console.log(program(choice_array_out_of_range(3)))
+// console.log(choice(print_array))
