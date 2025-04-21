@@ -183,7 +183,7 @@ const not_initialize = () => {
 					new_operator("int", Math.floor(Math.random()*2000-1000))
 				)
 			)
-			deletes.push(delete_operator(false, "p" + symbol))
+			deletes.push(delete_operator(false, var_using("p" + symbol)))
 		}
 		symbol = nextChar(symbol);
 	}
@@ -193,7 +193,7 @@ const not_initialize = () => {
 		Math.floor(Math.random()*2000-1000)
 	))
 	main.push(output("std::cout", [
-		"*p" +  String.fromCharCode('a'.charCodeAt(0) + (number_of_not_initialize-1))
+		var_using("*p" +  String.fromCharCode('a'.charCodeAt(0) + (number_of_not_initialize-1)))
 	]))
 	main = [...main, ...deletes]
 
@@ -210,5 +210,14 @@ export const choice_deref_null_pointer = (num) => {
 		return use_pointer_after_delete()
 	}else if (num === 4) {
 		return null_pointer_function()
+	}else {
+		const random = Math.random();
+		if (random < 0.25){
+			return not_initialize()
+		}else if (random < 0.55){
+			return use_pointer_after_delete()
+		}else {
+			return null_pointer_function()
+		}
 	}
 }

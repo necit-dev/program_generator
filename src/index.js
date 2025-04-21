@@ -96,5 +96,5 @@ import {choice_deref_null_pointer} from "./generators/deref_null_pointer.js";
 // console.log(program(choice_div_zero_variant()));
 // console.log(choice(new_operator("int", [10])))
 // console.log(isEmpty())
-console.log(program(choice_deref_null_pointer(4)))
+console.log(program(choice_deref_null_pointer(1)))
 // console.log(choice(var_declaration("int*", "pa")))
