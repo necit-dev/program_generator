@@ -14,6 +14,7 @@ import {
 import {isEmpty, print_array} from "./generators/utils.js";
 import {choice_deref_null_pointer} from "./generators/deref_null_pointer.js";
 import {choice_array_out_of_range} from "./generators/array_out_of_range.js";
+import {choice_delete_error} from "./generators/delete_error.js";
 
 // const obj_func = {
 // 	type: 'func',
@@ -98,5 +99,7 @@ import {choice_array_out_of_range} from "./generators/array_out_of_range.js";
 // console.log(choice(new_operator("int", [10])))
 // console.log(isEmpty())
 // console.log(program(choice_deref_null_pointer(1)))
-console.log(program(choice_array_out_of_range(3)))
+console.log(program(choice_deref_null_pointer(2)))
 // console.log(choice(print_array))
+
+// console.log(Math.floor(Math.random()*(5-1)+1))
