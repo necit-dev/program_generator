@@ -151,7 +151,7 @@ const not_initialize = () => {
 	let pointers = []
 	let deletes = []
 	for (let i = 0; i < count_of_pointers; i++) {
-		if (i === number_of_not_initialize || Math.random() < 0.4){
+		if (i === number_of_not_initialize-1 || Math.random() < 0.3){
 			pointers.push(
 				var_declaration("int*", "p" + symbol)
 			)
@@ -167,11 +167,11 @@ const not_initialize = () => {
 	}
 	let main = pointers
 	main.push(var_assigning(
-		"*p" +  String.fromCharCode('a'.charCodeAt(0) + (number_of_not_initialize-1)),
+		"*p" +  charNumber(number_of_not_initialize),
 		Math.floor(Math.random()*2000-1000)
 	))
 	main.push(output("std::cout", [
-		var_using("*p" +  String.fromCharCode('a'.charCodeAt(0) + (number_of_not_initialize-1)))
+		var_using("*p" +  charNumber(number_of_not_initialize))
 	]))
 	main = [...main, ...deletes]
 
