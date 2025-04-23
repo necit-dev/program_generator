@@ -1,5 +1,8 @@
 import {choice, program} from "./create.js";
 
+import yargs from "yargs";
+import {hideBin} from "yargs/helpers"
+
 import {
  	choice_div_zero_variant
 } from "./generators/div_by_zero.js";
@@ -16,90 +19,84 @@ import {choice_deref_null_pointer} from "./generators/deref_null_pointer.js";
 import {choice_array_out_of_range} from "./generators/array_out_of_range.js";
 import {choice_delete_error} from "./generators/delete_error.js";
 
-// const obj_func = {
-// 	type: 'func',
-// 	name: "main",
-// 	params: {
-// 		"argc": "int",
-// 		"argv": "char**"
-// 	},
-// 	return_type: "int",
-// 	body: random_generator()
-// }
-//
-//
-// const obj_program = [
-// 	directive("include", "<iostream>"),
-// 	// {type: "directive", keyword: "include", name: "iostream"},
-// 	obj_func
-// ]
-
-
-// console.log(program(obj_program))
-
-// const unary_example = unary_operator(
-// 	"post++",
-// 	var_using("i"),
-// 	true
-// )
-//
-// // console.log(choice(unary_example));
-//
-// const for_example = loop_for(
-// 	var_declaration("int", "i", 0, true),
-// 	primitive_operator("<", var_using("i"), 10),
-// 	unary_operator("post++", var_using("i")),
-// 	[
-// 		unary_operator("post++", var_using("a"), false, true),
-// 	]
-// )
-// console.log(choice(for_example))
-// console.log(choice(0))
-
-
-// console.log(choice(var_declaration("int", "i", 0, true)));
-
-// console.log(choice(array_declaration("int", "arr", -1, [4, 6, 2, 8])))
-// console.log(choice(array_declaration("int", "arr2", 5)))
-
-// const prog_example = [
-// 	directive("include", "<iostream>"),
-// 	func("main", [], "int", [
-// 		var_declaration("int", "N", 5),
-// 		var_declaration("int", "sum", 0),
-// 		loop_for(
-// 			var_declaration("int", "i", 0, true),
-// 			primitive_operator("<", var_using("i"), var_using("N")),
-// 			unary_operator("post++", var_using("i")),
-// 			[
-// 				primitive_operator("+=",
-// 					var_using("sum"),
-// 					primitive_operator("+",
-// 						var_using("i"), 1,
-// 						false
-// 					),
-// 					false,
-// 					true
-// 				)
-// 			],
-// 			1
-// 		),
-// 		output("std::cout", [var_using("sum"), manipulator_and_keywords("std::endl")]),
-// 		ret(0)
-// 	])
-// ]
-
-// console.log(program(prog_example))
-// console.log(program(division_by_zero_simple()))
-// const a = random_func_div_0(1)
-// console.log(a)
-// console.log(choice(a))
-
-// console.log(program(choice_div_zero_variant()));
-// console.log(choice(new_operator("int", [10])))
-// console.log(isEmpty())
-// console.log(program(choice_deref_null_pointer(1)))
-console.log(program(choice_deref_null_pointer(2)))
+// console.log(program(choice_deref_null_pointer(4)))
 // console.log(choice(print_array))
 
-// console.log(Math.floor(Math.random()*(5-1)+1))
+const argv = yargs(hideBin(process.argv))
+	.wrap(null)
+	.option('num', {
+		alias: 'n',
+		type: 'number',
+		description: "Номер генерации программы:\n" +
+			"1 - Ошибка, связанная с делением на 0\n" +
+			"2 - Ошибка, связанная с \"висячим\" указателем\n\t(не инициализирован, очищена память)\n" +
+			"3 - Ошибка, связанная с выходом за границы массива\n" +
+			"4 - Ошибка, связанная с неправильным использованием\n\tоператора \"delete\"\n" +
+			"Любое другое число (или не указан параметр)\n\t- выберется случайным образом",
+		default: 0
+	})
+	.option('variant',{
+		alias: 'v',
+		type: 'number',
+		description: "Вариант используемой генерации. В каждом номере\n\tесть несколько вариантов генерации:\n" +
+			"num=1:\n\t1 - Ошибка возникает в main\n" +
+			"\t2 - Ошибка возникает в другой функции\n" +
+			"num=2:\n\t1 - Не инициализирован указатель\n" +
+			"\t2 - Использование указателя после \"delete\"\n" +
+			"\t3 - Разыменование nullptr\n" +
+			"num=3:\n\t1 - Ошибка в цикле\n" +
+			"\t2 - Ошибка в функции из-за неверного аргумента\n\t(длины массива)\n" +
+			"num=4:\n\t1 - Использование \"delete\" в main после\n\t\"delete\" в другой функции\n" +
+			"\t2 - Использование \"delete\" с указателем\n\tна статическую переменную (область памяти)\n" +
+			"\t3 - Повторное использование \"delete\" с указателем\n\tна тот же объект\n" +
+			"По умолчанию, выбирается случайно",
+		default: 0
+	})
+	.option('max_vars',{
+		type: 'number',
+		description: "Максимальное количество переменных, функций, указателей\n\tв случайной генерации" +
+			" (минимально можно указать 2,\n\tмаксимально - 10)",
+		default: 5
+	})
+	.option('min_vars',{
+		type: 'number',
+		description: "Максимальное количество переменных, функций, указателей\n\tв случайной генерации" +
+			" (минимально можно указать 1,\n\tмаксимально - 10)",
+		default: 2
+	})
+
+	.help('help')
+	.alias('help', ['h', '?'])
+	.argv;
+
+
+// console.log(argv)
+// console.log(argv.n)
+// console.log(argv.v)
+
+switch (argv.n) {
+	case 1:
+		console.log(program(choice_div_zero_variant(argv.v)));
+		break;
+	case 2:
+		console.log(program(choice_deref_null_pointer(argv.v)));
+		break;
+	case 3:
+		console.log(program(choice_array_out_of_range(argv.v)));
+		break;
+	case 4:
+		console.log(program(choice_delete_error(argv.v)));
+		break;
+	default:
+		const rand = Math.random();
+		if (rand < 0.25) {
+			console.log(program(choice_div_zero_variant(argv.v)));
+		}else if (rand < 0.5) {
+			console.log(program(choice_deref_null_pointer(argv.v)));
+		}else if (rand < 0.75) {
+			console.log(program(choice_array_out_of_range(argv.v)));
+		}else {
+			console.log(program(choice_delete_error(argv.v)));
+		}
+}
+

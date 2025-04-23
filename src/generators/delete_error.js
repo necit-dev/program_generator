@@ -161,11 +161,11 @@ const double_delete = () => {
 }
 
 export const choice_delete_error = (num) => {
-	if (num === 2) {
+	if (num === 1) {
 		return double_delete()
-	}else if (num === 3){
+	}else if (num === 2){
 		return static_pointer()
-	}else if (num === 4) {
+	}else if (num === 3) {
 		return delete_copy()
 	}
 }

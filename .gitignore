@@ -1,2 +1,4 @@
 ~$новные идеи.docx
 .idea
+src/node_modules
+dist/app.js.LICENSE.txt

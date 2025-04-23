@@ -160,9 +160,9 @@ export const division_by_zero_simple = () => {
 }
 
 export const choice_div_zero_variant = (num = 1) => {
-	if (num === 2){
+	if (num === 1){
 		return division_by_zero_simple()
-	}else if (num === 3) {
+	}else if (num === 2) {
 		return div_by_zero_with_functions()
 	}else if (Math.random() < 0.3){
 		return division_by_zero_simple()

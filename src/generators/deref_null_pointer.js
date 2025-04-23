@@ -182,11 +182,11 @@ const not_initialize = () => {
 }
 
 export const choice_deref_null_pointer = (num) => {
-	if (num === 2) {
+	if (num === 1) {
 		return not_initialize()
-	}else if (num === 3) {
+	}else if (num === 2) {
 		return use_pointer_after_delete()
-	}else if (num === 4) {
+	}else if (num === 3) {
 		return null_pointer_function()
 	}else {
 		const random = Math.random();

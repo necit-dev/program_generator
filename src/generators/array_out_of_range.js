@@ -86,9 +86,9 @@ const loop_error = () => {
 }
 
 export const choice_array_out_of_range = (num) => {
-	if (num === 2) {
+	if (num === 1) {
 		return loop_error()
-	} else if (num === 3){
+	} else if (num === 2){
 		return invalid_argument()
 	}
 }
