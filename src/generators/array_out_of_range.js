@@ -25,7 +25,7 @@ const invalid_argument = () => {
 			array_lst.push(var_assigning(`arr[${i}]`, body_array[i]))
 		}
 	}else {
-		array_lst = array_declaration("int", "arr", -1, body_array)
+		array_lst.push(array_declaration("int", "arr", -1, body_array))
 	}
 	let main = array_lst
 	main.push(call_func("print_array", [var_using("arr"), array_length+1], true))
@@ -90,5 +90,11 @@ export const choice_array_out_of_range = (num) => {
 		return loop_error()
 	} else if (num === 2){
 		return invalid_argument()
+	}else {
+		if (Math.random() < 0.5) {
+			return loop_error()
+		}else {
+			return invalid_argument()
+		}
 	}
 }

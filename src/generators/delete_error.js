@@ -167,5 +167,14 @@ export const choice_delete_error = (num) => {
 		return static_pointer()
 	}else if (num === 3) {
 		return delete_copy()
+	}else {
+		const rand = Math.random()
+		if (rand < 0.35) {
+			return double_delete()
+		}else if (rand < 0.7){
+			return static_pointer()
+		}else {
+			return delete_copy()
+		}
 	}
 }
