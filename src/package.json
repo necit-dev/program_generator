@@ -1,6 +1,6 @@
 {
   "name": "Program Generator JS",
-  "version": "1.0",
+  "version": "0.9",
   "description": "",
   "main": "index.js",
   "type": "module",
