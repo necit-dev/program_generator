@@ -28,7 +28,6 @@ const null_pointer_function = () => {
 	let array = array_declaration("int", "data", -1, body_array)
 
 	let main = [array]
-	//
 
 	let count = 0
 	let random_digit;
@@ -63,12 +62,7 @@ const null_pointer_function = () => {
 		}
 
 	}
-
-	// main.push(
-	// 	output("std::cout", unary_operator("*",
-	// 		call_func("find", [var_using("data"), array_length, body_array[random_element]])
-	// 	))
-	// )
+	main.push(ret(0))
 
 	let lst = []
 	lst.push(directive("include", "<iostream>"))
@@ -136,6 +130,7 @@ const use_pointer_after_delete = () => {
 	)
 
 	main = [...main, ...couts]
+	main.push(ret(0))
 
 	let lst = []
 	lst.push(directive("include", "<iostream>"))
@@ -174,7 +169,7 @@ const not_initialize = () => {
 		var_using("*p" +  charNumber(number_of_not_initialize))
 	]))
 	main = [...main, ...deletes]
-
+	main.push(ret(0))
 	let lst = []
 	lst.push(directive("include", "<iostream>"))
 	lst.push(func("main", [], "int", main))
