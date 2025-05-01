@@ -1,3 +1,4 @@
+import {binary_operator} from "./generator.js";
 
 export const program = (program) => {
 	/** Обработка всей программы:
@@ -80,7 +81,7 @@ const print_output = (elem) => {
 	return string + ";"
 }
 
-const print_primitive_operator = (elem) => {
+const print_binary_operator = (elem) => {
 	/** Обработка примитивных бинарных арифметических и логических операций (возможно, побитовых)
 	* Полный перечень (хотя сейчас это не контролируется):
 	* 1) арифметические: + - * / %
@@ -214,8 +215,8 @@ export const choice = (elem) => {
 			case 'var_using':
 				return elem.name;
 
-			case 'primitive_operator':
-				return print_primitive_operator(elem);
+			case 'binary_operator':
+				return print_binary_operator(elem);
 
 			case 'unary_operator':
 				return print_unary_operator(elem);

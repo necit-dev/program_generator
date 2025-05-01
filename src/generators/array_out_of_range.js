@@ -1,7 +1,7 @@
 import {
 	array_declaration, call_func, directive, func,
 	loop_for, manipulator_and_keywords, new_operator, output,
-	primitive_operator, ret,
+	binary_operator, ret,
 	unary_operator, var_assigning,
 	var_declaration,
 	var_using
@@ -67,7 +67,7 @@ const loop_error = () => {
 
 	const loop = loop_for(
 		var_declaration("int", "i", first_value_in_loop, true),
-		primitive_operator(operator_in_loop, var_using("i"), digit_in_loop),
+		binary_operator(operator_in_loop, var_using("i"), digit_in_loop),
 		unary_operator(operator, var_using("i")),[
 			output("std::cout", [
 				var_using("arr[i]"),

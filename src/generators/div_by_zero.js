@@ -4,7 +4,7 @@ import {
 	func,
 	manipulator_and_keywords,
 	output,
-	primitive_operator,
+	binary_operator,
 	ret,
 	var_declaration,
 	var_using
@@ -46,19 +46,19 @@ export const random_function = (number) => {
 
 	let str_ret
 	if (random < 1){
-		str_ret = ret(primitive_operator("+", var_using("b"), random_parameter))
+		str_ret = ret(binary_operator("+", var_using("b"), random_parameter))
 	}else if (random < 2) {
-		str_ret = ret(primitive_operator("-", var_using("b"), random_parameter))
+		str_ret = ret(binary_operator("-", var_using("b"), random_parameter))
 	}else if (random < 3){
-		str_ret = ret(primitive_operator("*", var_using("b"), random_parameter))
+		str_ret = ret(binary_operator("*", var_using("b"), random_parameter))
 	}else if (random < 4){
-		str_ret = ret(primitive_operator("/", random_parameter, var_using("b")))
+		str_ret = ret(binary_operator("/", random_parameter, var_using("b")))
 	}else if (random < 5){
-		str_ret = ret(primitive_operator("+", random_parameter, var_using("b")))
+		str_ret = ret(binary_operator("+", random_parameter, var_using("b")))
 	}else if (random < 6){
-		str_ret = ret(primitive_operator("-", random_parameter, var_using("b")))
+		str_ret = ret(binary_operator("-", random_parameter, var_using("b")))
 	}else {
-		str_ret = ret(primitive_operator("*", random_parameter, var_using("b")))
+		str_ret = ret(binary_operator("*", random_parameter, var_using("b")))
 	}
 
 	return func("func" + number, typeof random_parameter === "number" ? {} : {"a": "int"}, "int", [
@@ -73,12 +73,12 @@ export const random_func_div_0 = (number) => {
 	if (random < 0.1){
 		return func("func" + number, {"a": "int"}, "int", [
 			var_b,
-			ret(primitive_operator("/", var_using("a"), var_using("b")))
+			ret(binary_operator("/", var_using("a"), var_using("b")))
 		])
 	}else {
 		return func("func" + number, {}, "int", [
 			var_b,
-			ret(primitive_operator("/", Math.floor(Math.random()*2000-500), var_using("b")))
+			ret(binary_operator("/", Math.floor(Math.random()*2000-500), var_using("b")))
 		])
 	}
 }
@@ -142,7 +142,7 @@ export const division_by_zero_simple = () => {
 	main = random_var_declaration(count_of_variables, main)
 	main.push(var_declaration("int", "z", 0))
 	main.push(output("std::cout", [
-		primitive_operator("/", var_using(
+		binary_operator("/", var_using(
 			String.fromCharCode('a'.charCodeAt(0) + new_symbol)
 		), var_using("z")),
 		manipulator_and_keywords("std::endl")

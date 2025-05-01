@@ -2,7 +2,7 @@ import {
 	condition_if,
 	func,
 	loop_for, manipulator_and_keywords, output,
-	primitive_operator, ret,
+	binary_operator, ret,
 	unary_operator,
 	var_declaration,
 	var_using
@@ -43,11 +43,11 @@ export const find_func = func("find", {
 	}, "int*", [
 		loop_for(
 			var_declaration("int", "i", 0, true),
-			primitive_operator("<", var_using("i"), var_using("size")),
+			binary_operator("<", var_using("i"), var_using("size")),
 			unary_operator("post++", var_using("i")),
 			[
 				condition_if(
-					primitive_operator("==", var_using("arr[i]"), var_using("target")),
+					binary_operator("==", var_using("arr[i]"), var_using("target")),
 					[
 						ret(unary_operator("&", var_using("arr[i]")))
 					],
@@ -66,7 +66,7 @@ export const print_array = func("print_array", {
 	}, "void", [
 		loop_for(
 			var_declaration("int", "i", 0, true),
-			primitive_operator("<", var_using("i"), var_using("size")),
+			binary_operator("<", var_using("i"), var_using("size")),
 			unary_operator("post++", var_using("i")),
 			[
 				output("std::cout", [

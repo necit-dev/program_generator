@@ -9,7 +9,7 @@ import {
 import {
 	array_declaration,
 	directive, func,
-	loop_for, manipulator_and_keywords, new_operator, output, primitive_operator, ret,
+	loop_for, manipulator_and_keywords, new_operator, output, binary_operator, ret,
 	unary_operator, var_assigning,
 	var_declaration,
 	var_using

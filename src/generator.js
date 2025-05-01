@@ -64,9 +64,9 @@ export const manipulator_and_keywords = (name) => {
 	}
 }
 
-export const primitive_operator = (operator, first, second, withBraces = false, semicolon_point = false) => {
+export const binary_operator = (operator, first, second, withBraces = false, semicolon_point = false) => {
 	return {
-		type: 'primitive_operator',
+		type: 'binary_operator',
 		operator,
 		first,
 		second,

@@ -4,7 +4,7 @@ import {
 	delete_operator,
 	directive,
 	func, loop_for, manipulator_and_keywords,
-	new_operator, output, primitive_operator, ret,
+	new_operator, output, binary_operator, ret,
 	unary_operator,
 	var_assigning,
 	var_declaration,
