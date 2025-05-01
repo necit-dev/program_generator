@@ -6,7 +6,26 @@ import path from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export default {
+const configOld = {
+	mode: 'production',
+	target: 'node',
+	entry: './index.js', // твоя точка входа
+	output: {
+		filename: 'app-old.js',
+		path: path.resolve(__dirname, '../dist'),
+	},
+	optimization: {
+		minimize: false,  // Отключаем минимизацию
+	},
+
+	devtool: false,  // Отключаем source maps, чтобы избежать использования eval
+
+	module: {
+		rules: [],
+	},
+}
+
+const config =  {
 	mode: 'production',
 	target: 'node',
 	entry: './index.js', // твоя точка входа
@@ -33,3 +52,5 @@ export default {
 		],
 	},
 };
+
+export default [configOld, config]
