@@ -1,26 +1,14 @@
-import {choice, program} from "./create.js";
+import {program} from "./output.js";
 
 import yargs from "yargs";
 import {hideBin} from "yargs/helpers"
 
-import {
- 	choice_div_zero_variant
-} from "./generators/div_by_zero.js";
-import {
-	array_declaration,
-	directive, func,
-	loop_for, manipulator_and_keywords, new_operator, output, binary_operator, ret,
-	unary_operator, var_assigning,
-	var_declaration,
-	var_using
-} from "./generator.js";
-import {isEmpty, print_array} from "./generators/utils.js";
-import {choice_deref_null_pointer} from "./generators/deref_null_pointer.js";
-import {choice_array_out_of_range} from "./generators/array_out_of_range.js";
-import {choice_delete_error} from "./generators/delete_error.js";
+import {choice_div_zero_variant} from "./random_generators/div_by_zero.js";
+import {choice_deref_null_pointer} from "./random_generators/deref_null_pointer.js";
+import {choice_array_out_of_range} from "./random_generators/array_out_of_range.js";
+import {choice_delete_error} from "./random_generators/delete_error.js";
 
-// console.log(program(choice_deref_null_pointer(4)))
-// console.log(choice(print_array))
+// const t0 = performance.now();
 
 const argv = yargs(hideBin(process.argv))
 	.wrap(null)
@@ -70,13 +58,13 @@ const argv = yargs(hideBin(process.argv))
 	.argv;
 
 
-// console.log(argv)
-// console.log(argv.n)
-// console.log(argv.v)
-
 switch (argv.n) {
 	case 1:
+		// const t1 = performance.now()
 		console.log(program(choice_div_zero_variant(argv.v)));
+		// const t2 = performance.now()
+		// console.log(t2-t0, "ms");
+		// console.log(t2-t1, "ms");
 		break;
 	case 2:
 		console.log(program(choice_deref_null_pointer(argv.v)));
@@ -99,4 +87,7 @@ switch (argv.n) {
 			console.log(program(choice_delete_error(argv.v)));
 		}
 }
+
+// const t1 = performance.now()
+// console.log(t1, "ms");
 

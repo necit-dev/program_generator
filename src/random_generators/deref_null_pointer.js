@@ -23,7 +23,7 @@ const null_pointer_function = () => {
 	}
 
 	let random_number = Math.floor(Math.random()*200-100)
-	if (body_array.includes(random_number)) random_number = Math.floor(Math.random()*101+100)
+	if (body_array.includes(random_number)) random_number = Math.floor(Math.random()*101+101)
 
 	let array = array_declaration("int", "data", -1, body_array)
 

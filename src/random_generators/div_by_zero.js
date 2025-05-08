@@ -14,25 +14,6 @@ import {
 	random_var_declaration
 } from "./utils.js"
 
-// const cout_declarations = (count_of_variables, lst) => {
-// 	let symbol = 'a'
-// 	for (let i = 0; i < count_of_variables; i++) {
-// 		lst.push(
-// 			output("std::cout", [var_using(symbol), manipulator_and_keywords("std::endl")])
-// 		)
-// 		symbol = nextChar(symbol);
-// 	}
-// 	return lst;
-// }
-
-// export const random_generator = () => {
-// 	const count_of_variables = Math.ceil(Math.random()*5)
-// 	// console.log(count_of_variables)
-// 	let lst = random_var_declaration(count_of_variables, [])
-// 	lst = cout_declarations(count_of_variables, lst)
-// 	lst.push(ret(0))
-// 	return lst
-// }
 
 export const random_function = (number) => {
 	const random = Math.random()*7;
@@ -149,9 +130,6 @@ export const division_by_zero_simple = () => {
 	]))
 	main.push(ret(0))
 
-	let main2 = []
-	// main2.
-
 
 	let lst = []
 	lst.push(directive("include", "<iostream>"))
@@ -159,7 +137,7 @@ export const division_by_zero_simple = () => {
 	return lst
 }
 
-export const choice_div_zero_variant = (num = 1) => {
+export const choice_div_zero_variant = (num = 0) => {
 	if (num === 1){
 		return division_by_zero_simple()
 	}else if (num === 2) {

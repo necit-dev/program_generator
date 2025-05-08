@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 
-;// ./create.js
+;// ./output.js
 
 
 const program = (program) => {
@@ -5840,7 +5840,7 @@ const generator_call_func = (name, params, semicolon_point = false) => {
 		semicolon_point
 	}
 }
-;// ./generators/utils.js
+;// ./random_generators/utils.js
 
 
 const nextChar = (ch) => {
@@ -5867,9 +5867,6 @@ const isEmpty = (obj) => {
 
 }
 
-const random_pointers_declaration = (count_of_pointers, lst) => {
-
-}
 
 const find_func = func("find", {
 		"arr": "int*",
@@ -5913,30 +5910,11 @@ const print_array = func("print_array", {
 		)
 	]
 )
-;// ./generators/div_by_zero.js
+;// ./random_generators/div_by_zero.js
 
 
 
 
-// const cout_declarations = (count_of_variables, lst) => {
-// 	let symbol = 'a'
-// 	for (let i = 0; i < count_of_variables; i++) {
-// 		lst.push(
-// 			output("std::cout", [var_using(symbol), manipulator_and_keywords("std::endl")])
-// 		)
-// 		symbol = nextChar(symbol);
-// 	}
-// 	return lst;
-// }
-
-// export const random_generator = () => {
-// 	const count_of_variables = Math.ceil(Math.random()*5)
-// 	// console.log(count_of_variables)
-// 	let lst = random_var_declaration(count_of_variables, [])
-// 	lst = cout_declarations(count_of_variables, lst)
-// 	lst.push(ret(0))
-// 	return lst
-// }
 
 const random_function = (number) => {
 	const random = Math.random()*7;
@@ -6053,9 +6031,6 @@ const division_by_zero_simple = () => {
 	]))
 	main.push(ret(0))
 
-	let main2 = []
-	// main2.
-
 
 	let lst = []
 	lst.push(directive("include", "<iostream>"))
@@ -6063,7 +6038,7 @@ const division_by_zero_simple = () => {
 	return lst
 }
 
-const choice_div_zero_variant = (num = 1) => {
+const choice_div_zero_variant = (num = 0) => {
 	if (num === 1){
 		return division_by_zero_simple()
 	}else if (num === 2) {
@@ -6076,7 +6051,7 @@ const choice_div_zero_variant = (num = 1) => {
 }
 
 
-;// ./generators/deref_null_pointer.js
+;// ./random_generators/deref_null_pointer.js
 
 
 
@@ -6091,7 +6066,7 @@ const null_pointer_function = () => {
 	}
 
 	let random_number = Math.floor(Math.random()*200-100)
-	if (body_array.includes(random_number)) random_number = Math.floor(Math.random()*101+100)
+	if (body_array.includes(random_number)) random_number = Math.floor(Math.random()*101+101)
 
 	let array = array_declaration("int", "data", -1, body_array)
 
@@ -6262,7 +6237,7 @@ const choice_deref_null_pointer = (num) => {
 		}
 	}
 }
-;// ./generators/array_out_of_range.js
+;// ./random_generators/array_out_of_range.js
 
 
 
@@ -6356,7 +6331,7 @@ const choice_array_out_of_range = (num) => {
 		}
 	}
 }
-;// ./generators/delete_error.js
+;// ./random_generators/delete_error.js
 
 
 
@@ -6511,11 +6486,11 @@ const double_delete = () => {
 
 const choice_delete_error = (num) => {
 	if (num === 1) {
-		return double_delete()
-	}else if (num === 2){
 		return static_pointer()
-	}else if (num === 3) {
+	}else if (num === 2){
 		return delete_copy()
+	}else if (num === 3) {
+		return double_delete()
 	}else {
 		const rand = Math.random()
 		if (rand < 0.35) {
@@ -6538,10 +6513,7 @@ const choice_delete_error = (num) => {
 
 
 
-
-
-// console.log(program(choice_deref_null_pointer(4)))
-// console.log(choice(print_array))
+// const t0 = performance.now();
 
 const argv = yargs(hideBin(process.argv))
 	.wrap(null)
@@ -6591,13 +6563,13 @@ const argv = yargs(hideBin(process.argv))
 	.argv;
 
 
-// console.log(argv)
-// console.log(argv.n)
-// console.log(argv.v)
-
 switch (argv.n) {
 	case 1:
+		// const t1 = performance.now()
 		console.log(program(choice_div_zero_variant(argv.v)));
+		// const t2 = performance.now()
+		// console.log(t2-t0, "ms");
+		// console.log(t2-t1, "ms");
 		break;
 	case 2:
 		console.log(program(choice_deref_null_pointer(argv.v)));
@@ -6620,6 +6592,9 @@ switch (argv.n) {
 			console.log(program(choice_delete_error(argv.v)));
 		}
 }
+
+// const t1 = performance.now()
+// console.log(t1, "ms");
 
 
 /******/ })()

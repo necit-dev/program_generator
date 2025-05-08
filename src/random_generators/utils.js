@@ -32,9 +32,6 @@ export const isEmpty = (obj) => {
 
 }
 
-export const random_pointers_declaration = (count_of_pointers, lst) => {
-
-}
 
 export const find_func = func("find", {
 		"arr": "int*",

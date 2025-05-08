@@ -162,11 +162,11 @@ const double_delete = () => {
 
 export const choice_delete_error = (num) => {
 	if (num === 1) {
-		return double_delete()
-	}else if (num === 2){
 		return static_pointer()
-	}else if (num === 3) {
+	}else if (num === 2){
 		return delete_copy()
+	}else if (num === 3) {
+		return double_delete()
 	}else {
 		const rand = Math.random()
 		if (rand < 0.35) {
