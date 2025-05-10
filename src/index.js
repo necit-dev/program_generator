@@ -3,6 +3,8 @@ import {program} from "./output.js";
 import yargs from "yargs";
 import {hideBin} from "yargs/helpers"
 
+// import {appendFile} from "fs/promises";
+
 import {choice_div_zero_variant} from "./random_generators/div_by_zero.js";
 import {choice_deref_null_pointer} from "./random_generators/deref_null_pointer.js";
 import {choice_array_out_of_range} from "./random_generators/array_out_of_range.js";
@@ -57,23 +59,37 @@ const argv = yargs(hideBin(process.argv))
 	.alias('help', ['h', '?'])
 	.argv;
 
-
+// let t1;
+// let t2;
+// let t3;
 switch (argv.n) {
 	case 1:
-		// const t1 = performance.now()
-		console.log(program(choice_div_zero_variant(argv.v)));
-		// const t2 = performance.now()
-		// console.log(t2-t0, "ms");
-		// console.log(t2-t1, "ms");
+		// t1 = performance.now()
+		const str1 = program(choice_div_zero_variant(argv.v))
+		// t2 = performance.now()
+		console.log(str1);
+		// t3 = performance.now()
 		break;
 	case 2:
-		console.log(program(choice_deref_null_pointer(argv.v)));
+		// t1 = performance.now()
+		const str2 = program(choice_deref_null_pointer(argv.v))
+		// t2 = performance.now()
+		console.log(str2);
+		// t3 = performance.now()
 		break;
 	case 3:
-		console.log(program(choice_array_out_of_range(argv.v)));
+		// t1 = performance.now()
+		const str3 = program(choice_array_out_of_range(argv.v))
+		// t2 = performance.now()
+		console.log(str3);
+		// t3 = performance.now()
 		break;
 	case 4:
-		console.log(program(choice_delete_error(argv.v)));
+		// t1 = performance.now()
+		const str4 = program(choice_delete_error(argv.v))
+		// t2 = performance.now()
+		console.log(str4);
+		// t3 = performance.now()
 		break;
 	default:
 		const rand = Math.random();
@@ -88,6 +104,14 @@ switch (argv.n) {
 		}
 }
 
-// const t1 = performance.now()
-// console.log(t1, "ms");
+// const t4 = performance.now()
+// console.log("Обработка аргументов выполнялась:", t1-t0, "ms");
+// console.log("Генерация программы выполнялась:", t2-t1, "ms");
+// console.log("Вывод на экран готовой программы выполнялся:", t3-t2, "ms");
+// console.log("Вся программа выполнялась:", t4, "ms");
+//
+// await appendFile("time_arguments.txt", (t1-t0).toFixed(3) + '\n', 'utf8')
+// await appendFile("time_generate.txt", (t2-t1).toFixed(3) + '\n', 'utf8')
+// await appendFile("time_console.txt", (t3-t2).toFixed(3) + '\n', 'utf8')
+// await appendFile("time_all.txt", (t4).toFixed(3) + '\n', 'utf8')
 

@@ -148,7 +148,7 @@ const not_initialize = () => {
 	for (let i = 0; i < count_of_pointers; i++) {
 		if (i === number_of_not_initialize-1 || Math.random() < 0.3){
 			pointers.push(
-				var_declaration("int*", "p" + symbol)
+				var_declaration("int*", "p" + symbol, manipulator_and_keywords("nullptr"))
 			)
 		}else {
 			pointers.push(
