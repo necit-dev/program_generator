@@ -1,597 +1,259 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
 
-/***/ 17:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   al: () => (/* reexport safe */ _build_lib_utils_process_argv_js__WEBPACK_IMPORTED_MODULE_3__.a)
-/* harmony export */ });
-/* unused harmony export applyExtends */
-/* harmony import */ var _build_lib_utils_apply_extends_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(768);
-/* harmony import */ var _build_lib_utils_process_argv_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(868);
-/* harmony import */ var yargs_parser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(791);
-/* harmony import */ var _lib_platform_shims_esm_mjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(407);
+;// ./output.js
 
 
-
-
-
-const applyExtends = (config, cwd, mergeExtends) => {
-  return _applyExtends(config, cwd, mergeExtends, shim);
-};
-
-
-
-
-/***/ }),
-
-/***/ 23:
-/***/ ((module) => {
-
-module.exports = require("util");
-
-/***/ }),
-
-/***/ 116:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z3: () => (/* binding */ random_var_declaration),
-/* harmony export */   eE: () => (/* binding */ charNumber),
-/* harmony export */   un: () => (/* binding */ print_array),
-/* harmony export */   vt: () => (/* binding */ find_func),
-/* harmony export */   wb: () => (/* binding */ nextChar)
-/* harmony export */ });
-/* unused harmony export isEmpty */
-/* harmony import */ var _generator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(377);
-
-
-const nextChar = (ch) => {
-	return String.fromCharCode(ch.charCodeAt(0) + 1);
-}
-
-const charNumber = (num) => {
-	return String.fromCharCode("a".charCodeAt(0) + (num-1));
-}
-
-const random_var_declaration = (count_of_variables, lst) => {
-	let symbol = 'a'
-	for (let i = 0; i < count_of_variables; i++) {
-		lst.push(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_declaration */ .Dl)("int", symbol, Math.floor(Math.random()*200-100))
-		)
-		symbol = nextChar(symbol);
+const program = (program) => {
+	/** Обработка всей программы:
+	 *  Представляет собой обработку массива программы. В него входят:
+	 *  1) Директивы
+	 *  2) Функции (в том числе, main)
+	 *  3) using (пока еще не реализовано)
+	 * */
+	let string = "";
+	for (let i = 0; i < program.length; i++) {
+		string += choice(program[i]) + "\n\n";
 	}
-	return lst
+	return string;
 }
 
-const isEmpty = (obj) => {
-	return (obj || obj === 0 || obj === "") ? true : false
-
+const print_directive = (elem) => {
+	/** Обработка директивы, т.е. его названия и "тела" (параметр "name") */
+	return "#" + elem.keyword + " " + elem.value;
 }
 
-
-const find_func = (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .func */ .Pc)("find", {
-		"arr": "int*",
-		"size": "int",
-		"target": "int",
-	}, "int*", [
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .loop_for */ .JH)(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_declaration */ .Dl)("int", "i", 0, true),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .binary_operator */ .J)("<", (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("i"), (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("size")),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .unary_operator */ .fN)("post++", (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("i")),
-			[
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .condition_if */ .yW)(
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .binary_operator */ .J)("==", (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("arr[i]"), (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("target")),
-					[
-						(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .unary_operator */ .fN)("&", (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("arr[i]")))
-					],
-					2
-				)
-			],
-			1
-		),
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .manipulator_and_keywords */ .i$)("nullptr"))
-	],
-)
-
-const print_array = (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .func */ .Pc)("print_array", {
-		"arr": "int*",
-		"size": "int",
-	}, "void", [
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .loop_for */ .JH)(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_declaration */ .Dl)("int", "i", 0, true),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .binary_operator */ .J)("<", (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("i"), (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("size")),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .unary_operator */ .fN)("post++", (0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("i")),
-			[
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .output */ .CG)("std::cout", [
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .var_using */ .xe)("arr[i]"),
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_0__/* .manipulator_and_keywords */ .i$)("std::endl")
-				])
-			],
-			1
-		)
-	]
-)
-
-/***/ }),
-
-/***/ 253:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   f: () => (/* binding */ choice_array_out_of_range)
-/* harmony export */ });
-/* harmony import */ var _generator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(377);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(116);
-
-
-
-const invalid_argument = () => {
-	const print_function = _utils_js__WEBPACK_IMPORTED_MODULE_0__/* .print_array */ .un
-
-	const array_length = Math.floor(Math.random()*5+3)
-	let body_array = []
-	for (let i = 0; i < array_length; i++) {
-		body_array.push(Math.floor(Math.random()*200-100))
+const print_func = (elem) => {
+	/** Обработка функции, т.е. возвращаемое значение, параметры, тело функции */
+	let string = elem.return_type + " " + elem.name + "("
+	const params = Object.entries(elem.params)
+	if (params.length > 0) {
+		string += params[0][1] + " " + params[0][0];
 	}
-	let array_lst = []
-	if (Math.random() < 0.5) {
-		array_lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "arr",
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .new_operator */ ._F)("int", [array_length])
-		))
-		for (let i = 0; i < array_length; i++) {
-			array_lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_assigning */ .A8)(`arr[${i}]`, body_array[i]))
+	for (let i = 1; i < params.length; i++) {
+		string += ", " + params[i][1] + " " + params[i][0];
+	}
+	if (!Array.isArray(elem.body)){
+		console.error("Body In function must be an array")
+		return "Body In function must be an array";
+	}
+	string += ") {\n";
+	for (let i = 0; i < elem.body.length; i++) {
+		string += "\t" + choice(elem.body[i]) + "\n";
+	}
+	string +="}\n";
+	return string;
+
+}
+
+const print_var_assigning = (elem) => {
+	/** Обработка присваивания значений переменных */
+	return elem.name + " = " + choice(elem.body) + ";"
+}
+
+const print_array_declaration = (elem) => {
+	const count = elem.count < 1 ? "": String(elem.count)
+	let string = elem.value_type + " " + elem.name + "[" + (count) + "]"
+	if (Array.isArray(elem.body) && elem.body.length > 0) {
+		string += " = {"
+		for (let i = 0; i < elem.body.length-1; i++) {
+			string += choice(elem.body[i]) + ", ";
 		}
+		if (elem.body.length > 0) {
+			string += choice(elem.body[elem.body.length-1]) + "}";
+		}
+	}else if (elem.body){
+		string += " = " + choice(elem.body);
+	}
+	string += ";";
+	return string;
+}
+
+const print_manipulator_and_keywords = (elem) => {
+	/** Обработка манипуляторов, таких как std::endl
+	 *  Также просто ключевые слова не в виде строки, типа nullptr,
+	 *  макросов, если надо будет. */
+	return elem.name;
+}
+
+const print_output = (elem) => {
+	/** Обработка потока вывода, в том числе std::cout */
+	let string = elem.name
+	elem.body.forEach((element) => {
+		string += " << " + choice(element)
+	})
+	return string + ";"
+}
+
+const print_binary_operator = (elem) => {
+	/** Обработка примитивных бинарных арифметических и логических операций (возможно, побитовых)
+	* Полный перечень (хотя сейчас это не контролируется):
+	* 1) арифметические: + - * / %
+	* 2) логические < > <= >= == && || */
+	if (elem.withBraces) {
+		return "(" + choice(elem.first) + " "
+			+ elem.operator + " " + choice(elem.second) + ")"
+			+ (elem.semicolon_point? ";": "")
 	}else {
-		array_lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .array_declaration */ .Fu)("int", "arr", -1, body_array))
+		return choice(elem.first) + " " + elem.operator + " " + choice(elem.second)
+			+ (elem.semicolon_point? ";": "")
 	}
-	let main = array_lst
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .call_func */ .y2)("print_array", [(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("arr"), array_length+1], true))
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
-
-	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push(print_function)
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
-	return lst
-
 }
 
-const loop_error = () => {
-	const array_length = Math.floor(Math.random()*5+3)
-	let body_array = []
-
-	for (let i = 0; i < array_length; i++) {
-		body_array.push(Math.floor(Math.random()*200-100))
-	}
-
-	let array = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .array_declaration */ .Fu)("int", "arr", -1, body_array)
-	let main = [array]
-
-	let operator_in_loop = "<="
-	let digit_in_loop = array_length
-	let first_value_in_loop = Math.random() < 0.5 ? 0 : 1
-	let operator = "post++"
-	if (Math.random() < 0.35) {
-		operator_in_loop = ">="
-		digit_in_loop = 0
-		first_value_in_loop = array_length
-		operator = "post--"
-	}else	if (Math.random() < 0.6) {
-		operator_in_loop = "<"
-		digit_in_loop++
-		first_value_in_loop = 0
-	}
-
-	const loop = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .loop_for */ .JH)(
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int", "i", first_value_in_loop, true),
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)(operator_in_loop, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("i"), digit_in_loop),
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)(operator, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("i")),[
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("arr[i]"),
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
-			])
-		], 1
-	);
-
-	main = [...main, loop]
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
-
-	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
-	return lst
+const print_returning = (elem) => {
+	/** Обработка return */
+	return "return " + choice(elem.body) + ";";
 }
 
-const choice_array_out_of_range = (num) => {
-	if (num === 1) {
-		return loop_error()
-	} else if (num === 2){
-		return invalid_argument()
+const print_unary_operator = (elem) => {
+	/** Обработка унарных операций. Это:
+	 * 1) Инкременты, декременты (++, --)
+	 * 2) Унарный минус и логическое НЕ (!)
+	 * 3) Взятие адреса (&) и разыменования (*)
+	 */
+	let pred = elem.operator
+	let post = ""
+	if (elem.operator === "post++"){
+		post = "++"
+		pred = ""
+	}else if (elem.operator === "post--"){
+		post = "--"
+		pred = ""
+	}
+	if (elem.withBraces){
+		return "(" + pred + choice(elem.body) + post + ")"
 	}else {
-		if (Math.random() < 0.5) {
-			return loop_error()
-		}else {
-			return invalid_argument()
-		}
+		return pred + choice(elem.body) + post + (elem.semicolon_point? ';': '')
 	}
 }
 
-/***/ }),
-
-/***/ 291:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   v: () => (/* binding */ choice_deref_null_pointer)
-/* harmony export */ });
-/* harmony import */ var _generator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(377);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(116);
-
-
-
-const null_pointer_function = () => {
-	const find_function = _utils_js__WEBPACK_IMPORTED_MODULE_0__/* .find_func */ .vt
-
-	const array_length = Math.floor(Math.random()*5+3)
-	let body_array = []
-
-	for (let i = 0; i < array_length; i++) {
-		body_array.push(Math.floor(Math.random()*200-100))
+const print_var_declaration = (elem) => {
+	/** Обработка объявления переменных как с присваиванием, так и без */
+	if (!elem.body && elem.body !== 0 && elem.body !== "") {
+		return elem.value_type + " " + elem.name + (elem.no_semicolon_point? '': ';')
 	}
-
-	let random_number = Math.floor(Math.random()*200-100)
-	if (body_array.includes(random_number)) random_number = Math.floor(Math.random()*101+101)
-
-	let array = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .array_declaration */ .Fu)("int", "data", -1, body_array)
-
-	let main = [array]
-
-	let count = 0
-	let random_digit;
-	let random_position = Math.floor(Math.random()*array_length)
-	if (random_position >= array_length) random_position--
-	for (let i = 0; i < array_length; i++) {
-		if (i === random_position) {
-			main.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*",	(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .call_func */ .y2)("find", [
-							(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("data"), array_length, random_number
-						]),
-					)
-					, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
-				])
-			)
-			continue
-		}
-		if (count === 0 || Math.random() < 0.25){
-			random_digit = Math.floor(Math.random()*array_length)
-			if (random_digit >= array_length) random_digit = array_length-1;
-			main.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*",	(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .call_func */ .y2)("find", [
-							(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("data"), array_length, body_array[random_digit]
-						]),
-					)
-					, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
-				])
-			)
-			count++
-		}
-
-	}
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
-
-	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push(find_function)
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
-	return lst
+	let string = elem.value_type + " " + elem.name + " = ";
+	string += choice(elem.body) + (elem.no_semicolon_point? '': ';')
+	return string;
 }
 
-const use_pointer_after_delete = () => {
-	const count_of_pointers = Math.floor(Math.random()*5+2);
-	let number_of_deleting = Math.floor(Math.random()*count_of_pointers+1)
-
-	if (number_of_deleting > count_of_pointers) number_of_deleting = count_of_pointers;
-	let symbol = 'a'
-	let pointers = []
-	let couts = []
-	for (let i = 0; i < count_of_pointers; i++) {
-		pointers.push(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "p" + symbol,
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .new_operator */ ._F)("int", Math.floor(Math.random()*2000-1000))
-			)
-		)
-		symbol = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .nextChar */ .wb)(symbol);
+const print_loop_for = (elem) => {
+	let string = "for (" + choice(elem.iterator) + "; " + choice(elem.condition)
+		+ "; " + choice(elem.increment) + ") { \n"
+	let tabs = '';
+	for (let i = 0; i < elem.inner_curly_braces_count; i++) {
+		tabs += '\t'
 	}
+	for (let i = 0; i < elem.body.length; i++) {
+		string += tabs + '\t' + choice(elem.body[i]) + "\n";
+	}
+	string += tabs + "}"
+	return string;
+}
 
-	let main = pointers
+const print_condition_if = (elem) => {
+	let string = "if (" + choice(elem.condition) + ") { \n"
+	let tabs = '';
+	for (let i = 0; i < elem.inner_curly_braces_count; i++) {
+		tabs += '\t'
+	}
+	for (let i = 0; i < elem.body.length; i++) {
+		string += tabs + '\t' + choice(elem.body[i]) + "\n";
+	}
+	string += tabs + "}"
+	return string;
+}
 
-	if (Math.random() < 0.6) {
-		let second_number = Math.floor(Math.random()*count_of_pointers+1)
-		if (second_number === number_of_deleting) {
-			if (number_of_deleting + 1 > count_of_pointers){
-				second_number--
-			}else {
-				second_number++
-			}
-		}
-		main.push(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_assigning */ .A8)("p" + (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(second_number), (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(number_of_deleting)))
-		)
-		couts.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(second_number))),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
-		]))
-
+const print_new_operator = (elem) => {
+	if (typeof elem.value === "number") {
+		return "new " + elem.value_type + "(" + elem.value + ")"
+	}else if (Array.isArray(elem.value)) {
+		return "new " + elem.value_type + "[" + elem.value[0] + "]"
 	}else {
-		couts.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(number_of_deleting))),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
-		]))
+		return "new " + elem.value_type;
 	}
-	couts.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(Math.floor(Math.random()*(count_of_pointers-1)+1)))),
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
-	]))
-	if (Math.random() < 0.5) {
-		couts.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(Math.floor(Math.random()*(count_of_pointers-1)+1)))),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
-		]))
-	}
-	main.push(
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .delete_operator */ .Di)(false,
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + String.fromCharCode('a'.charCodeAt(0) + (number_of_deleting-1)))
-		)
-	)
-
-	main = [...main, ...couts]
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
-
-	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
-	return lst
 }
 
-const not_initialize = () => {
-	const count_of_pointers = Math.floor(Math.random()*5+1)
-	let number_of_not_initialize = Math.floor(Math.random()*count_of_pointers+1)
-	if (number_of_not_initialize > count_of_pointers) number_of_not_initialize = count_of_pointers;
-	let symbol = 'a'
-	let pointers = []
-	let deletes = []
-	for (let i = 0; i < count_of_pointers; i++) {
-		if (i === number_of_not_initialize-1 || Math.random() < 0.3){
-			pointers.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "p" + symbol)
-			)
-		}else {
-			pointers.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "p" + symbol,
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .new_operator */ ._F)("int", Math.floor(Math.random()*2000-1000))
-				)
-			)
-			deletes.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .delete_operator */ .Di)(false, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + symbol)))
+const print_delete_operator = (elem) => {
+	return "delete" + (elem.isArray? "[] ": " ") + choice(elem.body) + ";";
+}
+
+const call_func = (elem) => {
+	let str = elem.name + "("
+	const params = elem.params
+	if (params.length > 0) {
+		str += choice(params[0]);
+	}
+	for (let i = 1; i < params.length; i++) {
+		str += ", " + choice(params[i]);
+	}
+	str += ")"
+	if (elem.semicolon_point) str += ";"
+	return str
+}
+
+
+const choice = (elem) => {
+	if (typeof (elem) === 'number' || typeof (elem) === 'boolean') {
+		return elem;
+	}else if (typeof elem === 'string') {
+		return "\"" + elem + "\""
+	}else if (typeof (elem) === 'object' && elem.hasOwnProperty('type')) {
+
+		switch (elem.type){
+			case 'directive':
+				return print_directive(elem);
+
+			case 'func':
+				return print_func(elem)
+
+			case 'call_func':
+				return call_func(elem)
+
+			case 'var_declaration':
+				return print_var_declaration(elem);
+
+			case 'var_assigning':
+				return print_var_assigning(elem);
+
+			case 'var_using':
+				return elem.name;
+
+			case 'binary_operator':
+				return print_binary_operator(elem);
+
+			case 'unary_operator':
+				return print_unary_operator(elem);
+
+			case 'output':
+				return print_output(elem);
+
+			case 'manipulator_and_keywords':
+				return print_manipulator_and_keywords(elem);
+
+			case 'return':
+				return print_returning(elem);
+
+			case 'for':
+				return print_loop_for(elem);
+
+			case 'if':
+				return print_condition_if(elem)
+
+			case 'array_declaration':
+				return print_array_declaration(elem)
+
+			case 'new_operator':
+				return print_new_operator(elem)
+
+			case 'delete_operator':
+				return print_delete_operator(elem)
+
+			default:
+				return elem;
 		}
-		symbol = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .nextChar */ .wb)(symbol);
-	}
-	let main = pointers
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_assigning */ .A8)(
-		"*p" +  (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(number_of_not_initialize),
-		Math.floor(Math.random()*2000-1000)
-	))
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("*p" +  (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(number_of_not_initialize))
-	]))
-	main = [...main, ...deletes]
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
-	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
-	return lst
+	}else return "";
 }
-
-const choice_deref_null_pointer = (num) => {
-	if (num === 1) {
-		return not_initialize()
-	}else if (num === 2) {
-		return use_pointer_after_delete()
-	}else if (num === 3) {
-		return null_pointer_function()
-	}else {
-		const random = Math.random();
-		if (random < 0.25){
-			return not_initialize()
-		}else if (random < 0.55){
-			return use_pointer_after_delete()
-		}else {
-			return null_pointer_function()
-		}
-	}
-}
-
-/***/ }),
-
-/***/ 377:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   A8: () => (/* binding */ var_assigning),
-/* harmony export */   CG: () => (/* binding */ output),
-/* harmony export */   Di: () => (/* binding */ delete_operator),
-/* harmony export */   Dl: () => (/* binding */ var_declaration),
-/* harmony export */   Fu: () => (/* binding */ array_declaration),
-/* harmony export */   J: () => (/* binding */ binary_operator),
-/* harmony export */   JH: () => (/* binding */ loop_for),
-/* harmony export */   Pc: () => (/* binding */ func),
-/* harmony export */   _F: () => (/* binding */ new_operator),
-/* harmony export */   fN: () => (/* binding */ unary_operator),
-/* harmony export */   i$: () => (/* binding */ manipulator_and_keywords),
-/* harmony export */   u$: () => (/* binding */ directive),
-/* harmony export */   wT: () => (/* binding */ ret),
-/* harmony export */   xe: () => (/* binding */ var_using),
-/* harmony export */   y2: () => (/* binding */ call_func),
-/* harmony export */   yW: () => (/* binding */ condition_if)
-/* harmony export */ });
-// const obj = {type: 'var_declaration', value_type: "int", name: "a", body: 5};
-const func = (name, params, return_type, body) => {
-	return {
-		type: 'func',
-		name,
-		params,
-		return_type,
-		body
-	}
-}
-
-const ret = (body) => {
-	return {
-		type: 'return',
-		body
-	}
-}
-
-const directive = (keyword, value) => {
-	return {
-		type: 'directive',
-		keyword,
-		value
-	}
-}
-
-const var_declaration = (value_type, name, body = undefined, no_semicolon_point = false) => {
-	return {
-		type: 'var_declaration',
-		value_type,
-		name,
-		body,
-		no_semicolon_point
-	}
-}
-
-const var_assigning = (name, body) => {
-	return {
-		type: 'var_assigning',
-		name,
-		body,
-	}
-}
-
-const var_using = (name) => {
-	return {
-		type: 'var_using',
-		name,
-	}
-}
-
-const output = (name, body) => {
-	return {
-		type: 'output',
-		name,
-		body
-	}
-}
-
-const manipulator_and_keywords = (name) => {
-	return {
-		type: 'manipulator_and_keywords',
-		name
-	}
-}
-
-const binary_operator = (operator, first, second, withBraces = false, semicolon_point = false) => {
-	return {
-		type: 'binary_operator',
-		operator,
-		first,
-		second,
-		withBraces,
-		semicolon_point
-	}
-}
-
-const unary_operator = (operator, body, withBraces = false, semicolon_point = false) => {
-	return {
-		type: 'unary_operator',
-		operator,
-		body,
-		withBraces,
-		semicolon_point
-	}
-}
-
-const loop_for = (iterator, condition, increment, body, inner_curly_braces_count = 0) => {
-	return {
-		type: "for",
-		iterator,
-		condition,
-		increment,
-		body,
-		inner_curly_braces_count,
-	}
-}
-
-const condition_if = (condition, body, inner_curly_braces_count = 0) => {
-	return {
-		type: "if",
-		condition,
-		body,
-		inner_curly_braces_count
-	}
-}
-
-const array_declaration = (value_type, name, count, body) => {
-	return {
-		type: 'array_declaration',
-		value_type,
-		name,
-		count,
-		body
-	}
-}
-
-const new_operator = (value_type, value = null) => {
-	return {
-		type: 'new_operator',
-		value_type,
-		value,
-	}
-}
-
-const delete_operator = (isArray, body) => {
-	return {
-		type: 'delete_operator',
-		isArray,
-		body
-	}
-}
-
-const call_func = (name, params, semicolon_point = false) => {
-	return {
-		type: 'call_func',
-		name,
-		params,
-		semicolon_point
-	}
-}
-
-/***/ }),
-
-/***/ 407:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ esm)
-});
-
 ;// external "assert"
 const external_assert_namespaceObject = require("assert");
 ;// ./node_modules/.pnpm/cliui@8.0.1/node_modules/cliui/build/lib/index.js
@@ -927,54 +589,1312 @@ function ui (opts) {
   })
 }
 
-// EXTERNAL MODULE: external "path"
-var external_path_ = __webpack_require__(928);
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __webpack_require__(896);
+;// external "path"
+const external_path_namespaceObject = require("path");
+;// external "fs"
+const external_fs_namespaceObject = require("fs");
 ;// ./node_modules/.pnpm/escalade@3.2.0/node_modules/escalade/sync/index.mjs
 
 
 
 /* harmony default export */ function sync(start, callback) {
-	let dir = (0,external_path_.resolve)('.', start);
-	let tmp, stats = (0,external_fs_.statSync)(dir);
+	let dir = (0,external_path_namespaceObject.resolve)('.', start);
+	let tmp, stats = (0,external_fs_namespaceObject.statSync)(dir);
 
 	if (!stats.isDirectory()) {
-		dir = (0,external_path_.dirname)(dir);
+		dir = (0,external_path_namespaceObject.dirname)(dir);
 	}
 
 	while (true) {
-		tmp = callback(dir, (0,external_fs_.readdirSync)(dir));
-		if (tmp) return (0,external_path_.resolve)(dir, tmp);
-		dir = (0,external_path_.dirname)(tmp = dir);
+		tmp = callback(dir, (0,external_fs_namespaceObject.readdirSync)(dir));
+		if (tmp) return (0,external_path_namespaceObject.resolve)(dir, tmp);
+		dir = (0,external_path_namespaceObject.dirname)(tmp = dir);
 		if (tmp === dir) break;
 	}
 }
 
-// EXTERNAL MODULE: external "util"
-var external_util_ = __webpack_require__(23);
+;// external "util"
+const external_util_namespaceObject = require("util");
 ;// external "url"
 const external_url_namespaceObject = require("url");
-// EXTERNAL MODULE: ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/index.js + 4 modules
-var lib = __webpack_require__(791);
-// EXTERNAL MODULE: ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/utils/process-argv.js
-var process_argv = __webpack_require__(868);
-// EXTERNAL MODULE: ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/yerror.js
-var yerror = __webpack_require__(455);
+;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/string-utils.js
+/**
+ * @license
+ * Copyright (c) 2016, Contributors
+ * SPDX-License-Identifier: ISC
+ */
+function camelCase(str) {
+    // Handle the case where an argument is provided as camel case, e.g., fooBar.
+    // by ensuring that the string isn't already mixed case:
+    const isCamelCase = str !== str.toLowerCase() && str !== str.toUpperCase();
+    if (!isCamelCase) {
+        str = str.toLowerCase();
+    }
+    if (str.indexOf('-') === -1 && str.indexOf('_') === -1) {
+        return str;
+    }
+    else {
+        let camelcase = '';
+        let nextChrUpper = false;
+        const leadingHyphens = str.match(/^-+/);
+        for (let i = leadingHyphens ? leadingHyphens[0].length : 0; i < str.length; i++) {
+            let chr = str.charAt(i);
+            if (nextChrUpper) {
+                nextChrUpper = false;
+                chr = chr.toUpperCase();
+            }
+            if (i !== 0 && (chr === '-' || chr === '_')) {
+                nextChrUpper = true;
+            }
+            else if (chr !== '-' && chr !== '_') {
+                camelcase += chr;
+            }
+        }
+        return camelcase;
+    }
+}
+function decamelize(str, joinString) {
+    const lowercase = str.toLowerCase();
+    joinString = joinString || '-';
+    let notCamelcase = '';
+    for (let i = 0; i < str.length; i++) {
+        const chrLower = lowercase.charAt(i);
+        const chrString = str.charAt(i);
+        if (chrLower !== chrString && i > 0) {
+            notCamelcase += `${joinString}${lowercase.charAt(i)}`;
+        }
+        else {
+            notCamelcase += chrString;
+        }
+    }
+    return notCamelcase;
+}
+function looksLikeNumber(x) {
+    if (x === null || x === undefined)
+        return false;
+    // if loaded from config, may already be a number.
+    if (typeof x === 'number')
+        return true;
+    // hexadecimal.
+    if (/^0x[0-9a-f]+$/i.test(x))
+        return true;
+    // don't treat 0123 as a number; as it drops the leading '0'.
+    if (/^0[^.]/.test(x))
+        return false;
+    return /^[-]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(x);
+}
+
+;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/tokenize-arg-string.js
+/**
+ * @license
+ * Copyright (c) 2016, Contributors
+ * SPDX-License-Identifier: ISC
+ */
+// take an un-split argv string and tokenize it.
+function tokenizeArgString(argString) {
+    if (Array.isArray(argString)) {
+        return argString.map(e => typeof e !== 'string' ? e + '' : e);
+    }
+    argString = argString.trim();
+    let i = 0;
+    let prevC = null;
+    let c = null;
+    let opening = null;
+    const args = [];
+    for (let ii = 0; ii < argString.length; ii++) {
+        prevC = c;
+        c = argString.charAt(ii);
+        // split on spaces unless we're in quotes.
+        if (c === ' ' && !opening) {
+            if (!(prevC === ' ')) {
+                i++;
+            }
+            continue;
+        }
+        // don't split the string if we're in matching
+        // opening or closing single and double quotes.
+        if (c === opening) {
+            opening = null;
+        }
+        else if ((c === "'" || c === '"') && !opening) {
+            opening = c;
+        }
+        if (!args[i])
+            args[i] = '';
+        args[i] += c;
+    }
+    return args;
+}
+
+;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/yargs-parser-types.js
+/**
+ * @license
+ * Copyright (c) 2016, Contributors
+ * SPDX-License-Identifier: ISC
+ */
+var DefaultValuesForTypeKey;
+(function (DefaultValuesForTypeKey) {
+    DefaultValuesForTypeKey["BOOLEAN"] = "boolean";
+    DefaultValuesForTypeKey["STRING"] = "string";
+    DefaultValuesForTypeKey["NUMBER"] = "number";
+    DefaultValuesForTypeKey["ARRAY"] = "array";
+})(DefaultValuesForTypeKey || (DefaultValuesForTypeKey = {}));
+
+;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/yargs-parser.js
+/**
+ * @license
+ * Copyright (c) 2016, Contributors
+ * SPDX-License-Identifier: ISC
+ */
+
+
+
+let yargs_parser_mixin;
+class YargsParser {
+    constructor(_mixin) {
+        yargs_parser_mixin = _mixin;
+    }
+    parse(argsInput, options) {
+        const opts = Object.assign({
+            alias: undefined,
+            array: undefined,
+            boolean: undefined,
+            config: undefined,
+            configObjects: undefined,
+            configuration: undefined,
+            coerce: undefined,
+            count: undefined,
+            default: undefined,
+            envPrefix: undefined,
+            narg: undefined,
+            normalize: undefined,
+            string: undefined,
+            number: undefined,
+            __: undefined,
+            key: undefined
+        }, options);
+        // allow a string argument to be passed in rather
+        // than an argv array.
+        const args = tokenizeArgString(argsInput);
+        // tokenizeArgString adds extra quotes to args if argsInput is a string
+        // only strip those extra quotes in processValue if argsInput is a string
+        const inputIsString = typeof argsInput === 'string';
+        // aliases might have transitive relationships, normalize this.
+        const aliases = combineAliases(Object.assign(Object.create(null), opts.alias));
+        const configuration = Object.assign({
+            'boolean-negation': true,
+            'camel-case-expansion': true,
+            'combine-arrays': false,
+            'dot-notation': true,
+            'duplicate-arguments-array': true,
+            'flatten-duplicate-arrays': true,
+            'greedy-arrays': true,
+            'halt-at-non-option': false,
+            'nargs-eats-options': false,
+            'negation-prefix': 'no-',
+            'parse-numbers': true,
+            'parse-positional-numbers': true,
+            'populate--': false,
+            'set-placeholder-key': false,
+            'short-option-groups': true,
+            'strip-aliased': false,
+            'strip-dashed': false,
+            'unknown-options-as-args': false
+        }, opts.configuration);
+        const defaults = Object.assign(Object.create(null), opts.default);
+        const configObjects = opts.configObjects || [];
+        const envPrefix = opts.envPrefix;
+        const notFlagsOption = configuration['populate--'];
+        const notFlagsArgv = notFlagsOption ? '--' : '_';
+        const newAliases = Object.create(null);
+        const defaulted = Object.create(null);
+        // allow a i18n handler to be passed in, default to a fake one (util.format).
+        const __ = opts.__ || yargs_parser_mixin.format;
+        const flags = {
+            aliases: Object.create(null),
+            arrays: Object.create(null),
+            bools: Object.create(null),
+            strings: Object.create(null),
+            numbers: Object.create(null),
+            counts: Object.create(null),
+            normalize: Object.create(null),
+            configs: Object.create(null),
+            nargs: Object.create(null),
+            coercions: Object.create(null),
+            keys: []
+        };
+        const negative = /^-([0-9]+(\.[0-9]+)?|\.[0-9]+)$/;
+        const negatedBoolean = new RegExp('^--' + configuration['negation-prefix'] + '(.+)');
+        [].concat(opts.array || []).filter(Boolean).forEach(function (opt) {
+            const key = typeof opt === 'object' ? opt.key : opt;
+            // assign to flags[bools|strings|numbers]
+            const assignment = Object.keys(opt).map(function (key) {
+                const arrayFlagKeys = {
+                    boolean: 'bools',
+                    string: 'strings',
+                    number: 'numbers'
+                };
+                return arrayFlagKeys[key];
+            }).filter(Boolean).pop();
+            // assign key to be coerced
+            if (assignment) {
+                flags[assignment][key] = true;
+            }
+            flags.arrays[key] = true;
+            flags.keys.push(key);
+        });
+        [].concat(opts.boolean || []).filter(Boolean).forEach(function (key) {
+            flags.bools[key] = true;
+            flags.keys.push(key);
+        });
+        [].concat(opts.string || []).filter(Boolean).forEach(function (key) {
+            flags.strings[key] = true;
+            flags.keys.push(key);
+        });
+        [].concat(opts.number || []).filter(Boolean).forEach(function (key) {
+            flags.numbers[key] = true;
+            flags.keys.push(key);
+        });
+        [].concat(opts.count || []).filter(Boolean).forEach(function (key) {
+            flags.counts[key] = true;
+            flags.keys.push(key);
+        });
+        [].concat(opts.normalize || []).filter(Boolean).forEach(function (key) {
+            flags.normalize[key] = true;
+            flags.keys.push(key);
+        });
+        if (typeof opts.narg === 'object') {
+            Object.entries(opts.narg).forEach(([key, value]) => {
+                if (typeof value === 'number') {
+                    flags.nargs[key] = value;
+                    flags.keys.push(key);
+                }
+            });
+        }
+        if (typeof opts.coerce === 'object') {
+            Object.entries(opts.coerce).forEach(([key, value]) => {
+                if (typeof value === 'function') {
+                    flags.coercions[key] = value;
+                    flags.keys.push(key);
+                }
+            });
+        }
+        if (typeof opts.config !== 'undefined') {
+            if (Array.isArray(opts.config) || typeof opts.config === 'string') {
+                ;
+                [].concat(opts.config).filter(Boolean).forEach(function (key) {
+                    flags.configs[key] = true;
+                });
+            }
+            else if (typeof opts.config === 'object') {
+                Object.entries(opts.config).forEach(([key, value]) => {
+                    if (typeof value === 'boolean' || typeof value === 'function') {
+                        flags.configs[key] = value;
+                    }
+                });
+            }
+        }
+        // create a lookup table that takes into account all
+        // combinations of aliases: {f: ['foo'], foo: ['f']}
+        extendAliases(opts.key, aliases, opts.default, flags.arrays);
+        // apply default values to all aliases.
+        Object.keys(defaults).forEach(function (key) {
+            (flags.aliases[key] || []).forEach(function (alias) {
+                defaults[alias] = defaults[key];
+            });
+        });
+        let error = null;
+        checkConfiguration();
+        let notFlags = [];
+        const argv = Object.assign(Object.create(null), { _: [] });
+        // TODO(bcoe): for the first pass at removing object prototype  we didn't
+        // remove all prototypes from objects returned by this API, we might want
+        // to gradually move towards doing so.
+        const argvReturn = {};
+        for (let i = 0; i < args.length; i++) {
+            const arg = args[i];
+            const truncatedArg = arg.replace(/^-{3,}/, '---');
+            let broken;
+            let key;
+            let letters;
+            let m;
+            let next;
+            let value;
+            // any unknown option (except for end-of-options, "--")
+            if (arg !== '--' && /^-/.test(arg) && isUnknownOptionAsArg(arg)) {
+                pushPositional(arg);
+                // ---, ---=, ----, etc,
+            }
+            else if (truncatedArg.match(/^---+(=|$)/)) {
+                // options without key name are invalid.
+                pushPositional(arg);
+                continue;
+                // -- separated by =
+            }
+            else if (arg.match(/^--.+=/) || (!configuration['short-option-groups'] && arg.match(/^-.+=/))) {
+                // Using [\s\S] instead of . because js doesn't support the
+                // 'dotall' regex modifier. See:
+                // http://stackoverflow.com/a/1068308/13216
+                m = arg.match(/^--?([^=]+)=([\s\S]*)$/);
+                // arrays format = '--f=a b c'
+                if (m !== null && Array.isArray(m) && m.length >= 3) {
+                    if (checkAllAliases(m[1], flags.arrays)) {
+                        i = eatArray(i, m[1], args, m[2]);
+                    }
+                    else if (checkAllAliases(m[1], flags.nargs) !== false) {
+                        // nargs format = '--f=monkey washing cat'
+                        i = eatNargs(i, m[1], args, m[2]);
+                    }
+                    else {
+                        setArg(m[1], m[2], true);
+                    }
+                }
+            }
+            else if (arg.match(negatedBoolean) && configuration['boolean-negation']) {
+                m = arg.match(negatedBoolean);
+                if (m !== null && Array.isArray(m) && m.length >= 2) {
+                    key = m[1];
+                    setArg(key, checkAllAliases(key, flags.arrays) ? [false] : false);
+                }
+                // -- separated by space.
+            }
+            else if (arg.match(/^--.+/) || (!configuration['short-option-groups'] && arg.match(/^-[^-]+/))) {
+                m = arg.match(/^--?(.+)/);
+                if (m !== null && Array.isArray(m) && m.length >= 2) {
+                    key = m[1];
+                    if (checkAllAliases(key, flags.arrays)) {
+                        // array format = '--foo a b c'
+                        i = eatArray(i, key, args);
+                    }
+                    else if (checkAllAliases(key, flags.nargs) !== false) {
+                        // nargs format = '--foo a b c'
+                        // should be truthy even if: flags.nargs[key] === 0
+                        i = eatNargs(i, key, args);
+                    }
+                    else {
+                        next = args[i + 1];
+                        if (next !== undefined && (!next.match(/^-/) ||
+                            next.match(negative)) &&
+                            !checkAllAliases(key, flags.bools) &&
+                            !checkAllAliases(key, flags.counts)) {
+                            setArg(key, next);
+                            i++;
+                        }
+                        else if (/^(true|false)$/.test(next)) {
+                            setArg(key, next);
+                            i++;
+                        }
+                        else {
+                            setArg(key, defaultValue(key));
+                        }
+                    }
+                }
+                // dot-notation flag separated by '='.
+            }
+            else if (arg.match(/^-.\..+=/)) {
+                m = arg.match(/^-([^=]+)=([\s\S]*)$/);
+                if (m !== null && Array.isArray(m) && m.length >= 3) {
+                    setArg(m[1], m[2]);
+                }
+                // dot-notation flag separated by space.
+            }
+            else if (arg.match(/^-.\..+/) && !arg.match(negative)) {
+                next = args[i + 1];
+                m = arg.match(/^-(.\..+)/);
+                if (m !== null && Array.isArray(m) && m.length >= 2) {
+                    key = m[1];
+                    if (next !== undefined && !next.match(/^-/) &&
+                        !checkAllAliases(key, flags.bools) &&
+                        !checkAllAliases(key, flags.counts)) {
+                        setArg(key, next);
+                        i++;
+                    }
+                    else {
+                        setArg(key, defaultValue(key));
+                    }
+                }
+            }
+            else if (arg.match(/^-[^-]+/) && !arg.match(negative)) {
+                letters = arg.slice(1, -1).split('');
+                broken = false;
+                for (let j = 0; j < letters.length; j++) {
+                    next = arg.slice(j + 2);
+                    if (letters[j + 1] && letters[j + 1] === '=') {
+                        value = arg.slice(j + 3);
+                        key = letters[j];
+                        if (checkAllAliases(key, flags.arrays)) {
+                            // array format = '-f=a b c'
+                            i = eatArray(i, key, args, value);
+                        }
+                        else if (checkAllAliases(key, flags.nargs) !== false) {
+                            // nargs format = '-f=monkey washing cat'
+                            i = eatNargs(i, key, args, value);
+                        }
+                        else {
+                            setArg(key, value);
+                        }
+                        broken = true;
+                        break;
+                    }
+                    if (next === '-') {
+                        setArg(letters[j], next);
+                        continue;
+                    }
+                    // current letter is an alphabetic character and next value is a number
+                    if (/[A-Za-z]/.test(letters[j]) &&
+                        /^-?\d+(\.\d*)?(e-?\d+)?$/.test(next) &&
+                        checkAllAliases(next, flags.bools) === false) {
+                        setArg(letters[j], next);
+                        broken = true;
+                        break;
+                    }
+                    if (letters[j + 1] && letters[j + 1].match(/\W/)) {
+                        setArg(letters[j], next);
+                        broken = true;
+                        break;
+                    }
+                    else {
+                        setArg(letters[j], defaultValue(letters[j]));
+                    }
+                }
+                key = arg.slice(-1)[0];
+                if (!broken && key !== '-') {
+                    if (checkAllAliases(key, flags.arrays)) {
+                        // array format = '-f a b c'
+                        i = eatArray(i, key, args);
+                    }
+                    else if (checkAllAliases(key, flags.nargs) !== false) {
+                        // nargs format = '-f a b c'
+                        // should be truthy even if: flags.nargs[key] === 0
+                        i = eatNargs(i, key, args);
+                    }
+                    else {
+                        next = args[i + 1];
+                        if (next !== undefined && (!/^(-|--)[^-]/.test(next) ||
+                            next.match(negative)) &&
+                            !checkAllAliases(key, flags.bools) &&
+                            !checkAllAliases(key, flags.counts)) {
+                            setArg(key, next);
+                            i++;
+                        }
+                        else if (/^(true|false)$/.test(next)) {
+                            setArg(key, next);
+                            i++;
+                        }
+                        else {
+                            setArg(key, defaultValue(key));
+                        }
+                    }
+                }
+            }
+            else if (arg.match(/^-[0-9]$/) &&
+                arg.match(negative) &&
+                checkAllAliases(arg.slice(1), flags.bools)) {
+                // single-digit boolean alias, e.g: xargs -0
+                key = arg.slice(1);
+                setArg(key, defaultValue(key));
+            }
+            else if (arg === '--') {
+                notFlags = args.slice(i + 1);
+                break;
+            }
+            else if (configuration['halt-at-non-option']) {
+                notFlags = args.slice(i);
+                break;
+            }
+            else {
+                pushPositional(arg);
+            }
+        }
+        // order of precedence:
+        // 1. command line arg
+        // 2. value from env var
+        // 3. value from config file
+        // 4. value from config objects
+        // 5. configured default value
+        applyEnvVars(argv, true); // special case: check env vars that point to config file
+        applyEnvVars(argv, false);
+        setConfig(argv);
+        setConfigObjects();
+        applyDefaultsAndAliases(argv, flags.aliases, defaults, true);
+        applyCoercions(argv);
+        if (configuration['set-placeholder-key'])
+            setPlaceholderKeys(argv);
+        // for any counts either not in args or without an explicit default, set to 0
+        Object.keys(flags.counts).forEach(function (key) {
+            if (!hasKey(argv, key.split('.')))
+                setArg(key, 0);
+        });
+        // '--' defaults to undefined.
+        if (notFlagsOption && notFlags.length)
+            argv[notFlagsArgv] = [];
+        notFlags.forEach(function (key) {
+            argv[notFlagsArgv].push(key);
+        });
+        if (configuration['camel-case-expansion'] && configuration['strip-dashed']) {
+            Object.keys(argv).filter(key => key !== '--' && key.includes('-')).forEach(key => {
+                delete argv[key];
+            });
+        }
+        if (configuration['strip-aliased']) {
+            ;
+            [].concat(...Object.keys(aliases).map(k => aliases[k])).forEach(alias => {
+                if (configuration['camel-case-expansion'] && alias.includes('-')) {
+                    delete argv[alias.split('.').map(prop => camelCase(prop)).join('.')];
+                }
+                delete argv[alias];
+            });
+        }
+        // Push argument into positional array, applying numeric coercion:
+        function pushPositional(arg) {
+            const maybeCoercedNumber = maybeCoerceNumber('_', arg);
+            if (typeof maybeCoercedNumber === 'string' || typeof maybeCoercedNumber === 'number') {
+                argv._.push(maybeCoercedNumber);
+            }
+        }
+        // how many arguments should we consume, based
+        // on the nargs option?
+        function eatNargs(i, key, args, argAfterEqualSign) {
+            let ii;
+            let toEat = checkAllAliases(key, flags.nargs);
+            // NaN has a special meaning for the array type, indicating that one or
+            // more values are expected.
+            toEat = typeof toEat !== 'number' || isNaN(toEat) ? 1 : toEat;
+            if (toEat === 0) {
+                if (!isUndefined(argAfterEqualSign)) {
+                    error = Error(__('Argument unexpected for: %s', key));
+                }
+                setArg(key, defaultValue(key));
+                return i;
+            }
+            let available = isUndefined(argAfterEqualSign) ? 0 : 1;
+            if (configuration['nargs-eats-options']) {
+                // classic behavior, yargs eats positional and dash arguments.
+                if (args.length - (i + 1) + available < toEat) {
+                    error = Error(__('Not enough arguments following: %s', key));
+                }
+                available = toEat;
+            }
+            else {
+                // nargs will not consume flag arguments, e.g., -abc, --foo,
+                // and terminates when one is observed.
+                for (ii = i + 1; ii < args.length; ii++) {
+                    if (!args[ii].match(/^-[^0-9]/) || args[ii].match(negative) || isUnknownOptionAsArg(args[ii]))
+                        available++;
+                    else
+                        break;
+                }
+                if (available < toEat)
+                    error = Error(__('Not enough arguments following: %s', key));
+            }
+            let consumed = Math.min(available, toEat);
+            if (!isUndefined(argAfterEqualSign) && consumed > 0) {
+                setArg(key, argAfterEqualSign);
+                consumed--;
+            }
+            for (ii = i + 1; ii < (consumed + i + 1); ii++) {
+                setArg(key, args[ii]);
+            }
+            return (i + consumed);
+        }
+        // if an option is an array, eat all non-hyphenated arguments
+        // following it... YUM!
+        // e.g., --foo apple banana cat becomes ["apple", "banana", "cat"]
+        function eatArray(i, key, args, argAfterEqualSign) {
+            let argsToSet = [];
+            let next = argAfterEqualSign || args[i + 1];
+            // If both array and nargs are configured, enforce the nargs count:
+            const nargsCount = checkAllAliases(key, flags.nargs);
+            if (checkAllAliases(key, flags.bools) && !(/^(true|false)$/.test(next))) {
+                argsToSet.push(true);
+            }
+            else if (isUndefined(next) ||
+                (isUndefined(argAfterEqualSign) && /^-/.test(next) && !negative.test(next) && !isUnknownOptionAsArg(next))) {
+                // for keys without value ==> argsToSet remains an empty []
+                // set user default value, if available
+                if (defaults[key] !== undefined) {
+                    const defVal = defaults[key];
+                    argsToSet = Array.isArray(defVal) ? defVal : [defVal];
+                }
+            }
+            else {
+                // value in --option=value is eaten as is
+                if (!isUndefined(argAfterEqualSign)) {
+                    argsToSet.push(processValue(key, argAfterEqualSign, true));
+                }
+                for (let ii = i + 1; ii < args.length; ii++) {
+                    if ((!configuration['greedy-arrays'] && argsToSet.length > 0) ||
+                        (nargsCount && typeof nargsCount === 'number' && argsToSet.length >= nargsCount))
+                        break;
+                    next = args[ii];
+                    if (/^-/.test(next) && !negative.test(next) && !isUnknownOptionAsArg(next))
+                        break;
+                    i = ii;
+                    argsToSet.push(processValue(key, next, inputIsString));
+                }
+            }
+            // If both array and nargs are configured, create an error if less than
+            // nargs positionals were found. NaN has special meaning, indicating
+            // that at least one value is required (more are okay).
+            if (typeof nargsCount === 'number' && ((nargsCount && argsToSet.length < nargsCount) ||
+                (isNaN(nargsCount) && argsToSet.length === 0))) {
+                error = Error(__('Not enough arguments following: %s', key));
+            }
+            setArg(key, argsToSet);
+            return i;
+        }
+        function setArg(key, val, shouldStripQuotes = inputIsString) {
+            if (/-/.test(key) && configuration['camel-case-expansion']) {
+                const alias = key.split('.').map(function (prop) {
+                    return camelCase(prop);
+                }).join('.');
+                addNewAlias(key, alias);
+            }
+            const value = processValue(key, val, shouldStripQuotes);
+            const splitKey = key.split('.');
+            setKey(argv, splitKey, value);
+            // handle populating aliases of the full key
+            if (flags.aliases[key]) {
+                flags.aliases[key].forEach(function (x) {
+                    const keyProperties = x.split('.');
+                    setKey(argv, keyProperties, value);
+                });
+            }
+            // handle populating aliases of the first element of the dot-notation key
+            if (splitKey.length > 1 && configuration['dot-notation']) {
+                ;
+                (flags.aliases[splitKey[0]] || []).forEach(function (x) {
+                    let keyProperties = x.split('.');
+                    // expand alias with nested objects in key
+                    const a = [].concat(splitKey);
+                    a.shift(); // nuke the old key.
+                    keyProperties = keyProperties.concat(a);
+                    // populate alias only if is not already an alias of the full key
+                    // (already populated above)
+                    if (!(flags.aliases[key] || []).includes(keyProperties.join('.'))) {
+                        setKey(argv, keyProperties, value);
+                    }
+                });
+            }
+            // Set normalize getter and setter when key is in 'normalize' but isn't an array
+            if (checkAllAliases(key, flags.normalize) && !checkAllAliases(key, flags.arrays)) {
+                const keys = [key].concat(flags.aliases[key] || []);
+                keys.forEach(function (key) {
+                    Object.defineProperty(argvReturn, key, {
+                        enumerable: true,
+                        get() {
+                            return val;
+                        },
+                        set(value) {
+                            val = typeof value === 'string' ? yargs_parser_mixin.normalize(value) : value;
+                        }
+                    });
+                });
+            }
+        }
+        function addNewAlias(key, alias) {
+            if (!(flags.aliases[key] && flags.aliases[key].length)) {
+                flags.aliases[key] = [alias];
+                newAliases[alias] = true;
+            }
+            if (!(flags.aliases[alias] && flags.aliases[alias].length)) {
+                addNewAlias(alias, key);
+            }
+        }
+        function processValue(key, val, shouldStripQuotes) {
+            // strings may be quoted, clean this up as we assign values.
+            if (shouldStripQuotes) {
+                val = stripQuotes(val);
+            }
+            // handle parsing boolean arguments --foo=true --bar false.
+            if (checkAllAliases(key, flags.bools) || checkAllAliases(key, flags.counts)) {
+                if (typeof val === 'string')
+                    val = val === 'true';
+            }
+            let value = Array.isArray(val)
+                ? val.map(function (v) { return maybeCoerceNumber(key, v); })
+                : maybeCoerceNumber(key, val);
+            // increment a count given as arg (either no value or value parsed as boolean)
+            if (checkAllAliases(key, flags.counts) && (isUndefined(value) || typeof value === 'boolean')) {
+                value = increment();
+            }
+            // Set normalized value when key is in 'normalize' and in 'arrays'
+            if (checkAllAliases(key, flags.normalize) && checkAllAliases(key, flags.arrays)) {
+                if (Array.isArray(val))
+                    value = val.map((val) => { return yargs_parser_mixin.normalize(val); });
+                else
+                    value = yargs_parser_mixin.normalize(val);
+            }
+            return value;
+        }
+        function maybeCoerceNumber(key, value) {
+            if (!configuration['parse-positional-numbers'] && key === '_')
+                return value;
+            if (!checkAllAliases(key, flags.strings) && !checkAllAliases(key, flags.bools) && !Array.isArray(value)) {
+                const shouldCoerceNumber = looksLikeNumber(value) && configuration['parse-numbers'] && (Number.isSafeInteger(Math.floor(parseFloat(`${value}`))));
+                if (shouldCoerceNumber || (!isUndefined(value) && checkAllAliases(key, flags.numbers))) {
+                    value = Number(value);
+                }
+            }
+            return value;
+        }
+        // set args from config.json file, this should be
+        // applied last so that defaults can be applied.
+        function setConfig(argv) {
+            const configLookup = Object.create(null);
+            // expand defaults/aliases, in-case any happen to reference
+            // the config.json file.
+            applyDefaultsAndAliases(configLookup, flags.aliases, defaults);
+            Object.keys(flags.configs).forEach(function (configKey) {
+                const configPath = argv[configKey] || configLookup[configKey];
+                if (configPath) {
+                    try {
+                        let config = null;
+                        const resolvedConfigPath = yargs_parser_mixin.resolve(yargs_parser_mixin.cwd(), configPath);
+                        const resolveConfig = flags.configs[configKey];
+                        if (typeof resolveConfig === 'function') {
+                            try {
+                                config = resolveConfig(resolvedConfigPath);
+                            }
+                            catch (e) {
+                                config = e;
+                            }
+                            if (config instanceof Error) {
+                                error = config;
+                                return;
+                            }
+                        }
+                        else {
+                            config = yargs_parser_mixin.require(resolvedConfigPath);
+                        }
+                        setConfigObject(config);
+                    }
+                    catch (ex) {
+                        // Deno will receive a PermissionDenied error if an attempt is
+                        // made to load config without the --allow-read flag:
+                        if (ex.name === 'PermissionDenied')
+                            error = ex;
+                        else if (argv[configKey])
+                            error = Error(__('Invalid JSON config file: %s', configPath));
+                    }
+                }
+            });
+        }
+        // set args from config object.
+        // it recursively checks nested objects.
+        function setConfigObject(config, prev) {
+            Object.keys(config).forEach(function (key) {
+                const value = config[key];
+                const fullKey = prev ? prev + '.' + key : key;
+                // if the value is an inner object and we have dot-notation
+                // enabled, treat inner objects in config the same as
+                // heavily nested dot notations (foo.bar.apple).
+                if (typeof value === 'object' && value !== null && !Array.isArray(value) && configuration['dot-notation']) {
+                    // if the value is an object but not an array, check nested object
+                    setConfigObject(value, fullKey);
+                }
+                else {
+                    // setting arguments via CLI takes precedence over
+                    // values within the config file.
+                    if (!hasKey(argv, fullKey.split('.')) || (checkAllAliases(fullKey, flags.arrays) && configuration['combine-arrays'])) {
+                        setArg(fullKey, value);
+                    }
+                }
+            });
+        }
+        // set all config objects passed in opts
+        function setConfigObjects() {
+            if (typeof configObjects !== 'undefined') {
+                configObjects.forEach(function (configObject) {
+                    setConfigObject(configObject);
+                });
+            }
+        }
+        function applyEnvVars(argv, configOnly) {
+            if (typeof envPrefix === 'undefined')
+                return;
+            const prefix = typeof envPrefix === 'string' ? envPrefix : '';
+            const env = yargs_parser_mixin.env();
+            Object.keys(env).forEach(function (envVar) {
+                if (prefix === '' || envVar.lastIndexOf(prefix, 0) === 0) {
+                    // get array of nested keys and convert them to camel case
+                    const keys = envVar.split('__').map(function (key, i) {
+                        if (i === 0) {
+                            key = key.substring(prefix.length);
+                        }
+                        return camelCase(key);
+                    });
+                    if (((configOnly && flags.configs[keys.join('.')]) || !configOnly) && !hasKey(argv, keys)) {
+                        setArg(keys.join('.'), env[envVar]);
+                    }
+                }
+            });
+        }
+        function applyCoercions(argv) {
+            let coerce;
+            const applied = new Set();
+            Object.keys(argv).forEach(function (key) {
+                if (!applied.has(key)) { // If we haven't already coerced this option via one of its aliases
+                    coerce = checkAllAliases(key, flags.coercions);
+                    if (typeof coerce === 'function') {
+                        try {
+                            const value = maybeCoerceNumber(key, coerce(argv[key]));
+                            ([].concat(flags.aliases[key] || [], key)).forEach(ali => {
+                                applied.add(ali);
+                                argv[ali] = value;
+                            });
+                        }
+                        catch (err) {
+                            error = err;
+                        }
+                    }
+                }
+            });
+        }
+        function setPlaceholderKeys(argv) {
+            flags.keys.forEach((key) => {
+                // don't set placeholder keys for dot notation options 'foo.bar'.
+                if (~key.indexOf('.'))
+                    return;
+                if (typeof argv[key] === 'undefined')
+                    argv[key] = undefined;
+            });
+            return argv;
+        }
+        function applyDefaultsAndAliases(obj, aliases, defaults, canLog = false) {
+            Object.keys(defaults).forEach(function (key) {
+                if (!hasKey(obj, key.split('.'))) {
+                    setKey(obj, key.split('.'), defaults[key]);
+                    if (canLog)
+                        defaulted[key] = true;
+                    (aliases[key] || []).forEach(function (x) {
+                        if (hasKey(obj, x.split('.')))
+                            return;
+                        setKey(obj, x.split('.'), defaults[key]);
+                    });
+                }
+            });
+        }
+        function hasKey(obj, keys) {
+            let o = obj;
+            if (!configuration['dot-notation'])
+                keys = [keys.join('.')];
+            keys.slice(0, -1).forEach(function (key) {
+                o = (o[key] || {});
+            });
+            const key = keys[keys.length - 1];
+            if (typeof o !== 'object')
+                return false;
+            else
+                return key in o;
+        }
+        function setKey(obj, keys, value) {
+            let o = obj;
+            if (!configuration['dot-notation'])
+                keys = [keys.join('.')];
+            keys.slice(0, -1).forEach(function (key) {
+                // TODO(bcoe): in the next major version of yargs, switch to
+                // Object.create(null) for dot notation:
+                key = sanitizeKey(key);
+                if (typeof o === 'object' && o[key] === undefined) {
+                    o[key] = {};
+                }
+                if (typeof o[key] !== 'object' || Array.isArray(o[key])) {
+                    // ensure that o[key] is an array, and that the last item is an empty object.
+                    if (Array.isArray(o[key])) {
+                        o[key].push({});
+                    }
+                    else {
+                        o[key] = [o[key], {}];
+                    }
+                    // we want to update the empty object at the end of the o[key] array, so set o to that object
+                    o = o[key][o[key].length - 1];
+                }
+                else {
+                    o = o[key];
+                }
+            });
+            // TODO(bcoe): in the next major version of yargs, switch to
+            // Object.create(null) for dot notation:
+            const key = sanitizeKey(keys[keys.length - 1]);
+            const isTypeArray = checkAllAliases(keys.join('.'), flags.arrays);
+            const isValueArray = Array.isArray(value);
+            let duplicate = configuration['duplicate-arguments-array'];
+            // nargs has higher priority than duplicate
+            if (!duplicate && checkAllAliases(key, flags.nargs)) {
+                duplicate = true;
+                if ((!isUndefined(o[key]) && flags.nargs[key] === 1) || (Array.isArray(o[key]) && o[key].length === flags.nargs[key])) {
+                    o[key] = undefined;
+                }
+            }
+            if (value === increment()) {
+                o[key] = increment(o[key]);
+            }
+            else if (Array.isArray(o[key])) {
+                if (duplicate && isTypeArray && isValueArray) {
+                    o[key] = configuration['flatten-duplicate-arrays'] ? o[key].concat(value) : (Array.isArray(o[key][0]) ? o[key] : [o[key]]).concat([value]);
+                }
+                else if (!duplicate && Boolean(isTypeArray) === Boolean(isValueArray)) {
+                    o[key] = value;
+                }
+                else {
+                    o[key] = o[key].concat([value]);
+                }
+            }
+            else if (o[key] === undefined && isTypeArray) {
+                o[key] = isValueArray ? value : [value];
+            }
+            else if (duplicate && !(o[key] === undefined ||
+                checkAllAliases(key, flags.counts) ||
+                checkAllAliases(key, flags.bools))) {
+                o[key] = [o[key], value];
+            }
+            else {
+                o[key] = value;
+            }
+        }
+        // extend the aliases list with inferred aliases.
+        function extendAliases(...args) {
+            args.forEach(function (obj) {
+                Object.keys(obj || {}).forEach(function (key) {
+                    // short-circuit if we've already added a key
+                    // to the aliases array, for example it might
+                    // exist in both 'opts.default' and 'opts.key'.
+                    if (flags.aliases[key])
+                        return;
+                    flags.aliases[key] = [].concat(aliases[key] || []);
+                    // For "--option-name", also set argv.optionName
+                    flags.aliases[key].concat(key).forEach(function (x) {
+                        if (/-/.test(x) && configuration['camel-case-expansion']) {
+                            const c = camelCase(x);
+                            if (c !== key && flags.aliases[key].indexOf(c) === -1) {
+                                flags.aliases[key].push(c);
+                                newAliases[c] = true;
+                            }
+                        }
+                    });
+                    // For "--optionName", also set argv['option-name']
+                    flags.aliases[key].concat(key).forEach(function (x) {
+                        if (x.length > 1 && /[A-Z]/.test(x) && configuration['camel-case-expansion']) {
+                            const c = decamelize(x, '-');
+                            if (c !== key && flags.aliases[key].indexOf(c) === -1) {
+                                flags.aliases[key].push(c);
+                                newAliases[c] = true;
+                            }
+                        }
+                    });
+                    flags.aliases[key].forEach(function (x) {
+                        flags.aliases[x] = [key].concat(flags.aliases[key].filter(function (y) {
+                            return x !== y;
+                        }));
+                    });
+                });
+            });
+        }
+        function checkAllAliases(key, flag) {
+            const toCheck = [].concat(flags.aliases[key] || [], key);
+            const keys = Object.keys(flag);
+            const setAlias = toCheck.find(key => keys.includes(key));
+            return setAlias ? flag[setAlias] : false;
+        }
+        function hasAnyFlag(key) {
+            const flagsKeys = Object.keys(flags);
+            const toCheck = [].concat(flagsKeys.map(k => flags[k]));
+            return toCheck.some(function (flag) {
+                return Array.isArray(flag) ? flag.includes(key) : flag[key];
+            });
+        }
+        function hasFlagsMatching(arg, ...patterns) {
+            const toCheck = [].concat(...patterns);
+            return toCheck.some(function (pattern) {
+                const match = arg.match(pattern);
+                return match && hasAnyFlag(match[1]);
+            });
+        }
+        // based on a simplified version of the short flag group parsing logic
+        function hasAllShortFlags(arg) {
+            // if this is a negative number, or doesn't start with a single hyphen, it's not a short flag group
+            if (arg.match(negative) || !arg.match(/^-[^-]+/)) {
+                return false;
+            }
+            let hasAllFlags = true;
+            let next;
+            const letters = arg.slice(1).split('');
+            for (let j = 0; j < letters.length; j++) {
+                next = arg.slice(j + 2);
+                if (!hasAnyFlag(letters[j])) {
+                    hasAllFlags = false;
+                    break;
+                }
+                if ((letters[j + 1] && letters[j + 1] === '=') ||
+                    next === '-' ||
+                    (/[A-Za-z]/.test(letters[j]) && /^-?\d+(\.\d*)?(e-?\d+)?$/.test(next)) ||
+                    (letters[j + 1] && letters[j + 1].match(/\W/))) {
+                    break;
+                }
+            }
+            return hasAllFlags;
+        }
+        function isUnknownOptionAsArg(arg) {
+            return configuration['unknown-options-as-args'] && isUnknownOption(arg);
+        }
+        function isUnknownOption(arg) {
+            arg = arg.replace(/^-{3,}/, '--');
+            // ignore negative numbers
+            if (arg.match(negative)) {
+                return false;
+            }
+            // if this is a short option group and all of them are configured, it isn't unknown
+            if (hasAllShortFlags(arg)) {
+                return false;
+            }
+            // e.g. '--count=2'
+            const flagWithEquals = /^-+([^=]+?)=[\s\S]*$/;
+            // e.g. '-a' or '--arg'
+            const normalFlag = /^-+([^=]+?)$/;
+            // e.g. '-a-'
+            const flagEndingInHyphen = /^-+([^=]+?)-$/;
+            // e.g. '-abc123'
+            const flagEndingInDigits = /^-+([^=]+?\d+)$/;
+            // e.g. '-a/usr/local'
+            const flagEndingInNonWordCharacters = /^-+([^=]+?)\W+.*$/;
+            // check the different types of flag styles, including negatedBoolean, a pattern defined near the start of the parse method
+            return !hasFlagsMatching(arg, flagWithEquals, negatedBoolean, normalFlag, flagEndingInHyphen, flagEndingInDigits, flagEndingInNonWordCharacters);
+        }
+        // make a best effort to pick a default value
+        // for an option based on name and type.
+        function defaultValue(key) {
+            if (!checkAllAliases(key, flags.bools) &&
+                !checkAllAliases(key, flags.counts) &&
+                `${key}` in defaults) {
+                return defaults[key];
+            }
+            else {
+                return defaultForType(guessType(key));
+            }
+        }
+        // return a default value, given the type of a flag.,
+        function defaultForType(type) {
+            const def = {
+                [DefaultValuesForTypeKey.BOOLEAN]: true,
+                [DefaultValuesForTypeKey.STRING]: '',
+                [DefaultValuesForTypeKey.NUMBER]: undefined,
+                [DefaultValuesForTypeKey.ARRAY]: []
+            };
+            return def[type];
+        }
+        // given a flag, enforce a default type.
+        function guessType(key) {
+            let type = DefaultValuesForTypeKey.BOOLEAN;
+            if (checkAllAliases(key, flags.strings))
+                type = DefaultValuesForTypeKey.STRING;
+            else if (checkAllAliases(key, flags.numbers))
+                type = DefaultValuesForTypeKey.NUMBER;
+            else if (checkAllAliases(key, flags.bools))
+                type = DefaultValuesForTypeKey.BOOLEAN;
+            else if (checkAllAliases(key, flags.arrays))
+                type = DefaultValuesForTypeKey.ARRAY;
+            return type;
+        }
+        function isUndefined(num) {
+            return num === undefined;
+        }
+        // check user configuration settings for inconsistencies
+        function checkConfiguration() {
+            // count keys should not be set as array/narg
+            Object.keys(flags.counts).find(key => {
+                if (checkAllAliases(key, flags.arrays)) {
+                    error = Error(__('Invalid configuration: %s, opts.count excludes opts.array.', key));
+                    return true;
+                }
+                else if (checkAllAliases(key, flags.nargs)) {
+                    error = Error(__('Invalid configuration: %s, opts.count excludes opts.narg.', key));
+                    return true;
+                }
+                return false;
+            });
+        }
+        return {
+            aliases: Object.assign({}, flags.aliases),
+            argv: Object.assign(argvReturn, argv),
+            configuration: configuration,
+            defaulted: Object.assign({}, defaulted),
+            error: error,
+            newAliases: Object.assign({}, newAliases)
+        };
+    }
+}
+// if any aliases reference each other, we should
+// merge them together.
+function combineAliases(aliases) {
+    const aliasArrays = [];
+    const combined = Object.create(null);
+    let change = true;
+    // turn alias lookup hash {key: ['alias1', 'alias2']} into
+    // a simple array ['key', 'alias1', 'alias2']
+    Object.keys(aliases).forEach(function (key) {
+        aliasArrays.push([].concat(aliases[key], key));
+    });
+    // combine arrays until zero changes are
+    // made in an iteration.
+    while (change) {
+        change = false;
+        for (let i = 0; i < aliasArrays.length; i++) {
+            for (let ii = i + 1; ii < aliasArrays.length; ii++) {
+                const intersect = aliasArrays[i].filter(function (v) {
+                    return aliasArrays[ii].indexOf(v) !== -1;
+                });
+                if (intersect.length) {
+                    aliasArrays[i] = aliasArrays[i].concat(aliasArrays[ii]);
+                    aliasArrays.splice(ii, 1);
+                    change = true;
+                    break;
+                }
+            }
+        }
+    }
+    // map arrays back to the hash-lookup (de-dupe while
+    // we're at it).
+    aliasArrays.forEach(function (aliasArray) {
+        aliasArray = aliasArray.filter(function (v, i, self) {
+            return self.indexOf(v) === i;
+        });
+        const lastAlias = aliasArray.pop();
+        if (lastAlias !== undefined && typeof lastAlias === 'string') {
+            combined[lastAlias] = aliasArray;
+        }
+    });
+    return combined;
+}
+// this function should only be called when a count is given as an arg
+// it is NOT called to set a default value
+// thus we can start the count at 1 instead of 0
+function increment(orig) {
+    return orig !== undefined ? orig + 1 : 1;
+}
+// TODO(bcoe): in the next major version of yargs, switch to
+// Object.create(null) for dot notation:
+function sanitizeKey(key) {
+    if (key === '__proto__')
+        return '___proto___';
+    return key;
+}
+function stripQuotes(val) {
+    return (typeof val === 'string' &&
+        (val[0] === "'" || val[0] === '"') &&
+        val[val.length - 1] === val[0])
+        ? val.substring(1, val.length - 1)
+        : val;
+}
+
+;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/index.js
+/**
+ * @fileoverview Main entrypoint for libraries using yargs-parser in Node.js
+ * CJS and ESM environments.
+ *
+ * @license
+ * Copyright (c) 2016, Contributors
+ * SPDX-License-Identifier: ISC
+ */
+var _a, _b, _c;
+
+
+
+
+
+// See https://github.com/yargs/yargs-parser#supported-nodejs-versions for our
+// version support policy. The YARGS_MIN_NODE_VERSION is used for testing only.
+const minNodeVersion = (process && process.env && process.env.YARGS_MIN_NODE_VERSION)
+    ? Number(process.env.YARGS_MIN_NODE_VERSION)
+    : 12;
+const nodeVersion = (_b = (_a = process === null || process === void 0 ? void 0 : process.versions) === null || _a === void 0 ? void 0 : _a.node) !== null && _b !== void 0 ? _b : (_c = process === null || process === void 0 ? void 0 : process.version) === null || _c === void 0 ? void 0 : _c.slice(1);
+if (nodeVersion) {
+    const major = Number(nodeVersion.match(/^([^.]+)/)[1]);
+    if (major < minNodeVersion) {
+        throw Error(`yargs parser supports a minimum Node.js version of ${minNodeVersion}. Read our version support policy: https://github.com/yargs/yargs-parser#supported-nodejs-versions`);
+    }
+}
+// Creates a yargs-parser instance using Node.js standard libraries:
+const env = process ? process.env : {};
+const parser = new YargsParser({
+    cwd: process.cwd,
+    env: () => {
+        return env;
+    },
+    format: external_util_namespaceObject.format,
+    normalize: external_path_namespaceObject.normalize,
+    resolve: external_path_namespaceObject.resolve,
+    // TODO: figure  out a  way to combine ESM and CJS coverage, such  that
+    // we can exercise all the lines below:
+    require: (path) => {
+        if (typeof require !== 'undefined') {
+            return require(path);
+        }
+        else if (path.match(/\.json$/)) {
+            // Addresses: https://github.com/yargs/yargs/issues/2040
+            return JSON.parse((0,external_fs_namespaceObject.readFileSync)(path, 'utf8'));
+        }
+        else {
+            throw Error('only .json config files are supported in ESM');
+        }
+    }
+});
+const yargsParser = function Parser(args, opts) {
+    const result = parser.parse(args.slice(), opts);
+    return result.argv;
+};
+yargsParser.detailed = function (args, opts) {
+    return parser.parse(args.slice(), opts);
+};
+yargsParser.camelCase = camelCase;
+yargsParser.decamelize = decamelize;
+yargsParser.looksLikeNumber = looksLikeNumber;
+/* harmony default export */ const lib = (yargsParser);
+
+;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/utils/process-argv.js
+function getProcessArgvBinIndex() {
+    if (isBundledElectronApp())
+        return 0;
+    return 1;
+}
+function isBundledElectronApp() {
+    return isElectronApp() && !process.defaultApp;
+}
+function isElectronApp() {
+    return !!process.versions.electron;
+}
+function hideBin(argv) {
+    return argv.slice(getProcessArgvBinIndex() + 1);
+}
+function getProcessArgvBin() {
+    return process.argv[getProcessArgvBinIndex()];
+}
+
+;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/yerror.js
+class YError extends Error {
+    constructor(msg) {
+        super(msg || 'yargs error');
+        this.name = 'YError';
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, YError);
+        }
+    }
+}
+
 ;// ./node_modules/.pnpm/y18n@5.0.8/node_modules/y18n/build/lib/platform-shims/node.js
 
 
 
 /* harmony default export */ const node = ({
     fs: {
-        readFileSync: external_fs_.readFileSync,
-        writeFile: external_fs_.writeFile
+        readFileSync: external_fs_namespaceObject.readFileSync,
+        writeFile: external_fs_namespaceObject.writeFile
     },
-    format: external_util_.format,
-    resolve: external_path_.resolve,
+    format: external_util_namespaceObject.format,
+    resolve: external_path_namespaceObject.resolve,
     exists: (file) => {
         try {
-            return (0,external_fs_.statSync)(file).isFile();
+            return (0,external_fs_namespaceObject.statSync)(file).isFile();
         }
         catch (err) {
             return false;
@@ -983,7 +1903,7 @@ var yerror = __webpack_require__(455);
 });
 
 ;// ./node_modules/.pnpm/y18n@5.0.8/node_modules/y18n/build/lib/index.js
-let shim;
+let lib_shim;
 class Y18N {
     constructor(opts) {
         // configurable options.
@@ -1022,7 +1942,7 @@ class Y18N {
         else {
             cb();
         }
-        return shim.format.apply(shim.format, [this.cache[this.locale][str] || str].concat(args));
+        return lib_shim.format.apply(lib_shim.format, [this.cache[this.locale][str] || str].concat(args));
     }
     __n() {
         const args = Array.prototype.slice.call(arguments);
@@ -1062,7 +1982,7 @@ class Y18N {
         const values = [str];
         if (~str.indexOf('%d'))
             values.push(quantity);
-        return shim.format.apply(shim.format, values.concat(args));
+        return lib_shim.format.apply(lib_shim.format, values.concat(args));
     }
     setLocale(locale) {
         this.locale = locale;
@@ -1104,7 +2024,7 @@ class Y18N {
         const cb = work.cb;
         const languageFile = this._resolveLocaleFile(directory, locale);
         const serializedLocale = JSON.stringify(this.cache[locale], null, 2);
-        shim.fs.writeFile(languageFile, serializedLocale, 'utf-8', function (err) {
+        lib_shim.fs.writeFile(languageFile, serializedLocale, 'utf-8', function (err) {
             _this.writeQueue.shift();
             if (_this.writeQueue.length > 0)
                 _this._processWriteQueue();
@@ -1116,8 +2036,8 @@ class Y18N {
         const languageFile = this._resolveLocaleFile(this.directory, this.locale);
         try {
             // When using a bundler such as webpack, readFileSync may not be defined:
-            if (shim.fs.readFileSync) {
-                localeLookup = JSON.parse(shim.fs.readFileSync(languageFile, 'utf-8'));
+            if (lib_shim.fs.readFileSync) {
+                localeLookup = JSON.parse(lib_shim.fs.readFileSync(languageFile, 'utf-8'));
             }
         }
         catch (err) {
@@ -1132,21 +2052,21 @@ class Y18N {
         this.cache[this.locale] = localeLookup;
     }
     _resolveLocaleFile(directory, locale) {
-        let file = shim.resolve(directory, './', locale + '.json');
+        let file = lib_shim.resolve(directory, './', locale + '.json');
         if (this.fallbackToLanguage && !this._fileExistsSync(file) && ~locale.lastIndexOf('_')) {
             // attempt fallback to language only
-            const languageFile = shim.resolve(directory, './', locale.split('_')[0] + '.json');
+            const languageFile = lib_shim.resolve(directory, './', locale.split('_')[0] + '.json');
             if (this._fileExistsSync(languageFile))
                 file = languageFile;
         }
         return file;
     }
     _fileExistsSync(file) {
-        return shim.exists(file);
+        return lib_shim.exists(file);
     }
 }
 function y18n(opts, _shim) {
-    shim = _shim;
+    lib_shim = _shim;
     const y18n = new Y18N(opts);
     return {
         __: y18n.__.bind(y18n),
@@ -1204,19 +2124,19 @@ const mainFilename = esm_dirname.substring(0, esm_dirname.lastIndexOf('node_modu
   getEnv: (key) => {
     return process.env[key]
   },
-  inspect: external_util_.inspect,
+  inspect: external_util_namespaceObject.inspect,
   getCallerFile: () => {
-    throw new yerror/* YError */.w(REQUIRE_DIRECTORY_ERROR)
+    throw new YError(REQUIRE_DIRECTORY_ERROR)
   },
-  getProcessArgvBin: process_argv/* getProcessArgvBin */.h,
+  getProcessArgvBin: getProcessArgvBin,
   mainFilename: mainFilename || process.cwd(),
-  Parser: lib/* default */.A,
+  Parser: lib,
   path: {
-    basename: external_path_.basename,
-    dirname: external_path_.dirname,
-    extname: external_path_.extname,
-    relative: external_path_.relative,
-    resolve: external_path_.resolve
+    basename: external_path_namespaceObject.basename,
+    dirname: external_path_namespaceObject.dirname,
+    extname: external_path_namespaceObject.extname,
+    relative: external_path_namespaceObject.relative,
+    resolve: external_path_namespaceObject.resolve
   },
   process: {
     argv: () => process.argv,
@@ -1227,190 +2147,22 @@ const mainFilename = esm_dirname.substring(0, esm_dirname.lastIndexOf('node_modu
     nextTick: process.nextTick,
     stdColumns: typeof process.stdout.columns !== 'undefined' ? process.stdout.columns : null
   },
-  readFileSync: external_fs_.readFileSync,
+  readFileSync: external_fs_namespaceObject.readFileSync,
   require: () => {
-    throw new yerror/* YError */.w(REQUIRE_ERROR)
+    throw new YError(REQUIRE_ERROR)
   },
   requireDirectory: () => {
-    throw new yerror/* YError */.w(REQUIRE_DIRECTORY_ERROR)
+    throw new YError(REQUIRE_DIRECTORY_ERROR)
   },
   stringWidth: (str) => {
     return [...str].length
   },
   y18n: node_modules_y18n({
-    directory: (0,external_path_.resolve)(esm_dirname, '../../../locales'),
+    directory: (0,external_path_namespaceObject.resolve)(esm_dirname, '../../../locales'),
     updateFiles: false
   })
 });
 
-
-/***/ }),
-
-/***/ 455:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   w: () => (/* binding */ YError)
-/* harmony export */ });
-class YError extends Error {
-    constructor(msg) {
-        super(msg || 'yargs error');
-        this.name = 'YError';
-        if (Error.captureStackTrace) {
-            Error.captureStackTrace(this, YError);
-        }
-    }
-}
-
-
-/***/ }),
-
-/***/ 620:
-/***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony import */ var _output_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(767);
-/* harmony import */ var yargs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(683);
-/* harmony import */ var yargs_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17);
-/* harmony import */ var fs_promises__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(943);
-/* harmony import */ var _random_generators_div_by_zero_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(789);
-/* harmony import */ var _random_generators_deref_null_pointer_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(291);
-/* harmony import */ var _random_generators_array_out_of_range_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(253);
-/* harmony import */ var _random_generators_delete_error_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(836);
-
-
-
-
-
-
-
-
-
-
-
-
-const t0 = performance.now();
-
-const argv = (0,yargs__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A)((0,yargs_helpers__WEBPACK_IMPORTED_MODULE_1__/* .hideBin */ .al)(process.argv))
-	.wrap(null)
-	.option('num', {
-		alias: 'n',
-		type: 'number',
-		description: "Номер генерации программы:\n" +
-			"1 - Ошибка, связанная с делением на 0\n" +
-			"2 - Ошибка, связанная с \"висячим\" указателем\n\t(не инициализирован, очищена память)\n" +
-			"3 - Ошибка, связанная с выходом за границы массива\n" +
-			"4 - Ошибка, связанная с неправильным использованием\n\tоператора \"delete\"\n" +
-			"Любое другое число (или не указан параметр)\n\t- выберется случайным образом",
-		default: 0
-	})
-	.option('variant',{
-		alias: 'v',
-		type: 'number',
-		description: "Вариант используемой генерации. В каждом номере\n\tесть несколько вариантов генерации:\n" +
-			"num=1:\n\t1 - Ошибка возникает в main\n" +
-			"\t2 - Ошибка возникает в другой функции\n" +
-			"num=2:\n\t1 - Не инициализирован указатель\n" +
-			"\t2 - Использование указателя после \"delete\"\n" +
-			"\t3 - Разыменование nullptr\n" +
-			"num=3:\n\t1 - Ошибка в цикле\n" +
-			"\t2 - Ошибка в функции из-за неверного аргумента\n\t(длины массива)\n" +
-			"num=4:\n\t1 - Использование \"delete\" в main после\n\t\"delete\" в другой функции\n" +
-			"\t2 - Использование \"delete\" с указателем\n\tна статическую переменную (область памяти)\n" +
-			"\t3 - Повторное использование \"delete\" с указателем\n\tна тот же объект\n" +
-			"По умолчанию, выбирается случайно",
-		default: 0
-	})
-	.option('max_vars',{
-		type: 'number',
-		description: "Максимальное количество переменных, функций, указателей\n\tв случайной генерации" +
-			" (минимально можно указать 2,\n\tмаксимально - 10)",
-		default: 5
-	})
-	.option('min_vars',{
-		type: 'number',
-		description: "Максимальное количество переменных, функций, указателей\n\tв случайной генерации" +
-			" (минимально можно указать 1,\n\tмаксимально - 10)",
-		default: 2
-	})
-
-	.help('help')
-	.alias('help', ['h', '?'])
-	.argv;
-
-let t1;
-let t2;
-let t3;
-switch (argv.n) {
-	case 1:
-		t1 = performance.now()
-		const str1 = (0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_div_by_zero_js__WEBPACK_IMPORTED_MODULE_3__/* .choice_div_zero_variant */ .dF)(argv.v))
-		t2 = performance.now()
-		console.log(str1);
-		t3 = performance.now()
-		break;
-	case 2:
-		t1 = performance.now()
-		const str2 = (0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_deref_null_pointer_js__WEBPACK_IMPORTED_MODULE_4__/* .choice_deref_null_pointer */ .v)(argv.v))
-		t2 = performance.now()
-		console.log(str2);
-		t3 = performance.now()
-		break;
-	case 3:
-		t1 = performance.now()
-		const str3 = (0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_array_out_of_range_js__WEBPACK_IMPORTED_MODULE_5__/* .choice_array_out_of_range */ .f)(argv.v))
-		t2 = performance.now()
-		console.log(str3);
-		t3 = performance.now()
-		break;
-	case 4:
-		t1 = performance.now()
-		const str4 = (0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_delete_error_js__WEBPACK_IMPORTED_MODULE_6__/* .choice_delete_error */ .N)(argv.v))
-		t2 = performance.now()
-		console.log(str4);
-		t3 = performance.now()
-		break;
-	default:
-		const rand = Math.random();
-		if (rand < 0.25) {
-			console.log((0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_div_by_zero_js__WEBPACK_IMPORTED_MODULE_3__/* .choice_div_zero_variant */ .dF)(argv.v)));
-		}else if (rand < 0.5) {
-			console.log((0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_deref_null_pointer_js__WEBPACK_IMPORTED_MODULE_4__/* .choice_deref_null_pointer */ .v)(argv.v)));
-		}else if (rand < 0.75) {
-			console.log((0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_array_out_of_range_js__WEBPACK_IMPORTED_MODULE_5__/* .choice_array_out_of_range */ .f)(argv.v)));
-		}else {
-			console.log((0,_output_js__WEBPACK_IMPORTED_MODULE_7__/* .program */ .D)((0,_random_generators_delete_error_js__WEBPACK_IMPORTED_MODULE_6__/* .choice_delete_error */ .N)(argv.v)));
-		}
-}
-
-const t4 = performance.now()
-console.log("Обработка аргументов выполнялась:", t1-t0, "ms");
-console.log("Генерация программы выполнялась:", t2-t1, "ms");
-console.log("Вывод на экран готовой программы выполнялся:", t3-t2, "ms");
-console.log("Вся программа выполнялась:", t4, "ms");
-
-await (0,fs_promises__WEBPACK_IMPORTED_MODULE_2__.appendFile)("time_arguments.txt", (t1-t0).toFixed(3) + '\n', 'utf8')
-await (0,fs_promises__WEBPACK_IMPORTED_MODULE_2__.appendFile)("time_generate.txt", (t2-t1).toFixed(3) + '\n', 'utf8')
-await (0,fs_promises__WEBPACK_IMPORTED_MODULE_2__.appendFile)("time_console.txt", (t3-t2).toFixed(3) + '\n', 'utf8')
-await (0,fs_promises__WEBPACK_IMPORTED_MODULE_2__.appendFile)("time_all.txt", (t4).toFixed(3) + '\n', 'utf8')
-
-
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } }, 1);
-
-/***/ }),
-
-/***/ 683:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ yargs)
-});
-
-// EXTERNAL MODULE: ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/lib/platform-shims/esm.mjs + 9 modules
-var esm = __webpack_require__(407);
 ;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/typings/common-types.js
 function assertNotStrictEqual(actual, expected, shim, message) {
     shim.assert.notStrictEqual(actual, expected, message);
@@ -1429,8 +2181,6 @@ function isPromise(maybePromise) {
         typeof maybePromise.then === 'function');
 }
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/yerror.js
-var yerror = __webpack_require__(455);
 ;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/parse-command.js
 function parseCommand(cmd) {
     const extraSpacesStrippedCommand = cmd.replace(/\s{2,}/g, ' ');
@@ -1487,11 +2237,11 @@ function argsert(arg1, arg2, arg3) {
             args.pop();
         const length = _length || args.length;
         if (length < parsed.demanded.length) {
-            throw new yerror/* YError */.w(`Not enough arguments provided. Expected ${parsed.demanded.length} but received ${args.length}.`);
+            throw new YError(`Not enough arguments provided. Expected ${parsed.demanded.length} but received ${args.length}.`);
         }
         const totalCommands = parsed.demanded.length + parsed.optional.length;
         if (length > totalCommands) {
-            throw new yerror/* YError */.w(`Too many arguments provided. Expected max ${totalCommands} but received ${length}.`);
+            throw new YError(`Too many arguments provided. Expected max ${totalCommands} but received ${length}.`);
         }
         parsed.demanded.forEach(demanded => {
             const arg = args.shift();
@@ -1526,7 +2276,7 @@ function guessType(arg) {
     return typeof arg;
 }
 function argumentTypeError(observedType, allowedTypes, position) {
-    throw new yerror/* YError */.w(`Invalid ${positionName[position] || 'manyith'} argument. Expected ${allowedTypes.join(' or ')} but received ${observedType}.`);
+    throw new YError(`Invalid ${positionName[position] || 'manyith'} argument. Expected ${allowedTypes.join(' or ')} but received ${observedType}.`);
 }
 
 ;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/middleware.js
@@ -2188,7 +2938,7 @@ function usage(yargs, shim) {
                     logger.error(globalOrCommandFailMessage);
                 }
             }
-            err = err || new yerror/* YError */.w(msg);
+            err = err || new YError(msg);
             if (yargs.getExitProcess()) {
                 return yargs.exit(1);
             }
@@ -3351,8 +4101,67 @@ function validation(yargs, usage, shim) {
     return self;
 }
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/utils/apply-extends.js
-var apply_extends = __webpack_require__(768);
+;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/utils/apply-extends.js
+
+let previouslyVisitedConfigs = [];
+let apply_extends_shim;
+function applyExtends(config, cwd, mergeExtends, _shim) {
+    apply_extends_shim = _shim;
+    let defaultConfig = {};
+    if (Object.prototype.hasOwnProperty.call(config, 'extends')) {
+        if (typeof config.extends !== 'string')
+            return defaultConfig;
+        const isPath = /\.json|\..*rc$/.test(config.extends);
+        let pathToDefault = null;
+        if (!isPath) {
+            try {
+                pathToDefault = require.resolve(config.extends);
+            }
+            catch (_err) {
+                return config;
+            }
+        }
+        else {
+            pathToDefault = getPathToDefaultConfig(cwd, config.extends);
+        }
+        checkForCircularExtends(pathToDefault);
+        previouslyVisitedConfigs.push(pathToDefault);
+        defaultConfig = isPath
+            ? JSON.parse(apply_extends_shim.readFileSync(pathToDefault, 'utf8'))
+            : require(config.extends);
+        delete config.extends;
+        defaultConfig = applyExtends(defaultConfig, apply_extends_shim.path.dirname(pathToDefault), mergeExtends, apply_extends_shim);
+    }
+    previouslyVisitedConfigs = [];
+    return mergeExtends
+        ? mergeDeep(defaultConfig, config)
+        : Object.assign({}, defaultConfig, config);
+}
+function checkForCircularExtends(cfgPath) {
+    if (previouslyVisitedConfigs.indexOf(cfgPath) > -1) {
+        throw new YError(`Circular extended configurations: '${cfgPath}'.`);
+    }
+}
+function getPathToDefaultConfig(cwd, pathToExtend) {
+    return apply_extends_shim.path.resolve(cwd, pathToExtend);
+}
+function mergeDeep(config1, config2) {
+    const target = {};
+    function isObject(obj) {
+        return obj && typeof obj === 'object' && !Array.isArray(obj);
+    }
+    Object.assign(target, config1);
+    for (const key of Object.keys(config2)) {
+        if (isObject(config2[key]) && isObject(target[key])) {
+            target[key] = mergeDeep(config1[key], config2[key]);
+        }
+        else {
+            target[key] = config2[key];
+        }
+    }
+    return target;
+}
+
 ;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/build/lib/yargs-factory.js
 var __classPrivateFieldSet = (undefined && undefined.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
@@ -3558,7 +4367,7 @@ class YargsInstance {
         argsert('<object|string|array> [function]', [keys, value], arguments.length);
         if (Array.isArray(keys)) {
             if (!value) {
-                throw new yerror/* YError */.w('coerce callback must be provided');
+                throw new YError('coerce callback must be provided');
             }
             for (const key of keys) {
                 this.coerce(key, value);
@@ -3572,7 +4381,7 @@ class YargsInstance {
             return this;
         }
         if (!value) {
-            throw new yerror/* YError */.w('coerce callback must be provided');
+            throw new YError('coerce callback must be provided');
         }
         __classPrivateFieldGet(this, _YargsInstance_options, "f").key[keys] = true;
         __classPrivateFieldGet(this, _YargsInstance_globalMiddleware, "f").addCoerceMiddleware((argv, yargs) => {
@@ -3596,7 +4405,7 @@ class YargsInstance {
                 }
                 return argv;
             }, (err) => {
-                throw new yerror/* YError */.w(err.message);
+                throw new YError(err.message);
             });
         }, keys);
         return this;
@@ -3609,7 +4418,7 @@ class YargsInstance {
     config(key = 'config', msg, parseFn) {
         argsert('[object|string] [string|function] [function]', [key, msg, parseFn], arguments.length);
         if (typeof key === 'object' && !Array.isArray(key)) {
-            key = (0,apply_extends/* applyExtends */.e)(key, __classPrivateFieldGet(this, _YargsInstance_cwd, "f"), this[kGetParserConfiguration]()['deep-merge-config'] || false, __classPrivateFieldGet(this, _YargsInstance_shim, "f"));
+            key = applyExtends(key, __classPrivateFieldGet(this, _YargsInstance_cwd, "f"), this[kGetParserConfiguration]()['deep-merge-config'] || false, __classPrivateFieldGet(this, _YargsInstance_shim, "f"));
             __classPrivateFieldGet(this, _YargsInstance_options, "f").configObjects = (__classPrivateFieldGet(this, _YargsInstance_options, "f").configObjects || []).concat(key);
             return this;
         }
@@ -3785,7 +4594,7 @@ class YargsInstance {
     fail(f) {
         argsert('<function|boolean>', [f], arguments.length);
         if (typeof f === 'boolean' && f !== false) {
-            throw new yerror/* YError */.w("Invalid first argument. Expected function or boolean 'false'");
+            throw new YError("Invalid first argument. Expected function or boolean 'false'");
         }
         __classPrivateFieldGet(this, _YargsInstance_usage, "f").failFn(f);
         return this;
@@ -4098,7 +4907,7 @@ class YargsInstance {
     parseSync(args, shortCircuit, _parseFn) {
         const maybePromise = this.parse(args, shortCircuit, _parseFn);
         if (isPromise(maybePromise)) {
-            throw new yerror/* YError */.w('.parseSync() must not be used with asynchronous builders, handlers, or middleware');
+            throw new YError('.parseSync() must not be used with asynchronous builders, handlers, or middleware');
         }
         return maybePromise;
     }
@@ -4112,7 +4921,7 @@ class YargsInstance {
         let conf = null;
         const obj = this[kPkgUp](rootPath || __classPrivateFieldGet(this, _YargsInstance_cwd, "f"));
         if (obj[key] && typeof obj[key] === 'object') {
-            conf = (0,apply_extends/* applyExtends */.e)(obj[key], rootPath || __classPrivateFieldGet(this, _YargsInstance_cwd, "f"), this[kGetParserConfiguration]()['deep-merge-config'] || false, __classPrivateFieldGet(this, _YargsInstance_shim, "f"));
+            conf = applyExtends(obj[key], rootPath || __classPrivateFieldGet(this, _YargsInstance_cwd, "f"), this[kGetParserConfiguration]()['deep-merge-config'] || false, __classPrivateFieldGet(this, _YargsInstance_shim, "f"));
             __classPrivateFieldGet(this, _YargsInstance_options, "f").configObjects = (__classPrivateFieldGet(this, _YargsInstance_options, "f").configObjects || []).concat(conf);
         }
         return this;
@@ -4274,7 +5083,7 @@ class YargsInstance {
                 return this.command(msg, description, builder, handler);
             }
             else {
-                throw new yerror/* YError */.w('.usage() description must start with $0 if being used as alias for .command()');
+                throw new YError('.usage() description must start with $0 if being used as alias for .command()');
             }
         }
         else {
@@ -4775,7 +5584,7 @@ class YargsInstance {
                 const completionArgs = args.slice(args.indexOf(`--${__classPrivateFieldGet(this, _YargsInstance_completion, "f").completionKey}`) + 1);
                 __classPrivateFieldGet(this, _YargsInstance_completion, "f").getCompletion(completionArgs, (err, completions) => {
                     if (err)
-                        throw new yerror/* YError */.w(err.message);
+                        throw new YError(err.message);
                     (completions || []).forEach(completion => {
                         __classPrivateFieldGet(this, _YargsInstance_logger, "f").log(completion);
                     });
@@ -4804,7 +5613,7 @@ class YargsInstance {
             }
             if (!skipValidation) {
                 if (parsed.error)
-                    throw new yerror/* YError */.w(parsed.error.message);
+                    throw new YError(parsed.error.message);
                 if (!requestCompletions) {
                     const validation = this[kRunValidation](aliases, {}, parsed.error);
                     if (!calledFromCommand) {
@@ -4820,7 +5629,7 @@ class YargsInstance {
             }
         }
         catch (err) {
-            if (err instanceof yerror/* YError */.w)
+            if (err instanceof YError)
                 __classPrivateFieldGet(this, _YargsInstance_usage, "f").fail(err.message, err);
             else
                 throw err;
@@ -4831,7 +5640,7 @@ class YargsInstance {
         const demandedOptions = { ...this.getDemandedOptions() };
         return (argv) => {
             if (parseErrors)
-                throw new yerror/* YError */.w(parseErrors.message);
+                throw new YError(parseErrors.message);
             __classPrivateFieldGet(this, _YargsInstance_validation, "f").nonOptionCount(argv);
             __classPrivateFieldGet(this, _YargsInstance_validation, "f").requiredArguments(argv, demandedOptions);
             let failedStrictCommands = false;
@@ -4874,353 +5683,236 @@ function isYargsInstance(y) {
 
 
 
-const Yargs = YargsFactory(esm/* default */.A);
+const Yargs = YargsFactory(esm);
 /* harmony default export */ const yargs = (Yargs);
 
-
-/***/ }),
-
-/***/ 767:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   D: () => (/* binding */ program)
-/* harmony export */ });
-/* unused harmony export choice */
+;// ./node_modules/.pnpm/yargs@17.7.2/node_modules/yargs/helpers/helpers.mjs
 
 
-const program = (program) => {
-	/** Обработка всей программы:
-	 *  Представляет собой обработку массива программы. В него входят:
-	 *  1) Директивы
-	 *  2) Функции (в том числе, main)
-	 *  3) using (пока еще не реализовано)
-	 * */
-	let string = "";
-	for (let i = 0; i < program.length; i++) {
-		string += choice(program[i]) + "\n\n";
-	}
-	return string;
-}
 
-const print_directive = (elem) => {
-	/** Обработка директивы, т.е. его названия и "тела" (параметр "name") */
-	return "#" + elem.keyword + " " + elem.value;
-}
 
-const print_func = (elem) => {
-	/** Обработка функции, т.е. возвращаемое значение, параметры, тело функции */
-	let string = elem.return_type + " " + elem.name + "("
-	const params = Object.entries(elem.params)
-	if (params.length > 0) {
-		string += params[0][1] + " " + params[0][0];
-	}
-	for (let i = 1; i < params.length; i++) {
-		string += ", " + params[i][1] + " " + params[i][0];
-	}
-	if (!Array.isArray(elem.body)){
-		console.error("Body In function must be an array")
-		return "Body In function must be an array";
-	}
-	string += ") {\n";
-	for (let i = 0; i < elem.body.length; i++) {
-		string += "\t" + choice(elem.body[i]) + "\n";
-	}
-	string +="}\n";
-	return string;
 
-}
+const helpers_applyExtends = (config, cwd, mergeExtends) => {
+  return _applyExtends(config, cwd, mergeExtends, shim);
+};
 
-const print_var_assigning = (elem) => {
-	/** Обработка присваивания значений переменных */
-	return elem.name + " = " + choice(elem.body) + ";"
-}
 
-const print_array_declaration = (elem) => {
-	const count = elem.count < 1 ? "": String(elem.count)
-	let string = elem.value_type + " " + elem.name + "[" + (count) + "]"
-	if (Array.isArray(elem.body) && elem.body.length > 0) {
-		string += " = {"
-		for (let i = 0; i < elem.body.length-1; i++) {
-			string += choice(elem.body[i]) + ", ";
-		}
-		if (elem.body.length > 0) {
-			string += choice(elem.body[elem.body.length-1]) + "}";
-		}
-	}else if (elem.body){
-		string += " = " + choice(elem.body);
-	}
-	string += ";";
-	return string;
-}
 
-const print_manipulator_and_keywords = (elem) => {
-	/** Обработка манипуляторов, таких как std::endl
-	 *  Также просто ключевые слова не в виде строки, типа nullptr,
-	 *  макросов, если надо будет. */
-	return elem.name;
-}
-
-const print_output = (elem) => {
-	/** Обработка потока вывода, в том числе std::cout */
-	let string = elem.name
-	elem.body.forEach((element) => {
-		string += " << " + choice(element)
-	})
-	return string + ";"
-}
-
-const print_binary_operator = (elem) => {
-	/** Обработка примитивных бинарных арифметических и логических операций (возможно, побитовых)
-	* Полный перечень (хотя сейчас это не контролируется):
-	* 1) арифметические: + - * / %
-	* 2) логические < > <= >= == && || */
-	if (elem.withBraces) {
-		return "(" + choice(elem.first) + " "
-			+ elem.operator + " " + choice(elem.second) + ")"
-			+ (elem.semicolon_point? ";": "")
-	}else {
-		return choice(elem.first) + " " + elem.operator + " " + choice(elem.second)
-			+ (elem.semicolon_point? ";": "")
+;// external "fs/promises"
+const promises_namespaceObject = require("fs/promises");
+;// ./generator.js
+// const obj = {type: 'var_declaration', value_type: "int", name: "a", body: 5};
+const func = (name, params, return_type, body) => {
+	return {
+		type: 'func',
+		name,
+		params,
+		return_type,
+		body
 	}
 }
 
-const print_returning = (elem) => {
-	/** Обработка return */
-	return "return " + choice(elem.body) + ";";
-}
-
-const print_unary_operator = (elem) => {
-	/** Обработка унарных операций. Это:
-	 * 1) Инкременты, декременты (++, --)
-	 * 2) Унарный минус и логическое НЕ (!)
-	 * 3) Взятие адреса (&) и разыменования (*)
-	 */
-	let pred = elem.operator
-	let post = ""
-	if (elem.operator === "post++"){
-		post = "++"
-		pred = ""
-	}else if (elem.operator === "post--"){
-		post = "--"
-		pred = ""
-	}
-	if (elem.withBraces){
-		return "(" + pred + choice(elem.body) + post + ")"
-	}else {
-		return pred + choice(elem.body) + post + (elem.semicolon_point? ';': '')
+const ret = (body) => {
+	return {
+		type: 'return',
+		body
 	}
 }
 
-const print_var_declaration = (elem) => {
-	/** Обработка объявления переменных как с присваиванием, так и без */
-	if (!elem.body && elem.body !== 0 && elem.body !== "") {
-		return elem.value_type + " " + elem.name + (elem.no_semicolon_point? '': ';')
-	}
-	let string = elem.value_type + " " + elem.name + " = ";
-	string += choice(elem.body) + (elem.no_semicolon_point? '': ';')
-	return string;
-}
-
-const print_loop_for = (elem) => {
-	let string = "for (" + choice(elem.iterator) + "; " + choice(elem.condition)
-		+ "; " + choice(elem.increment) + ") { \n"
-	let tabs = '';
-	for (let i = 0; i < elem.inner_curly_braces_count; i++) {
-		tabs += '\t'
-	}
-	for (let i = 0; i < elem.body.length; i++) {
-		string += tabs + '\t' + choice(elem.body[i]) + "\n";
-	}
-	string += tabs + "}"
-	return string;
-}
-
-const print_condition_if = (elem) => {
-	let string = "if (" + choice(elem.condition) + ") { \n"
-	let tabs = '';
-	for (let i = 0; i < elem.inner_curly_braces_count; i++) {
-		tabs += '\t'
-	}
-	for (let i = 0; i < elem.body.length; i++) {
-		string += tabs + '\t' + choice(elem.body[i]) + "\n";
-	}
-	string += tabs + "}"
-	return string;
-}
-
-const print_new_operator = (elem) => {
-	if (typeof elem.value === "number") {
-		return "new " + elem.value_type + "(" + elem.value + ")"
-	}else if (Array.isArray(elem.value)) {
-		return "new " + elem.value_type + "[" + elem.value[0] + "]"
-	}else {
-		return "new " + elem.value_type;
+const directive = (keyword, value) => {
+	return {
+		type: 'directive',
+		keyword,
+		value
 	}
 }
 
-const print_delete_operator = (elem) => {
-	return "delete" + (elem.isArray? "[] ": " ") + choice(elem.body) + ";";
-}
-
-const call_func = (elem) => {
-	let str = elem.name + "("
-	const params = elem.params
-	if (params.length > 0) {
-		str += choice(params[0]);
+const var_declaration = (value_type, name, body = undefined, no_semicolon_point = false) => {
+	return {
+		type: 'var_declaration',
+		value_type,
+		name,
+		body,
+		no_semicolon_point
 	}
-	for (let i = 1; i < params.length; i++) {
-		str += ", " + choice(params[i]);
+}
+
+const var_assigning = (name, body) => {
+	return {
+		type: 'var_assigning',
+		name,
+		body,
 	}
-	str += ")"
-	if (elem.semicolon_point) str += ";"
-	return str
+}
+
+const var_using = (name) => {
+	return {
+		type: 'var_using',
+		name,
+	}
+}
+
+const output = (name, body) => {
+	return {
+		type: 'output',
+		name,
+		body
+	}
+}
+
+const manipulator_and_keywords = (name) => {
+	return {
+		type: 'manipulator_and_keywords',
+		name
+	}
+}
+
+const binary_operator = (operator, first, second, withBraces = false, semicolon_point = false) => {
+	return {
+		type: 'binary_operator',
+		operator,
+		first,
+		second,
+		withBraces,
+		semicolon_point
+	}
+}
+
+const unary_operator = (operator, body, withBraces = false, semicolon_point = false) => {
+	return {
+		type: 'unary_operator',
+		operator,
+		body,
+		withBraces,
+		semicolon_point
+	}
+}
+
+const loop_for = (iterator, condition, increment, body, inner_curly_braces_count = 0) => {
+	return {
+		type: "for",
+		iterator,
+		condition,
+		increment,
+		body,
+		inner_curly_braces_count,
+	}
+}
+
+const condition_if = (condition, body, inner_curly_braces_count = 0) => {
+	return {
+		type: "if",
+		condition,
+		body,
+		inner_curly_braces_count
+	}
+}
+
+const array_declaration = (value_type, name, count, body) => {
+	return {
+		type: 'array_declaration',
+		value_type,
+		name,
+		count,
+		body
+	}
+}
+
+const new_operator = (value_type, value = null) => {
+	return {
+		type: 'new_operator',
+		value_type,
+		value,
+	}
+}
+
+const delete_operator = (isArray, body) => {
+	return {
+		type: 'delete_operator',
+		isArray,
+		body
+	}
+}
+
+const generator_call_func = (name, params, semicolon_point = false) => {
+	return {
+		type: 'call_func',
+		name,
+		params,
+		semicolon_point
+	}
+}
+;// ./random_generators/utils.js
+
+
+const nextChar = (ch) => {
+	return String.fromCharCode(ch.charCodeAt(0) + 1);
+}
+
+const charNumber = (num) => {
+	return String.fromCharCode("a".charCodeAt(0) + (num-1));
+}
+
+const random_var_declaration = (count_of_variables, lst) => {
+	let symbol = 'a'
+	for (let i = 0; i < count_of_variables; i++) {
+		lst.push(
+			var_declaration("int", symbol, Math.floor(Math.random()*200-100))
+		)
+		symbol = nextChar(symbol);
+	}
+	return lst
+}
+
+const isEmpty = (obj) => {
+	return (obj || obj === 0 || obj === "") ? true : false
+
 }
 
 
-const choice = (elem) => {
-	if (typeof (elem) === 'number' || typeof (elem) === 'boolean') {
-		return elem;
-	}else if (typeof elem === 'string') {
-		return "\"" + elem + "\""
-	}else if (typeof (elem) === 'object' && elem.hasOwnProperty('type')) {
+const find_func = func("find", {
+		"arr": "int*",
+		"size": "int",
+		"target": "int",
+	}, "int*", [
+		loop_for(
+			var_declaration("int", "i", 0, true),
+			binary_operator("<", var_using("i"), var_using("size")),
+			unary_operator("post++", var_using("i")),
+			[
+				condition_if(
+					binary_operator("==", var_using("arr[i]"), var_using("target")),
+					[
+						ret(unary_operator("&", var_using("arr[i]")))
+					],
+					2
+				)
+			],
+			1
+		),
+		ret(manipulator_and_keywords("nullptr"))
+	],
+)
 
-		switch (elem.type){
-			case 'directive':
-				return print_directive(elem);
-
-			case 'func':
-				return print_func(elem)
-
-			case 'call_func':
-				return call_func(elem)
-
-			case 'var_declaration':
-				return print_var_declaration(elem);
-
-			case 'var_assigning':
-				return print_var_assigning(elem);
-
-			case 'var_using':
-				return elem.name;
-
-			case 'binary_operator':
-				return print_binary_operator(elem);
-
-			case 'unary_operator':
-				return print_unary_operator(elem);
-
-			case 'output':
-				return print_output(elem);
-
-			case 'manipulator_and_keywords':
-				return print_manipulator_and_keywords(elem);
-
-			case 'return':
-				return print_returning(elem);
-
-			case 'for':
-				return print_loop_for(elem);
-
-			case 'if':
-				return print_condition_if(elem)
-
-			case 'array_declaration':
-				return print_array_declaration(elem)
-
-			case 'new_operator':
-				return print_new_operator(elem)
-
-			case 'delete_operator':
-				return print_delete_operator(elem)
-
-			default:
-				return elem;
-		}
-	}else return "";
-}
-
-/***/ }),
-
-/***/ 768:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   e: () => (/* binding */ applyExtends)
-/* harmony export */ });
-/* harmony import */ var _yerror_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(455);
-
-let previouslyVisitedConfigs = [];
-let shim;
-function applyExtends(config, cwd, mergeExtends, _shim) {
-    shim = _shim;
-    let defaultConfig = {};
-    if (Object.prototype.hasOwnProperty.call(config, 'extends')) {
-        if (typeof config.extends !== 'string')
-            return defaultConfig;
-        const isPath = /\.json|\..*rc$/.test(config.extends);
-        let pathToDefault = null;
-        if (!isPath) {
-            try {
-                pathToDefault = require.resolve(config.extends);
-            }
-            catch (_err) {
-                return config;
-            }
-        }
-        else {
-            pathToDefault = getPathToDefaultConfig(cwd, config.extends);
-        }
-        checkForCircularExtends(pathToDefault);
-        previouslyVisitedConfigs.push(pathToDefault);
-        defaultConfig = isPath
-            ? JSON.parse(shim.readFileSync(pathToDefault, 'utf8'))
-            : require(config.extends);
-        delete config.extends;
-        defaultConfig = applyExtends(defaultConfig, shim.path.dirname(pathToDefault), mergeExtends, shim);
-    }
-    previouslyVisitedConfigs = [];
-    return mergeExtends
-        ? mergeDeep(defaultConfig, config)
-        : Object.assign({}, defaultConfig, config);
-}
-function checkForCircularExtends(cfgPath) {
-    if (previouslyVisitedConfigs.indexOf(cfgPath) > -1) {
-        throw new _yerror_js__WEBPACK_IMPORTED_MODULE_0__/* .YError */ .w(`Circular extended configurations: '${cfgPath}'.`);
-    }
-}
-function getPathToDefaultConfig(cwd, pathToExtend) {
-    return shim.path.resolve(cwd, pathToExtend);
-}
-function mergeDeep(config1, config2) {
-    const target = {};
-    function isObject(obj) {
-        return obj && typeof obj === 'object' && !Array.isArray(obj);
-    }
-    Object.assign(target, config1);
-    for (const key of Object.keys(config2)) {
-        if (isObject(config2[key]) && isObject(target[key])) {
-            target[key] = mergeDeep(config1[key], config2[key]);
-        }
-        else {
-            target[key] = config2[key];
-        }
-    }
-    return target;
-}
-
-
-/***/ }),
-
-/***/ 789:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   dF: () => (/* binding */ choice_div_zero_variant)
-/* harmony export */ });
-/* unused harmony exports random_function, random_func_div_0, div_by_zero_with_functions, division_by_zero_simple */
-/* harmony import */ var _generator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(377);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(116);
+const print_array = func("print_array", {
+		"arr": "int*",
+		"size": "int",
+	}, "void", [
+		loop_for(
+			var_declaration("int", "i", 0, true),
+			binary_operator("<", var_using("i"), var_using("size")),
+			unary_operator("post++", var_using("i")),
+			[
+				output("std::cout", [
+					var_using("arr[i]"),
+					manipulator_and_keywords("std::endl")
+				])
+			],
+			1
+		)
+	]
+)
+;// ./random_generators/div_by_zero.js
 
 
 
@@ -5230,30 +5922,30 @@ const random_function = (number) => {
 	const random = Math.random()*7;
 	let random_parameter;
 	if (Math.random() < 0.5) {
-		random_parameter = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("a")
+		random_parameter = var_using("a")
 	}else {
 		random_parameter = Math.floor(Math.random()*1000+1)
 	}
-	const var_b = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int", "b", Math.floor(Math.random()*1000+1))
+	const var_b = var_declaration("int", "b", Math.floor(Math.random()*1000+1))
 
 	let str_ret
 	if (random < 1){
-		str_ret = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("+", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b"), random_parameter))
+		str_ret = ret(binary_operator("+", var_using("b"), random_parameter))
 	}else if (random < 2) {
-		str_ret = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("-", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b"), random_parameter))
+		str_ret = ret(binary_operator("-", var_using("b"), random_parameter))
 	}else if (random < 3){
-		str_ret = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b"), random_parameter))
+		str_ret = ret(binary_operator("*", var_using("b"), random_parameter))
 	}else if (random < 4){
-		str_ret = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("/", random_parameter, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b")))
+		str_ret = ret(binary_operator("/", random_parameter, var_using("b")))
 	}else if (random < 5){
-		str_ret = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("+", random_parameter, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b")))
+		str_ret = ret(binary_operator("+", random_parameter, var_using("b")))
 	}else if (random < 6){
-		str_ret = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("-", random_parameter, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b")))
+		str_ret = ret(binary_operator("-", random_parameter, var_using("b")))
 	}else {
-		str_ret = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("*", random_parameter, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b")))
+		str_ret = ret(binary_operator("*", random_parameter, var_using("b")))
 	}
 
-	return (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("func" + number, typeof random_parameter === "number" ? {} : {"a": "int"}, "int", [
+	return func("func" + number, typeof random_parameter === "number" ? {} : {"a": "int"}, "int", [
 		var_b,
 		str_ret
 	])
@@ -5261,16 +5953,16 @@ const random_function = (number) => {
 
 const random_func_div_0 = (number) => {
 	const random = Math.random()
-	const var_b = (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int", "b", 0)
+	const var_b = var_declaration("int", "b", 0)
 	if (random < 0.1){
-		return (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("func" + number, {"a": "int"}, "int", [
+		return func("func" + number, {"a": "int"}, "int", [
 			var_b,
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("/", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("a"), (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b")))
+			ret(binary_operator("/", var_using("a"), var_using("b")))
 		])
 	}else {
-		return (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("func" + number, {}, "int", [
+		return func("func" + number, {}, "int", [
 			var_b,
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("/", Math.floor(Math.random()*2000-500), (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("b")))
+			ret(binary_operator("/", Math.floor(Math.random()*2000-500), var_using("b")))
 		])
 	}
 }
@@ -5290,7 +5982,7 @@ const div_by_zero_with_functions = () => {
 
 	let main = []
 	const count_of_variables = Math.ceil(Math.random()*5+1)
-	main = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .random_var_declaration */ .Z3)(count_of_variables, main)
+	main = random_var_declaration(count_of_variables, main)
 
 	for (let i = 0; i < functions.length; i++) {
 		// console.log(functions[i].params.a)
@@ -5298,29 +5990,29 @@ const div_by_zero_with_functions = () => {
 			let number_var_using = Math.floor(Math.random()*count_of_variables)
 			if (number_var_using === count_of_variables) number_var_using -= 1
 			main.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .call_func */ .y2)("func" + (i+1), [(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)(
+				output("std::cout", [
+					generator_call_func("func" + (i+1), [var_using(
 						String.fromCharCode('a'.charCodeAt(0) + number_var_using)
 					)]),
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+					manipulator_and_keywords("std::endl")
 				])
 			)
 		}else {
 			main.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .call_func */ .y2)("func" + (i+1), []),
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+				output("std::cout", [
+					generator_call_func("func" + (i+1), []),
+					manipulator_and_keywords("std::endl")
 				])
 			)
 		}
 	}
 
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
+	main.push(ret(0))
 
 	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
+	lst.push(directive("include", "<iostream>"))
 	lst = [...lst,...functions]
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
+	lst.push(func("main", [], "int", main))
 	return lst
 }
 
@@ -5331,20 +6023,20 @@ const division_by_zero_simple = () => {
 	let new_symbol = Math.ceil(Math.random()*(count_of_variables)-1)
 	if (new_symbol < 0) new_symbol = 0
 
-	main = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .random_var_declaration */ .Z3)(count_of_variables, main)
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int", "z", 0))
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .binary_operator */ .J)("/", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)(
+	main = random_var_declaration(count_of_variables, main)
+	main.push(var_declaration("int", "z", 0))
+	main.push(output("std::cout", [
+		binary_operator("/", var_using(
 			String.fromCharCode('a'.charCodeAt(0) + new_symbol)
-		), (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("z")),
-		(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+		), var_using("z")),
+		manipulator_and_keywords("std::endl")
 	]))
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
+	main.push(ret(0))
 
 
 	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
+	lst.push(directive("include", "<iostream>"))
+	lst.push(func("main", [], "int", main))
 	return lst
 }
 
@@ -5361,1269 +6053,287 @@ const choice_div_zero_variant = (num = 0) => {
 }
 
 
-
-/***/ }),
-
-/***/ 791:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+;// ./random_generators/deref_null_pointer.js
 
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  A: () => (/* binding */ lib)
-});
 
-// EXTERNAL MODULE: external "util"
-var external_util_ = __webpack_require__(23);
-// EXTERNAL MODULE: external "path"
-var external_path_ = __webpack_require__(928);
-;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/string-utils.js
-/**
- * @license
- * Copyright (c) 2016, Contributors
- * SPDX-License-Identifier: ISC
- */
-function camelCase(str) {
-    // Handle the case where an argument is provided as camel case, e.g., fooBar.
-    // by ensuring that the string isn't already mixed case:
-    const isCamelCase = str !== str.toLowerCase() && str !== str.toUpperCase();
-    if (!isCamelCase) {
-        str = str.toLowerCase();
-    }
-    if (str.indexOf('-') === -1 && str.indexOf('_') === -1) {
-        return str;
-    }
-    else {
-        let camelcase = '';
-        let nextChrUpper = false;
-        const leadingHyphens = str.match(/^-+/);
-        for (let i = leadingHyphens ? leadingHyphens[0].length : 0; i < str.length; i++) {
-            let chr = str.charAt(i);
-            if (nextChrUpper) {
-                nextChrUpper = false;
-                chr = chr.toUpperCase();
-            }
-            if (i !== 0 && (chr === '-' || chr === '_')) {
-                nextChrUpper = true;
-            }
-            else if (chr !== '-' && chr !== '_') {
-                camelcase += chr;
-            }
-        }
-        return camelcase;
-    }
-}
-function decamelize(str, joinString) {
-    const lowercase = str.toLowerCase();
-    joinString = joinString || '-';
-    let notCamelcase = '';
-    for (let i = 0; i < str.length; i++) {
-        const chrLower = lowercase.charAt(i);
-        const chrString = str.charAt(i);
-        if (chrLower !== chrString && i > 0) {
-            notCamelcase += `${joinString}${lowercase.charAt(i)}`;
-        }
-        else {
-            notCamelcase += chrString;
-        }
-    }
-    return notCamelcase;
-}
-function looksLikeNumber(x) {
-    if (x === null || x === undefined)
-        return false;
-    // if loaded from config, may already be a number.
-    if (typeof x === 'number')
-        return true;
-    // hexadecimal.
-    if (/^0x[0-9a-f]+$/i.test(x))
-        return true;
-    // don't treat 0123 as a number; as it drops the leading '0'.
-    if (/^0[^.]/.test(x))
-        return false;
-    return /^[-]?(?:\d+(?:\.\d*)?|\.\d+)(e[-+]?\d+)?$/.test(x);
+const null_pointer_function = () => {
+	const find_function = find_func
+
+	const array_length = Math.floor(Math.random()*5+3)
+	let body_array = []
+
+	for (let i = 0; i < array_length; i++) {
+		body_array.push(Math.floor(Math.random()*200-100))
+	}
+
+	let random_number = Math.floor(Math.random()*200-100)
+	if (body_array.includes(random_number)) random_number = Math.floor(Math.random()*101+101)
+
+	let array = array_declaration("int", "data", -1, body_array)
+
+	let main = [array]
+
+	let count = 0
+	let random_digit;
+	let random_position = Math.floor(Math.random()*array_length)
+	if (random_position >= array_length) random_position--
+	for (let i = 0; i < array_length; i++) {
+		if (i === random_position) {
+			main.push(
+				output("std::cout", [
+					unary_operator("*",	generator_call_func("find", [
+							var_using("data"), array_length, random_number
+						]),
+					)
+					, manipulator_and_keywords("std::endl")
+				])
+			)
+			continue
+		}
+		if (count === 0 || Math.random() < 0.25){
+			random_digit = Math.floor(Math.random()*array_length)
+			if (random_digit >= array_length) random_digit = array_length-1;
+			main.push(
+				output("std::cout", [
+					unary_operator("*",	generator_call_func("find", [
+							var_using("data"), array_length, body_array[random_digit]
+						]),
+					)
+					, manipulator_and_keywords("std::endl")
+				])
+			)
+			count++
+		}
+
+	}
+	main.push(ret(0))
+
+	let lst = []
+	lst.push(directive("include", "<iostream>"))
+	lst.push(find_function)
+	lst.push(func("main", [], "int", main))
+	return lst
 }
 
-;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/tokenize-arg-string.js
-/**
- * @license
- * Copyright (c) 2016, Contributors
- * SPDX-License-Identifier: ISC
- */
-// take an un-split argv string and tokenize it.
-function tokenizeArgString(argString) {
-    if (Array.isArray(argString)) {
-        return argString.map(e => typeof e !== 'string' ? e + '' : e);
-    }
-    argString = argString.trim();
-    let i = 0;
-    let prevC = null;
-    let c = null;
-    let opening = null;
-    const args = [];
-    for (let ii = 0; ii < argString.length; ii++) {
-        prevC = c;
-        c = argString.charAt(ii);
-        // split on spaces unless we're in quotes.
-        if (c === ' ' && !opening) {
-            if (!(prevC === ' ')) {
-                i++;
-            }
-            continue;
-        }
-        // don't split the string if we're in matching
-        // opening or closing single and double quotes.
-        if (c === opening) {
-            opening = null;
-        }
-        else if ((c === "'" || c === '"') && !opening) {
-            opening = c;
-        }
-        if (!args[i])
-            args[i] = '';
-        args[i] += c;
-    }
-    return args;
+const use_pointer_after_delete = () => {
+	const count_of_pointers = Math.floor(Math.random()*5+2);
+	let number_of_deleting = Math.floor(Math.random()*count_of_pointers+1)
+
+	if (number_of_deleting > count_of_pointers) number_of_deleting = count_of_pointers;
+	let symbol = 'a'
+	let pointers = []
+	let couts = []
+	for (let i = 0; i < count_of_pointers; i++) {
+		pointers.push(
+			var_declaration("int*", "p" + symbol,
+				new_operator("int", Math.floor(Math.random()*2000-1000))
+			)
+		)
+		symbol = nextChar(symbol);
+	}
+
+	let main = pointers
+
+	if (Math.random() < 0.6) {
+		let second_number = Math.floor(Math.random()*count_of_pointers+1)
+		if (second_number === number_of_deleting) {
+			if (number_of_deleting + 1 > count_of_pointers){
+				second_number--
+			}else {
+				second_number++
+			}
+		}
+		main.push(
+			var_assigning("p" + charNumber(second_number), var_using("p" + charNumber(number_of_deleting)))
+		)
+		couts.push(output("std::cout", [
+			unary_operator("*", var_using("p" + charNumber(second_number))),
+			manipulator_and_keywords("std::endl")
+		]))
+
+	}else {
+		couts.push(output("std::cout", [
+			unary_operator("*", var_using("p" + charNumber(number_of_deleting))),
+			manipulator_and_keywords("std::endl")
+		]))
+	}
+	couts.push(output("std::cout", [
+		unary_operator("*", var_using("p" + charNumber(Math.floor(Math.random()*(count_of_pointers-1)+1)))),
+		manipulator_and_keywords("std::endl")
+	]))
+	if (Math.random() < 0.5) {
+		couts.push(output("std::cout", [
+			unary_operator("*", var_using("p" + charNumber(Math.floor(Math.random()*(count_of_pointers-1)+1)))),
+			manipulator_and_keywords("std::endl")
+		]))
+	}
+	main.push(
+		delete_operator(false,
+			var_using("p" + String.fromCharCode('a'.charCodeAt(0) + (number_of_deleting-1)))
+		)
+	)
+
+	main = [...main, ...couts]
+	main.push(ret(0))
+
+	let lst = []
+	lst.push(directive("include", "<iostream>"))
+	lst.push(func("main", [], "int", main))
+	return lst
 }
 
-;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/yargs-parser-types.js
-/**
- * @license
- * Copyright (c) 2016, Contributors
- * SPDX-License-Identifier: ISC
- */
-var DefaultValuesForTypeKey;
-(function (DefaultValuesForTypeKey) {
-    DefaultValuesForTypeKey["BOOLEAN"] = "boolean";
-    DefaultValuesForTypeKey["STRING"] = "string";
-    DefaultValuesForTypeKey["NUMBER"] = "number";
-    DefaultValuesForTypeKey["ARRAY"] = "array";
-})(DefaultValuesForTypeKey || (DefaultValuesForTypeKey = {}));
-
-;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/yargs-parser.js
-/**
- * @license
- * Copyright (c) 2016, Contributors
- * SPDX-License-Identifier: ISC
- */
-
-
-
-let mixin;
-class YargsParser {
-    constructor(_mixin) {
-        mixin = _mixin;
-    }
-    parse(argsInput, options) {
-        const opts = Object.assign({
-            alias: undefined,
-            array: undefined,
-            boolean: undefined,
-            config: undefined,
-            configObjects: undefined,
-            configuration: undefined,
-            coerce: undefined,
-            count: undefined,
-            default: undefined,
-            envPrefix: undefined,
-            narg: undefined,
-            normalize: undefined,
-            string: undefined,
-            number: undefined,
-            __: undefined,
-            key: undefined
-        }, options);
-        // allow a string argument to be passed in rather
-        // than an argv array.
-        const args = tokenizeArgString(argsInput);
-        // tokenizeArgString adds extra quotes to args if argsInput is a string
-        // only strip those extra quotes in processValue if argsInput is a string
-        const inputIsString = typeof argsInput === 'string';
-        // aliases might have transitive relationships, normalize this.
-        const aliases = combineAliases(Object.assign(Object.create(null), opts.alias));
-        const configuration = Object.assign({
-            'boolean-negation': true,
-            'camel-case-expansion': true,
-            'combine-arrays': false,
-            'dot-notation': true,
-            'duplicate-arguments-array': true,
-            'flatten-duplicate-arrays': true,
-            'greedy-arrays': true,
-            'halt-at-non-option': false,
-            'nargs-eats-options': false,
-            'negation-prefix': 'no-',
-            'parse-numbers': true,
-            'parse-positional-numbers': true,
-            'populate--': false,
-            'set-placeholder-key': false,
-            'short-option-groups': true,
-            'strip-aliased': false,
-            'strip-dashed': false,
-            'unknown-options-as-args': false
-        }, opts.configuration);
-        const defaults = Object.assign(Object.create(null), opts.default);
-        const configObjects = opts.configObjects || [];
-        const envPrefix = opts.envPrefix;
-        const notFlagsOption = configuration['populate--'];
-        const notFlagsArgv = notFlagsOption ? '--' : '_';
-        const newAliases = Object.create(null);
-        const defaulted = Object.create(null);
-        // allow a i18n handler to be passed in, default to a fake one (util.format).
-        const __ = opts.__ || mixin.format;
-        const flags = {
-            aliases: Object.create(null),
-            arrays: Object.create(null),
-            bools: Object.create(null),
-            strings: Object.create(null),
-            numbers: Object.create(null),
-            counts: Object.create(null),
-            normalize: Object.create(null),
-            configs: Object.create(null),
-            nargs: Object.create(null),
-            coercions: Object.create(null),
-            keys: []
-        };
-        const negative = /^-([0-9]+(\.[0-9]+)?|\.[0-9]+)$/;
-        const negatedBoolean = new RegExp('^--' + configuration['negation-prefix'] + '(.+)');
-        [].concat(opts.array || []).filter(Boolean).forEach(function (opt) {
-            const key = typeof opt === 'object' ? opt.key : opt;
-            // assign to flags[bools|strings|numbers]
-            const assignment = Object.keys(opt).map(function (key) {
-                const arrayFlagKeys = {
-                    boolean: 'bools',
-                    string: 'strings',
-                    number: 'numbers'
-                };
-                return arrayFlagKeys[key];
-            }).filter(Boolean).pop();
-            // assign key to be coerced
-            if (assignment) {
-                flags[assignment][key] = true;
-            }
-            flags.arrays[key] = true;
-            flags.keys.push(key);
-        });
-        [].concat(opts.boolean || []).filter(Boolean).forEach(function (key) {
-            flags.bools[key] = true;
-            flags.keys.push(key);
-        });
-        [].concat(opts.string || []).filter(Boolean).forEach(function (key) {
-            flags.strings[key] = true;
-            flags.keys.push(key);
-        });
-        [].concat(opts.number || []).filter(Boolean).forEach(function (key) {
-            flags.numbers[key] = true;
-            flags.keys.push(key);
-        });
-        [].concat(opts.count || []).filter(Boolean).forEach(function (key) {
-            flags.counts[key] = true;
-            flags.keys.push(key);
-        });
-        [].concat(opts.normalize || []).filter(Boolean).forEach(function (key) {
-            flags.normalize[key] = true;
-            flags.keys.push(key);
-        });
-        if (typeof opts.narg === 'object') {
-            Object.entries(opts.narg).forEach(([key, value]) => {
-                if (typeof value === 'number') {
-                    flags.nargs[key] = value;
-                    flags.keys.push(key);
-                }
-            });
-        }
-        if (typeof opts.coerce === 'object') {
-            Object.entries(opts.coerce).forEach(([key, value]) => {
-                if (typeof value === 'function') {
-                    flags.coercions[key] = value;
-                    flags.keys.push(key);
-                }
-            });
-        }
-        if (typeof opts.config !== 'undefined') {
-            if (Array.isArray(opts.config) || typeof opts.config === 'string') {
-                ;
-                [].concat(opts.config).filter(Boolean).forEach(function (key) {
-                    flags.configs[key] = true;
-                });
-            }
-            else if (typeof opts.config === 'object') {
-                Object.entries(opts.config).forEach(([key, value]) => {
-                    if (typeof value === 'boolean' || typeof value === 'function') {
-                        flags.configs[key] = value;
-                    }
-                });
-            }
-        }
-        // create a lookup table that takes into account all
-        // combinations of aliases: {f: ['foo'], foo: ['f']}
-        extendAliases(opts.key, aliases, opts.default, flags.arrays);
-        // apply default values to all aliases.
-        Object.keys(defaults).forEach(function (key) {
-            (flags.aliases[key] || []).forEach(function (alias) {
-                defaults[alias] = defaults[key];
-            });
-        });
-        let error = null;
-        checkConfiguration();
-        let notFlags = [];
-        const argv = Object.assign(Object.create(null), { _: [] });
-        // TODO(bcoe): for the first pass at removing object prototype  we didn't
-        // remove all prototypes from objects returned by this API, we might want
-        // to gradually move towards doing so.
-        const argvReturn = {};
-        for (let i = 0; i < args.length; i++) {
-            const arg = args[i];
-            const truncatedArg = arg.replace(/^-{3,}/, '---');
-            let broken;
-            let key;
-            let letters;
-            let m;
-            let next;
-            let value;
-            // any unknown option (except for end-of-options, "--")
-            if (arg !== '--' && /^-/.test(arg) && isUnknownOptionAsArg(arg)) {
-                pushPositional(arg);
-                // ---, ---=, ----, etc,
-            }
-            else if (truncatedArg.match(/^---+(=|$)/)) {
-                // options without key name are invalid.
-                pushPositional(arg);
-                continue;
-                // -- separated by =
-            }
-            else if (arg.match(/^--.+=/) || (!configuration['short-option-groups'] && arg.match(/^-.+=/))) {
-                // Using [\s\S] instead of . because js doesn't support the
-                // 'dotall' regex modifier. See:
-                // http://stackoverflow.com/a/1068308/13216
-                m = arg.match(/^--?([^=]+)=([\s\S]*)$/);
-                // arrays format = '--f=a b c'
-                if (m !== null && Array.isArray(m) && m.length >= 3) {
-                    if (checkAllAliases(m[1], flags.arrays)) {
-                        i = eatArray(i, m[1], args, m[2]);
-                    }
-                    else if (checkAllAliases(m[1], flags.nargs) !== false) {
-                        // nargs format = '--f=monkey washing cat'
-                        i = eatNargs(i, m[1], args, m[2]);
-                    }
-                    else {
-                        setArg(m[1], m[2], true);
-                    }
-                }
-            }
-            else if (arg.match(negatedBoolean) && configuration['boolean-negation']) {
-                m = arg.match(negatedBoolean);
-                if (m !== null && Array.isArray(m) && m.length >= 2) {
-                    key = m[1];
-                    setArg(key, checkAllAliases(key, flags.arrays) ? [false] : false);
-                }
-                // -- separated by space.
-            }
-            else if (arg.match(/^--.+/) || (!configuration['short-option-groups'] && arg.match(/^-[^-]+/))) {
-                m = arg.match(/^--?(.+)/);
-                if (m !== null && Array.isArray(m) && m.length >= 2) {
-                    key = m[1];
-                    if (checkAllAliases(key, flags.arrays)) {
-                        // array format = '--foo a b c'
-                        i = eatArray(i, key, args);
-                    }
-                    else if (checkAllAliases(key, flags.nargs) !== false) {
-                        // nargs format = '--foo a b c'
-                        // should be truthy even if: flags.nargs[key] === 0
-                        i = eatNargs(i, key, args);
-                    }
-                    else {
-                        next = args[i + 1];
-                        if (next !== undefined && (!next.match(/^-/) ||
-                            next.match(negative)) &&
-                            !checkAllAliases(key, flags.bools) &&
-                            !checkAllAliases(key, flags.counts)) {
-                            setArg(key, next);
-                            i++;
-                        }
-                        else if (/^(true|false)$/.test(next)) {
-                            setArg(key, next);
-                            i++;
-                        }
-                        else {
-                            setArg(key, defaultValue(key));
-                        }
-                    }
-                }
-                // dot-notation flag separated by '='.
-            }
-            else if (arg.match(/^-.\..+=/)) {
-                m = arg.match(/^-([^=]+)=([\s\S]*)$/);
-                if (m !== null && Array.isArray(m) && m.length >= 3) {
-                    setArg(m[1], m[2]);
-                }
-                // dot-notation flag separated by space.
-            }
-            else if (arg.match(/^-.\..+/) && !arg.match(negative)) {
-                next = args[i + 1];
-                m = arg.match(/^-(.\..+)/);
-                if (m !== null && Array.isArray(m) && m.length >= 2) {
-                    key = m[1];
-                    if (next !== undefined && !next.match(/^-/) &&
-                        !checkAllAliases(key, flags.bools) &&
-                        !checkAllAliases(key, flags.counts)) {
-                        setArg(key, next);
-                        i++;
-                    }
-                    else {
-                        setArg(key, defaultValue(key));
-                    }
-                }
-            }
-            else if (arg.match(/^-[^-]+/) && !arg.match(negative)) {
-                letters = arg.slice(1, -1).split('');
-                broken = false;
-                for (let j = 0; j < letters.length; j++) {
-                    next = arg.slice(j + 2);
-                    if (letters[j + 1] && letters[j + 1] === '=') {
-                        value = arg.slice(j + 3);
-                        key = letters[j];
-                        if (checkAllAliases(key, flags.arrays)) {
-                            // array format = '-f=a b c'
-                            i = eatArray(i, key, args, value);
-                        }
-                        else if (checkAllAliases(key, flags.nargs) !== false) {
-                            // nargs format = '-f=monkey washing cat'
-                            i = eatNargs(i, key, args, value);
-                        }
-                        else {
-                            setArg(key, value);
-                        }
-                        broken = true;
-                        break;
-                    }
-                    if (next === '-') {
-                        setArg(letters[j], next);
-                        continue;
-                    }
-                    // current letter is an alphabetic character and next value is a number
-                    if (/[A-Za-z]/.test(letters[j]) &&
-                        /^-?\d+(\.\d*)?(e-?\d+)?$/.test(next) &&
-                        checkAllAliases(next, flags.bools) === false) {
-                        setArg(letters[j], next);
-                        broken = true;
-                        break;
-                    }
-                    if (letters[j + 1] && letters[j + 1].match(/\W/)) {
-                        setArg(letters[j], next);
-                        broken = true;
-                        break;
-                    }
-                    else {
-                        setArg(letters[j], defaultValue(letters[j]));
-                    }
-                }
-                key = arg.slice(-1)[0];
-                if (!broken && key !== '-') {
-                    if (checkAllAliases(key, flags.arrays)) {
-                        // array format = '-f a b c'
-                        i = eatArray(i, key, args);
-                    }
-                    else if (checkAllAliases(key, flags.nargs) !== false) {
-                        // nargs format = '-f a b c'
-                        // should be truthy even if: flags.nargs[key] === 0
-                        i = eatNargs(i, key, args);
-                    }
-                    else {
-                        next = args[i + 1];
-                        if (next !== undefined && (!/^(-|--)[^-]/.test(next) ||
-                            next.match(negative)) &&
-                            !checkAllAliases(key, flags.bools) &&
-                            !checkAllAliases(key, flags.counts)) {
-                            setArg(key, next);
-                            i++;
-                        }
-                        else if (/^(true|false)$/.test(next)) {
-                            setArg(key, next);
-                            i++;
-                        }
-                        else {
-                            setArg(key, defaultValue(key));
-                        }
-                    }
-                }
-            }
-            else if (arg.match(/^-[0-9]$/) &&
-                arg.match(negative) &&
-                checkAllAliases(arg.slice(1), flags.bools)) {
-                // single-digit boolean alias, e.g: xargs -0
-                key = arg.slice(1);
-                setArg(key, defaultValue(key));
-            }
-            else if (arg === '--') {
-                notFlags = args.slice(i + 1);
-                break;
-            }
-            else if (configuration['halt-at-non-option']) {
-                notFlags = args.slice(i);
-                break;
-            }
-            else {
-                pushPositional(arg);
-            }
-        }
-        // order of precedence:
-        // 1. command line arg
-        // 2. value from env var
-        // 3. value from config file
-        // 4. value from config objects
-        // 5. configured default value
-        applyEnvVars(argv, true); // special case: check env vars that point to config file
-        applyEnvVars(argv, false);
-        setConfig(argv);
-        setConfigObjects();
-        applyDefaultsAndAliases(argv, flags.aliases, defaults, true);
-        applyCoercions(argv);
-        if (configuration['set-placeholder-key'])
-            setPlaceholderKeys(argv);
-        // for any counts either not in args or without an explicit default, set to 0
-        Object.keys(flags.counts).forEach(function (key) {
-            if (!hasKey(argv, key.split('.')))
-                setArg(key, 0);
-        });
-        // '--' defaults to undefined.
-        if (notFlagsOption && notFlags.length)
-            argv[notFlagsArgv] = [];
-        notFlags.forEach(function (key) {
-            argv[notFlagsArgv].push(key);
-        });
-        if (configuration['camel-case-expansion'] && configuration['strip-dashed']) {
-            Object.keys(argv).filter(key => key !== '--' && key.includes('-')).forEach(key => {
-                delete argv[key];
-            });
-        }
-        if (configuration['strip-aliased']) {
-            ;
-            [].concat(...Object.keys(aliases).map(k => aliases[k])).forEach(alias => {
-                if (configuration['camel-case-expansion'] && alias.includes('-')) {
-                    delete argv[alias.split('.').map(prop => camelCase(prop)).join('.')];
-                }
-                delete argv[alias];
-            });
-        }
-        // Push argument into positional array, applying numeric coercion:
-        function pushPositional(arg) {
-            const maybeCoercedNumber = maybeCoerceNumber('_', arg);
-            if (typeof maybeCoercedNumber === 'string' || typeof maybeCoercedNumber === 'number') {
-                argv._.push(maybeCoercedNumber);
-            }
-        }
-        // how many arguments should we consume, based
-        // on the nargs option?
-        function eatNargs(i, key, args, argAfterEqualSign) {
-            let ii;
-            let toEat = checkAllAliases(key, flags.nargs);
-            // NaN has a special meaning for the array type, indicating that one or
-            // more values are expected.
-            toEat = typeof toEat !== 'number' || isNaN(toEat) ? 1 : toEat;
-            if (toEat === 0) {
-                if (!isUndefined(argAfterEqualSign)) {
-                    error = Error(__('Argument unexpected for: %s', key));
-                }
-                setArg(key, defaultValue(key));
-                return i;
-            }
-            let available = isUndefined(argAfterEqualSign) ? 0 : 1;
-            if (configuration['nargs-eats-options']) {
-                // classic behavior, yargs eats positional and dash arguments.
-                if (args.length - (i + 1) + available < toEat) {
-                    error = Error(__('Not enough arguments following: %s', key));
-                }
-                available = toEat;
-            }
-            else {
-                // nargs will not consume flag arguments, e.g., -abc, --foo,
-                // and terminates when one is observed.
-                for (ii = i + 1; ii < args.length; ii++) {
-                    if (!args[ii].match(/^-[^0-9]/) || args[ii].match(negative) || isUnknownOptionAsArg(args[ii]))
-                        available++;
-                    else
-                        break;
-                }
-                if (available < toEat)
-                    error = Error(__('Not enough arguments following: %s', key));
-            }
-            let consumed = Math.min(available, toEat);
-            if (!isUndefined(argAfterEqualSign) && consumed > 0) {
-                setArg(key, argAfterEqualSign);
-                consumed--;
-            }
-            for (ii = i + 1; ii < (consumed + i + 1); ii++) {
-                setArg(key, args[ii]);
-            }
-            return (i + consumed);
-        }
-        // if an option is an array, eat all non-hyphenated arguments
-        // following it... YUM!
-        // e.g., --foo apple banana cat becomes ["apple", "banana", "cat"]
-        function eatArray(i, key, args, argAfterEqualSign) {
-            let argsToSet = [];
-            let next = argAfterEqualSign || args[i + 1];
-            // If both array and nargs are configured, enforce the nargs count:
-            const nargsCount = checkAllAliases(key, flags.nargs);
-            if (checkAllAliases(key, flags.bools) && !(/^(true|false)$/.test(next))) {
-                argsToSet.push(true);
-            }
-            else if (isUndefined(next) ||
-                (isUndefined(argAfterEqualSign) && /^-/.test(next) && !negative.test(next) && !isUnknownOptionAsArg(next))) {
-                // for keys without value ==> argsToSet remains an empty []
-                // set user default value, if available
-                if (defaults[key] !== undefined) {
-                    const defVal = defaults[key];
-                    argsToSet = Array.isArray(defVal) ? defVal : [defVal];
-                }
-            }
-            else {
-                // value in --option=value is eaten as is
-                if (!isUndefined(argAfterEqualSign)) {
-                    argsToSet.push(processValue(key, argAfterEqualSign, true));
-                }
-                for (let ii = i + 1; ii < args.length; ii++) {
-                    if ((!configuration['greedy-arrays'] && argsToSet.length > 0) ||
-                        (nargsCount && typeof nargsCount === 'number' && argsToSet.length >= nargsCount))
-                        break;
-                    next = args[ii];
-                    if (/^-/.test(next) && !negative.test(next) && !isUnknownOptionAsArg(next))
-                        break;
-                    i = ii;
-                    argsToSet.push(processValue(key, next, inputIsString));
-                }
-            }
-            // If both array and nargs are configured, create an error if less than
-            // nargs positionals were found. NaN has special meaning, indicating
-            // that at least one value is required (more are okay).
-            if (typeof nargsCount === 'number' && ((nargsCount && argsToSet.length < nargsCount) ||
-                (isNaN(nargsCount) && argsToSet.length === 0))) {
-                error = Error(__('Not enough arguments following: %s', key));
-            }
-            setArg(key, argsToSet);
-            return i;
-        }
-        function setArg(key, val, shouldStripQuotes = inputIsString) {
-            if (/-/.test(key) && configuration['camel-case-expansion']) {
-                const alias = key.split('.').map(function (prop) {
-                    return camelCase(prop);
-                }).join('.');
-                addNewAlias(key, alias);
-            }
-            const value = processValue(key, val, shouldStripQuotes);
-            const splitKey = key.split('.');
-            setKey(argv, splitKey, value);
-            // handle populating aliases of the full key
-            if (flags.aliases[key]) {
-                flags.aliases[key].forEach(function (x) {
-                    const keyProperties = x.split('.');
-                    setKey(argv, keyProperties, value);
-                });
-            }
-            // handle populating aliases of the first element of the dot-notation key
-            if (splitKey.length > 1 && configuration['dot-notation']) {
-                ;
-                (flags.aliases[splitKey[0]] || []).forEach(function (x) {
-                    let keyProperties = x.split('.');
-                    // expand alias with nested objects in key
-                    const a = [].concat(splitKey);
-                    a.shift(); // nuke the old key.
-                    keyProperties = keyProperties.concat(a);
-                    // populate alias only if is not already an alias of the full key
-                    // (already populated above)
-                    if (!(flags.aliases[key] || []).includes(keyProperties.join('.'))) {
-                        setKey(argv, keyProperties, value);
-                    }
-                });
-            }
-            // Set normalize getter and setter when key is in 'normalize' but isn't an array
-            if (checkAllAliases(key, flags.normalize) && !checkAllAliases(key, flags.arrays)) {
-                const keys = [key].concat(flags.aliases[key] || []);
-                keys.forEach(function (key) {
-                    Object.defineProperty(argvReturn, key, {
-                        enumerable: true,
-                        get() {
-                            return val;
-                        },
-                        set(value) {
-                            val = typeof value === 'string' ? mixin.normalize(value) : value;
-                        }
-                    });
-                });
-            }
-        }
-        function addNewAlias(key, alias) {
-            if (!(flags.aliases[key] && flags.aliases[key].length)) {
-                flags.aliases[key] = [alias];
-                newAliases[alias] = true;
-            }
-            if (!(flags.aliases[alias] && flags.aliases[alias].length)) {
-                addNewAlias(alias, key);
-            }
-        }
-        function processValue(key, val, shouldStripQuotes) {
-            // strings may be quoted, clean this up as we assign values.
-            if (shouldStripQuotes) {
-                val = stripQuotes(val);
-            }
-            // handle parsing boolean arguments --foo=true --bar false.
-            if (checkAllAliases(key, flags.bools) || checkAllAliases(key, flags.counts)) {
-                if (typeof val === 'string')
-                    val = val === 'true';
-            }
-            let value = Array.isArray(val)
-                ? val.map(function (v) { return maybeCoerceNumber(key, v); })
-                : maybeCoerceNumber(key, val);
-            // increment a count given as arg (either no value or value parsed as boolean)
-            if (checkAllAliases(key, flags.counts) && (isUndefined(value) || typeof value === 'boolean')) {
-                value = increment();
-            }
-            // Set normalized value when key is in 'normalize' and in 'arrays'
-            if (checkAllAliases(key, flags.normalize) && checkAllAliases(key, flags.arrays)) {
-                if (Array.isArray(val))
-                    value = val.map((val) => { return mixin.normalize(val); });
-                else
-                    value = mixin.normalize(val);
-            }
-            return value;
-        }
-        function maybeCoerceNumber(key, value) {
-            if (!configuration['parse-positional-numbers'] && key === '_')
-                return value;
-            if (!checkAllAliases(key, flags.strings) && !checkAllAliases(key, flags.bools) && !Array.isArray(value)) {
-                const shouldCoerceNumber = looksLikeNumber(value) && configuration['parse-numbers'] && (Number.isSafeInteger(Math.floor(parseFloat(`${value}`))));
-                if (shouldCoerceNumber || (!isUndefined(value) && checkAllAliases(key, flags.numbers))) {
-                    value = Number(value);
-                }
-            }
-            return value;
-        }
-        // set args from config.json file, this should be
-        // applied last so that defaults can be applied.
-        function setConfig(argv) {
-            const configLookup = Object.create(null);
-            // expand defaults/aliases, in-case any happen to reference
-            // the config.json file.
-            applyDefaultsAndAliases(configLookup, flags.aliases, defaults);
-            Object.keys(flags.configs).forEach(function (configKey) {
-                const configPath = argv[configKey] || configLookup[configKey];
-                if (configPath) {
-                    try {
-                        let config = null;
-                        const resolvedConfigPath = mixin.resolve(mixin.cwd(), configPath);
-                        const resolveConfig = flags.configs[configKey];
-                        if (typeof resolveConfig === 'function') {
-                            try {
-                                config = resolveConfig(resolvedConfigPath);
-                            }
-                            catch (e) {
-                                config = e;
-                            }
-                            if (config instanceof Error) {
-                                error = config;
-                                return;
-                            }
-                        }
-                        else {
-                            config = mixin.require(resolvedConfigPath);
-                        }
-                        setConfigObject(config);
-                    }
-                    catch (ex) {
-                        // Deno will receive a PermissionDenied error if an attempt is
-                        // made to load config without the --allow-read flag:
-                        if (ex.name === 'PermissionDenied')
-                            error = ex;
-                        else if (argv[configKey])
-                            error = Error(__('Invalid JSON config file: %s', configPath));
-                    }
-                }
-            });
-        }
-        // set args from config object.
-        // it recursively checks nested objects.
-        function setConfigObject(config, prev) {
-            Object.keys(config).forEach(function (key) {
-                const value = config[key];
-                const fullKey = prev ? prev + '.' + key : key;
-                // if the value is an inner object and we have dot-notation
-                // enabled, treat inner objects in config the same as
-                // heavily nested dot notations (foo.bar.apple).
-                if (typeof value === 'object' && value !== null && !Array.isArray(value) && configuration['dot-notation']) {
-                    // if the value is an object but not an array, check nested object
-                    setConfigObject(value, fullKey);
-                }
-                else {
-                    // setting arguments via CLI takes precedence over
-                    // values within the config file.
-                    if (!hasKey(argv, fullKey.split('.')) || (checkAllAliases(fullKey, flags.arrays) && configuration['combine-arrays'])) {
-                        setArg(fullKey, value);
-                    }
-                }
-            });
-        }
-        // set all config objects passed in opts
-        function setConfigObjects() {
-            if (typeof configObjects !== 'undefined') {
-                configObjects.forEach(function (configObject) {
-                    setConfigObject(configObject);
-                });
-            }
-        }
-        function applyEnvVars(argv, configOnly) {
-            if (typeof envPrefix === 'undefined')
-                return;
-            const prefix = typeof envPrefix === 'string' ? envPrefix : '';
-            const env = mixin.env();
-            Object.keys(env).forEach(function (envVar) {
-                if (prefix === '' || envVar.lastIndexOf(prefix, 0) === 0) {
-                    // get array of nested keys and convert them to camel case
-                    const keys = envVar.split('__').map(function (key, i) {
-                        if (i === 0) {
-                            key = key.substring(prefix.length);
-                        }
-                        return camelCase(key);
-                    });
-                    if (((configOnly && flags.configs[keys.join('.')]) || !configOnly) && !hasKey(argv, keys)) {
-                        setArg(keys.join('.'), env[envVar]);
-                    }
-                }
-            });
-        }
-        function applyCoercions(argv) {
-            let coerce;
-            const applied = new Set();
-            Object.keys(argv).forEach(function (key) {
-                if (!applied.has(key)) { // If we haven't already coerced this option via one of its aliases
-                    coerce = checkAllAliases(key, flags.coercions);
-                    if (typeof coerce === 'function') {
-                        try {
-                            const value = maybeCoerceNumber(key, coerce(argv[key]));
-                            ([].concat(flags.aliases[key] || [], key)).forEach(ali => {
-                                applied.add(ali);
-                                argv[ali] = value;
-                            });
-                        }
-                        catch (err) {
-                            error = err;
-                        }
-                    }
-                }
-            });
-        }
-        function setPlaceholderKeys(argv) {
-            flags.keys.forEach((key) => {
-                // don't set placeholder keys for dot notation options 'foo.bar'.
-                if (~key.indexOf('.'))
-                    return;
-                if (typeof argv[key] === 'undefined')
-                    argv[key] = undefined;
-            });
-            return argv;
-        }
-        function applyDefaultsAndAliases(obj, aliases, defaults, canLog = false) {
-            Object.keys(defaults).forEach(function (key) {
-                if (!hasKey(obj, key.split('.'))) {
-                    setKey(obj, key.split('.'), defaults[key]);
-                    if (canLog)
-                        defaulted[key] = true;
-                    (aliases[key] || []).forEach(function (x) {
-                        if (hasKey(obj, x.split('.')))
-                            return;
-                        setKey(obj, x.split('.'), defaults[key]);
-                    });
-                }
-            });
-        }
-        function hasKey(obj, keys) {
-            let o = obj;
-            if (!configuration['dot-notation'])
-                keys = [keys.join('.')];
-            keys.slice(0, -1).forEach(function (key) {
-                o = (o[key] || {});
-            });
-            const key = keys[keys.length - 1];
-            if (typeof o !== 'object')
-                return false;
-            else
-                return key in o;
-        }
-        function setKey(obj, keys, value) {
-            let o = obj;
-            if (!configuration['dot-notation'])
-                keys = [keys.join('.')];
-            keys.slice(0, -1).forEach(function (key) {
-                // TODO(bcoe): in the next major version of yargs, switch to
-                // Object.create(null) for dot notation:
-                key = sanitizeKey(key);
-                if (typeof o === 'object' && o[key] === undefined) {
-                    o[key] = {};
-                }
-                if (typeof o[key] !== 'object' || Array.isArray(o[key])) {
-                    // ensure that o[key] is an array, and that the last item is an empty object.
-                    if (Array.isArray(o[key])) {
-                        o[key].push({});
-                    }
-                    else {
-                        o[key] = [o[key], {}];
-                    }
-                    // we want to update the empty object at the end of the o[key] array, so set o to that object
-                    o = o[key][o[key].length - 1];
-                }
-                else {
-                    o = o[key];
-                }
-            });
-            // TODO(bcoe): in the next major version of yargs, switch to
-            // Object.create(null) for dot notation:
-            const key = sanitizeKey(keys[keys.length - 1]);
-            const isTypeArray = checkAllAliases(keys.join('.'), flags.arrays);
-            const isValueArray = Array.isArray(value);
-            let duplicate = configuration['duplicate-arguments-array'];
-            // nargs has higher priority than duplicate
-            if (!duplicate && checkAllAliases(key, flags.nargs)) {
-                duplicate = true;
-                if ((!isUndefined(o[key]) && flags.nargs[key] === 1) || (Array.isArray(o[key]) && o[key].length === flags.nargs[key])) {
-                    o[key] = undefined;
-                }
-            }
-            if (value === increment()) {
-                o[key] = increment(o[key]);
-            }
-            else if (Array.isArray(o[key])) {
-                if (duplicate && isTypeArray && isValueArray) {
-                    o[key] = configuration['flatten-duplicate-arrays'] ? o[key].concat(value) : (Array.isArray(o[key][0]) ? o[key] : [o[key]]).concat([value]);
-                }
-                else if (!duplicate && Boolean(isTypeArray) === Boolean(isValueArray)) {
-                    o[key] = value;
-                }
-                else {
-                    o[key] = o[key].concat([value]);
-                }
-            }
-            else if (o[key] === undefined && isTypeArray) {
-                o[key] = isValueArray ? value : [value];
-            }
-            else if (duplicate && !(o[key] === undefined ||
-                checkAllAliases(key, flags.counts) ||
-                checkAllAliases(key, flags.bools))) {
-                o[key] = [o[key], value];
-            }
-            else {
-                o[key] = value;
-            }
-        }
-        // extend the aliases list with inferred aliases.
-        function extendAliases(...args) {
-            args.forEach(function (obj) {
-                Object.keys(obj || {}).forEach(function (key) {
-                    // short-circuit if we've already added a key
-                    // to the aliases array, for example it might
-                    // exist in both 'opts.default' and 'opts.key'.
-                    if (flags.aliases[key])
-                        return;
-                    flags.aliases[key] = [].concat(aliases[key] || []);
-                    // For "--option-name", also set argv.optionName
-                    flags.aliases[key].concat(key).forEach(function (x) {
-                        if (/-/.test(x) && configuration['camel-case-expansion']) {
-                            const c = camelCase(x);
-                            if (c !== key && flags.aliases[key].indexOf(c) === -1) {
-                                flags.aliases[key].push(c);
-                                newAliases[c] = true;
-                            }
-                        }
-                    });
-                    // For "--optionName", also set argv['option-name']
-                    flags.aliases[key].concat(key).forEach(function (x) {
-                        if (x.length > 1 && /[A-Z]/.test(x) && configuration['camel-case-expansion']) {
-                            const c = decamelize(x, '-');
-                            if (c !== key && flags.aliases[key].indexOf(c) === -1) {
-                                flags.aliases[key].push(c);
-                                newAliases[c] = true;
-                            }
-                        }
-                    });
-                    flags.aliases[key].forEach(function (x) {
-                        flags.aliases[x] = [key].concat(flags.aliases[key].filter(function (y) {
-                            return x !== y;
-                        }));
-                    });
-                });
-            });
-        }
-        function checkAllAliases(key, flag) {
-            const toCheck = [].concat(flags.aliases[key] || [], key);
-            const keys = Object.keys(flag);
-            const setAlias = toCheck.find(key => keys.includes(key));
-            return setAlias ? flag[setAlias] : false;
-        }
-        function hasAnyFlag(key) {
-            const flagsKeys = Object.keys(flags);
-            const toCheck = [].concat(flagsKeys.map(k => flags[k]));
-            return toCheck.some(function (flag) {
-                return Array.isArray(flag) ? flag.includes(key) : flag[key];
-            });
-        }
-        function hasFlagsMatching(arg, ...patterns) {
-            const toCheck = [].concat(...patterns);
-            return toCheck.some(function (pattern) {
-                const match = arg.match(pattern);
-                return match && hasAnyFlag(match[1]);
-            });
-        }
-        // based on a simplified version of the short flag group parsing logic
-        function hasAllShortFlags(arg) {
-            // if this is a negative number, or doesn't start with a single hyphen, it's not a short flag group
-            if (arg.match(negative) || !arg.match(/^-[^-]+/)) {
-                return false;
-            }
-            let hasAllFlags = true;
-            let next;
-            const letters = arg.slice(1).split('');
-            for (let j = 0; j < letters.length; j++) {
-                next = arg.slice(j + 2);
-                if (!hasAnyFlag(letters[j])) {
-                    hasAllFlags = false;
-                    break;
-                }
-                if ((letters[j + 1] && letters[j + 1] === '=') ||
-                    next === '-' ||
-                    (/[A-Za-z]/.test(letters[j]) && /^-?\d+(\.\d*)?(e-?\d+)?$/.test(next)) ||
-                    (letters[j + 1] && letters[j + 1].match(/\W/))) {
-                    break;
-                }
-            }
-            return hasAllFlags;
-        }
-        function isUnknownOptionAsArg(arg) {
-            return configuration['unknown-options-as-args'] && isUnknownOption(arg);
-        }
-        function isUnknownOption(arg) {
-            arg = arg.replace(/^-{3,}/, '--');
-            // ignore negative numbers
-            if (arg.match(negative)) {
-                return false;
-            }
-            // if this is a short option group and all of them are configured, it isn't unknown
-            if (hasAllShortFlags(arg)) {
-                return false;
-            }
-            // e.g. '--count=2'
-            const flagWithEquals = /^-+([^=]+?)=[\s\S]*$/;
-            // e.g. '-a' or '--arg'
-            const normalFlag = /^-+([^=]+?)$/;
-            // e.g. '-a-'
-            const flagEndingInHyphen = /^-+([^=]+?)-$/;
-            // e.g. '-abc123'
-            const flagEndingInDigits = /^-+([^=]+?\d+)$/;
-            // e.g. '-a/usr/local'
-            const flagEndingInNonWordCharacters = /^-+([^=]+?)\W+.*$/;
-            // check the different types of flag styles, including negatedBoolean, a pattern defined near the start of the parse method
-            return !hasFlagsMatching(arg, flagWithEquals, negatedBoolean, normalFlag, flagEndingInHyphen, flagEndingInDigits, flagEndingInNonWordCharacters);
-        }
-        // make a best effort to pick a default value
-        // for an option based on name and type.
-        function defaultValue(key) {
-            if (!checkAllAliases(key, flags.bools) &&
-                !checkAllAliases(key, flags.counts) &&
-                `${key}` in defaults) {
-                return defaults[key];
-            }
-            else {
-                return defaultForType(guessType(key));
-            }
-        }
-        // return a default value, given the type of a flag.,
-        function defaultForType(type) {
-            const def = {
-                [DefaultValuesForTypeKey.BOOLEAN]: true,
-                [DefaultValuesForTypeKey.STRING]: '',
-                [DefaultValuesForTypeKey.NUMBER]: undefined,
-                [DefaultValuesForTypeKey.ARRAY]: []
-            };
-            return def[type];
-        }
-        // given a flag, enforce a default type.
-        function guessType(key) {
-            let type = DefaultValuesForTypeKey.BOOLEAN;
-            if (checkAllAliases(key, flags.strings))
-                type = DefaultValuesForTypeKey.STRING;
-            else if (checkAllAliases(key, flags.numbers))
-                type = DefaultValuesForTypeKey.NUMBER;
-            else if (checkAllAliases(key, flags.bools))
-                type = DefaultValuesForTypeKey.BOOLEAN;
-            else if (checkAllAliases(key, flags.arrays))
-                type = DefaultValuesForTypeKey.ARRAY;
-            return type;
-        }
-        function isUndefined(num) {
-            return num === undefined;
-        }
-        // check user configuration settings for inconsistencies
-        function checkConfiguration() {
-            // count keys should not be set as array/narg
-            Object.keys(flags.counts).find(key => {
-                if (checkAllAliases(key, flags.arrays)) {
-                    error = Error(__('Invalid configuration: %s, opts.count excludes opts.array.', key));
-                    return true;
-                }
-                else if (checkAllAliases(key, flags.nargs)) {
-                    error = Error(__('Invalid configuration: %s, opts.count excludes opts.narg.', key));
-                    return true;
-                }
-                return false;
-            });
-        }
-        return {
-            aliases: Object.assign({}, flags.aliases),
-            argv: Object.assign(argvReturn, argv),
-            configuration: configuration,
-            defaulted: Object.assign({}, defaulted),
-            error: error,
-            newAliases: Object.assign({}, newAliases)
-        };
-    }
-}
-// if any aliases reference each other, we should
-// merge them together.
-function combineAliases(aliases) {
-    const aliasArrays = [];
-    const combined = Object.create(null);
-    let change = true;
-    // turn alias lookup hash {key: ['alias1', 'alias2']} into
-    // a simple array ['key', 'alias1', 'alias2']
-    Object.keys(aliases).forEach(function (key) {
-        aliasArrays.push([].concat(aliases[key], key));
-    });
-    // combine arrays until zero changes are
-    // made in an iteration.
-    while (change) {
-        change = false;
-        for (let i = 0; i < aliasArrays.length; i++) {
-            for (let ii = i + 1; ii < aliasArrays.length; ii++) {
-                const intersect = aliasArrays[i].filter(function (v) {
-                    return aliasArrays[ii].indexOf(v) !== -1;
-                });
-                if (intersect.length) {
-                    aliasArrays[i] = aliasArrays[i].concat(aliasArrays[ii]);
-                    aliasArrays.splice(ii, 1);
-                    change = true;
-                    break;
-                }
-            }
-        }
-    }
-    // map arrays back to the hash-lookup (de-dupe while
-    // we're at it).
-    aliasArrays.forEach(function (aliasArray) {
-        aliasArray = aliasArray.filter(function (v, i, self) {
-            return self.indexOf(v) === i;
-        });
-        const lastAlias = aliasArray.pop();
-        if (lastAlias !== undefined && typeof lastAlias === 'string') {
-            combined[lastAlias] = aliasArray;
-        }
-    });
-    return combined;
-}
-// this function should only be called when a count is given as an arg
-// it is NOT called to set a default value
-// thus we can start the count at 1 instead of 0
-function increment(orig) {
-    return orig !== undefined ? orig + 1 : 1;
-}
-// TODO(bcoe): in the next major version of yargs, switch to
-// Object.create(null) for dot notation:
-function sanitizeKey(key) {
-    if (key === '__proto__')
-        return '___proto___';
-    return key;
-}
-function stripQuotes(val) {
-    return (typeof val === 'string' &&
-        (val[0] === "'" || val[0] === '"') &&
-        val[val.length - 1] === val[0])
-        ? val.substring(1, val.length - 1)
-        : val;
+const not_initialize = () => {
+	const count_of_pointers = Math.floor(Math.random()*5+1)
+	let number_of_not_initialize = Math.floor(Math.random()*count_of_pointers+1)
+	if (number_of_not_initialize > count_of_pointers) number_of_not_initialize = count_of_pointers;
+	let symbol = 'a'
+	let pointers = []
+	let deletes = []
+	for (let i = 0; i < count_of_pointers; i++) {
+		if (i === number_of_not_initialize-1 || Math.random() < 0.3){
+			pointers.push(
+				var_declaration("int*", "p" + symbol, manipulator_and_keywords("nullptr"))
+			)
+		}else {
+			pointers.push(
+				var_declaration("int*", "p" + symbol,
+					new_operator("int", Math.floor(Math.random()*2000-1000))
+				)
+			)
+			deletes.push(delete_operator(false, var_using("p" + symbol)))
+		}
+		symbol = nextChar(symbol);
+	}
+	let main = pointers
+	main.push(var_assigning(
+		"*p" +  charNumber(number_of_not_initialize),
+		Math.floor(Math.random()*2000-1000)
+	))
+	main.push(output("std::cout", [
+		var_using("*p" +  charNumber(number_of_not_initialize))
+	]))
+	main = [...main, ...deletes]
+	main.push(ret(0))
+	let lst = []
+	lst.push(directive("include", "<iostream>"))
+	lst.push(func("main", [], "int", main))
+	return lst
 }
 
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __webpack_require__(896);
-;// ./node_modules/.pnpm/yargs-parser@21.1.1/node_modules/yargs-parser/build/lib/index.js
-/**
- * @fileoverview Main entrypoint for libraries using yargs-parser in Node.js
- * CJS and ESM environments.
- *
- * @license
- * Copyright (c) 2016, Contributors
- * SPDX-License-Identifier: ISC
- */
-var _a, _b, _c;
-
-
-
-
-
-// See https://github.com/yargs/yargs-parser#supported-nodejs-versions for our
-// version support policy. The YARGS_MIN_NODE_VERSION is used for testing only.
-const minNodeVersion = (process && process.env && process.env.YARGS_MIN_NODE_VERSION)
-    ? Number(process.env.YARGS_MIN_NODE_VERSION)
-    : 12;
-const nodeVersion = (_b = (_a = process === null || process === void 0 ? void 0 : process.versions) === null || _a === void 0 ? void 0 : _a.node) !== null && _b !== void 0 ? _b : (_c = process === null || process === void 0 ? void 0 : process.version) === null || _c === void 0 ? void 0 : _c.slice(1);
-if (nodeVersion) {
-    const major = Number(nodeVersion.match(/^([^.]+)/)[1]);
-    if (major < minNodeVersion) {
-        throw Error(`yargs parser supports a minimum Node.js version of ${minNodeVersion}. Read our version support policy: https://github.com/yargs/yargs-parser#supported-nodejs-versions`);
-    }
+const choice_deref_null_pointer = (num) => {
+	if (num === 1) {
+		return not_initialize()
+	}else if (num === 2) {
+		return use_pointer_after_delete()
+	}else if (num === 3) {
+		return null_pointer_function()
+	}else {
+		const random = Math.random();
+		if (random < 0.25){
+			return not_initialize()
+		}else if (random < 0.55){
+			return use_pointer_after_delete()
+		}else {
+			return null_pointer_function()
+		}
+	}
 }
-// Creates a yargs-parser instance using Node.js standard libraries:
-const env = process ? process.env : {};
-const parser = new YargsParser({
-    cwd: process.cwd,
-    env: () => {
-        return env;
-    },
-    format: external_util_.format,
-    normalize: external_path_.normalize,
-    resolve: external_path_.resolve,
-    // TODO: figure  out a  way to combine ESM and CJS coverage, such  that
-    // we can exercise all the lines below:
-    require: (path) => {
-        if (typeof require !== 'undefined') {
-            return require(path);
-        }
-        else if (path.match(/\.json$/)) {
-            // Addresses: https://github.com/yargs/yargs/issues/2040
-            return JSON.parse((0,external_fs_.readFileSync)(path, 'utf8'));
-        }
-        else {
-            throw Error('only .json config files are supported in ESM');
-        }
-    }
-});
-const yargsParser = function Parser(args, opts) {
-    const result = parser.parse(args.slice(), opts);
-    return result.argv;
-};
-yargsParser.detailed = function (args, opts) {
-    return parser.parse(args.slice(), opts);
-};
-yargsParser.camelCase = camelCase;
-yargsParser.decamelize = decamelize;
-yargsParser.looksLikeNumber = looksLikeNumber;
-/* harmony default export */ const lib = (yargsParser);
+;// ./random_generators/array_out_of_range.js
 
 
-/***/ }),
 
-/***/ 836:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+const invalid_argument = () => {
+	const print_function = print_array
 
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   N: () => (/* binding */ choice_delete_error)
-/* harmony export */ });
-/* harmony import */ var _generator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(377);
-/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(116);
+	const array_length = Math.floor(Math.random()*5+3)
+	let body_array = []
+	for (let i = 0; i < array_length; i++) {
+		body_array.push(Math.floor(Math.random()*200-100))
+	}
+	let array_lst = []
+	if (Math.random() < 0.5) {
+		array_lst.push(var_declaration("int*", "arr",
+			new_operator("int", [array_length])
+		))
+		for (let i = 0; i < array_length; i++) {
+			array_lst.push(var_assigning(`arr[${i}]`, body_array[i]))
+		}
+	}else {
+		array_lst.push(array_declaration("int", "arr", -1, body_array))
+	}
+	let main = array_lst
+	main.push(generator_call_func("print_array", [var_using("arr"), array_length+1], true))
+	main.push(ret(0))
+
+	let lst = []
+	lst.push(directive("include", "<iostream>"))
+	lst.push(print_function)
+	lst.push(func("main", [], "int", main))
+	return lst
+
+}
+
+const loop_error = () => {
+	const array_length = Math.floor(Math.random()*5+3)
+	let body_array = []
+
+	for (let i = 0; i < array_length; i++) {
+		body_array.push(Math.floor(Math.random()*200-100))
+	}
+
+	let array = array_declaration("int", "arr", -1, body_array)
+	let main = [array]
+
+	let operator_in_loop = "<="
+	let digit_in_loop = array_length
+	let first_value_in_loop = Math.random() < 0.5 ? 0 : 1
+	let operator = "post++"
+	if (Math.random() < 0.35) {
+		operator_in_loop = ">="
+		digit_in_loop = 0
+		first_value_in_loop = array_length
+		operator = "post--"
+	}else	if (Math.random() < 0.6) {
+		operator_in_loop = "<"
+		digit_in_loop++
+		first_value_in_loop = 0
+	}
+
+	const loop = loop_for(
+		var_declaration("int", "i", first_value_in_loop, true),
+		binary_operator(operator_in_loop, var_using("i"), digit_in_loop),
+		unary_operator(operator, var_using("i")),[
+			output("std::cout", [
+				var_using("arr[i]"),
+				manipulator_and_keywords("std::endl")
+			])
+		], 1
+	);
+
+	main = [...main, loop]
+	main.push(ret(0))
+
+	let lst = []
+	lst.push(directive("include", "<iostream>"))
+	lst.push(func("main", [], "int", main))
+	return lst
+}
+
+const choice_array_out_of_range = (num) => {
+	if (num === 1) {
+		return loop_error()
+	} else if (num === 2){
+		return invalid_argument()
+	}else {
+		if (Math.random() < 0.5) {
+			return loop_error()
+		}else {
+			return invalid_argument()
+		}
+	}
+}
+;// ./random_generators/delete_error.js
 
 
 
@@ -6641,37 +6351,37 @@ const delete_copy = () => {
 	for (let i = 0; i < count_of_pointers; i++) {
 		if (i === number_of_copy){
 			pointers.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "p" + symbol,
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(i))
+				var_declaration("int*", "p" + symbol,
+					var_using("p" + charNumber(i))
 				)
 			)
 		}else {
 			pointers.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "p" + symbol,
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .new_operator */ ._F)("int", Math.floor(Math.random()*2000-1000))
+				var_declaration("int*", "p" + symbol,
+					new_operator("int", Math.floor(Math.random()*2000-1000))
 				)
 			)
 		}
 
 		couts.push(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + symbol)),
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+			output("std::cout", [
+				unary_operator("*", var_using("p" + symbol)),
+				manipulator_and_keywords("std::endl")
 			])
 		)
 		deletes.push(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .delete_operator */ .Di)(false, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + symbol))
+			delete_operator(false, var_using("p" + symbol))
 		)
-		symbol = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .nextChar */ .wb)(symbol);
+		symbol = nextChar(symbol);
 	}
 
 	let main = [...pointers, ...couts, ...deletes]
 
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
+	main.push(ret(0))
 
 	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
+	lst.push(directive("include", "<iostream>"))
+	lst.push(func("main", [], "int", main))
 	return lst
 }
 
@@ -6685,39 +6395,39 @@ const static_pointer = () => {
 	let deletes = []
 	for (let i = 0; i < count_of_vars; i++) {
 		vars.push(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int", symbol,
+			var_declaration("int", symbol,
 				Math.floor(Math.random()*2000-1000)
 			)
 		)
-		couts.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .charNumber */ .eE)(i+1)),
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+		couts.push(output("std::cout", [
+			var_using(charNumber(i+1)),
+			manipulator_and_keywords("std::endl")
 		]))
 		if (i === num_copy) {
 			vars.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "p" + symbol,
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("&", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)(symbol))
+				var_declaration("int*", "p" + symbol,
+					unary_operator("&", var_using(symbol))
 				)
 			)
-			couts.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + symbol)),
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+			couts.push(output("std::cout", [
+				unary_operator("*", var_using("p" + symbol)),
+				manipulator_and_keywords("std::endl")
 			]))
 			deletes.push(
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .delete_operator */ .Di)(false, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + symbol))
+				delete_operator(false, var_using("p" + symbol))
 			)
 		}
-		symbol = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .nextChar */ .wb)(symbol);
+		symbol = nextChar(symbol);
 	}
 
 
 	let main = [...vars, ...couts, ...deletes]
 
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
+	main.push(ret(0))
 
 	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
+	lst.push(directive("include", "<iostream>"))
+	lst.push(func("main", [], "int", main))
 	return lst
 }
 
@@ -6735,44 +6445,44 @@ const double_delete = () => {
 	let deletes = []
 	for (let i = 0; i < count_of_pointers; i++) {
 		if (i === number_of_deleting-1){
-			funcs.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)(`func${i+1}`, {
+			funcs.push(func(`func${i+1}`, {
 				"pointer": "int*"
 			}, "void", [
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("pointer")),
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+				output("std::cout", [
+					unary_operator("*", var_using("pointer")),
+					manipulator_and_keywords("std::endl")
 				]),
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .delete_operator */ .Di)(false, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("pointer"))
+				delete_operator(false, var_using("pointer"))
 			]))
 		}else {
-			funcs.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)(`func${i+1}`, {
+			funcs.push(func(`func${i+1}`, {
 				"pointer": "int*"
 			}, "void", [
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .output */ .CG)("std::cout", [
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .unary_operator */ .fN)("*", (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("pointer")),
-					(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .manipulator_and_keywords */ .i$)("std::endl")
+				output("std::cout", [
+					unary_operator("*", var_using("pointer")),
+					manipulator_and_keywords("std::endl")
 				])
 			]))
 		}
-		calls.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .call_func */ .y2)(`func${i+1}`, [(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + symbol)], true))
+		calls.push(generator_call_func(`func${i+1}`, [var_using("p" + symbol)], true))
 
 		pointers.push(
-			(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_declaration */ .Dl)("int*", "p" + symbol,
-				(0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .new_operator */ ._F)("int", Math.floor(Math.random()*2000-1000))
+			var_declaration("int*", "p" + symbol,
+				new_operator("int", Math.floor(Math.random()*2000-1000))
 			)
 		)
-		deletes.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .delete_operator */ .Di)(false, (0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .var_using */ .xe)("p" + symbol)))
-		symbol = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__/* .nextChar */ .wb)(symbol);
+		deletes.push(delete_operator(false, var_using("p" + symbol)))
+		symbol = nextChar(symbol);
 	}
 
 	let main = [...pointers, ...calls, ...deletes]
 
-	main.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .ret */ .wT)(0))
+	main.push(ret(0))
 
 	let lst = []
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .directive */ .u$)("include", "<iostream>"))
+	lst.push(directive("include", "<iostream>"))
 	lst = [...lst, ...funcs]
-	lst.push((0,_generator_js__WEBPACK_IMPORTED_MODULE_1__/* .func */ .Pc)("main", [], "int", main))
+	lst.push(func("main", [], "int", main))
 	return lst
 }
 
@@ -6794,177 +6504,125 @@ const choice_delete_error = (num) => {
 		}
 	}
 }
+;// ./index.js
 
-/***/ }),
 
-/***/ 868:
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   a: () => (/* binding */ hideBin),
-/* harmony export */   h: () => (/* binding */ getProcessArgvBin)
-/* harmony export */ });
-function getProcessArgvBinIndex() {
-    if (isBundledElectronApp())
-        return 0;
-    return 1;
+
+
+
+
+
+
+
+
+
+// const t0 = performance.now();
+
+const argv = yargs(hideBin(process.argv))
+	.wrap(null)
+	.option('num', {
+		alias: 'n',
+		type: 'number',
+		description: "Номер генерации программы:\n" +
+			"1 - Ошибка, связанная с делением на 0\n" +
+			"2 - Ошибка, связанная с \"висячим\" указателем\n\t(не инициализирован, очищена память)\n" +
+			"3 - Ошибка, связанная с выходом за границы массива\n" +
+			"4 - Ошибка, связанная с неправильным использованием\n\tоператора \"delete\"\n" +
+			"Любое другое число (или не указан параметр)\n\t- выберется случайным образом",
+		default: 0
+	})
+	.option('variant',{
+		alias: 'v',
+		type: 'number',
+		description: "Вариант используемой генерации. В каждом номере\n\tесть несколько вариантов генерации:\n" +
+			"num=1:\n\t1 - Ошибка возникает в main\n" +
+			"\t2 - Ошибка возникает в другой функции\n" +
+			"num=2:\n\t1 - Не инициализирован указатель\n" +
+			"\t2 - Использование указателя после \"delete\"\n" +
+			"\t3 - Разыменование nullptr\n" +
+			"num=3:\n\t1 - Ошибка в цикле\n" +
+			"\t2 - Ошибка в функции из-за неверного аргумента\n\t(длины массива)\n" +
+			"num=4:\n\t1 - Использование \"delete\" в main после\n\t\"delete\" в другой функции\n" +
+			"\t2 - Использование \"delete\" с указателем\n\tна статическую переменную (область памяти)\n" +
+			"\t3 - Повторное использование \"delete\" с указателем\n\tна тот же объект\n" +
+			"По умолчанию, выбирается случайно",
+		default: 0
+	})
+	.option('max_vars',{
+		type: 'number',
+		description: "Максимальное количество переменных, функций, указателей\n\tв случайной генерации" +
+			" (минимально можно указать 2,\n\tмаксимально - 10)",
+		default: 5
+	})
+	.option('min_vars',{
+		type: 'number',
+		description: "Максимальное количество переменных, функций, указателей\n\tв случайной генерации" +
+			" (минимально можно указать 1,\n\tмаксимально - 10)",
+		default: 2
+	})
+
+	.help('help')
+	.alias('help', ['h', '?'])
+	.argv;
+/*
+let t1;
+let t2;
+let t3;
+*/
+switch (argv.n) {
+	case 1:
+		// t1 = performance.now()
+		const str1 = program(choice_div_zero_variant(argv.v))
+		// t2 = performance.now()
+		console.log(str1);
+		// t3 = performance.now()
+		break;
+	case 2:
+		// t1 = performance.now()
+		const str2 = program(choice_deref_null_pointer(argv.v))
+		// t2 = performance.now()
+		console.log(str2);
+		// t3 = performance.now()
+		break;
+	case 3:
+		// t1 = performance.now()
+		const str3 = program(choice_array_out_of_range(argv.v))
+		// t2 = performance.now()
+		console.log(str3);
+		// t3 = performance.now()
+		break;
+	case 4:
+		// t1 = performance.now()
+		const str4 = program(choice_delete_error(argv.v))
+		// t2 = performance.now()
+		console.log(str4);
+		// t3 = performance.now()
+		break;
+	default:
+		const rand = Math.random();
+		if (rand < 0.25) {
+			console.log(program(choice_div_zero_variant(argv.v)));
+		}else if (rand < 0.5) {
+			console.log(program(choice_deref_null_pointer(argv.v)));
+		}else if (rand < 0.75) {
+			console.log(program(choice_array_out_of_range(argv.v)));
+		}else {
+			console.log(program(choice_delete_error(argv.v)));
+		}
 }
-function isBundledElectronApp() {
-    return isElectronApp() && !process.defaultApp;
-}
-function isElectronApp() {
-    return !!process.versions.electron;
-}
-function hideBin(argv) {
-    return argv.slice(getProcessArgvBinIndex() + 1);
-}
-function getProcessArgvBin() {
-    return process.argv[getProcessArgvBinIndex()];
-}
+/*
+const t4 = performance.now()
+console.log("Обработка аргументов выполнялась:", t1-t0, "ms");
+console.log("Генерация программы выполнялась:", t2-t1, "ms");
+console.log("Вывод на экран готовой программы выполнялся:", t3-t2, "ms");
+console.log("Вся программа выполнялась:", t4, "ms");
 
+await appendFile("time_arguments.txt", (t1-t0).toFixed(3) + '\n', 'utf8')
+await appendFile("time_generate.txt", (t2-t1).toFixed(3) + '\n', 'utf8')
+await appendFile("time_console.txt", (t3-t2).toFixed(3) + '\n', 'utf8')
+await appendFile("time_all.txt", (t4).toFixed(3) + '\n', 'utf8')
+*/
 
-/***/ }),
-
-/***/ 896:
-/***/ ((module) => {
-
-module.exports = require("fs");
-
-/***/ }),
-
-/***/ 928:
-/***/ ((module) => {
-
-module.exports = require("path");
-
-/***/ }),
-
-/***/ 943:
-/***/ ((module) => {
-
-module.exports = require("fs/promises");
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/async module */
-/******/ 	(() => {
-/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
-/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
-/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
-/******/ 		var resolveQueue = (queue) => {
-/******/ 			if(queue && queue.d < 1) {
-/******/ 				queue.d = 1;
-/******/ 				queue.forEach((fn) => (fn.r--));
-/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
-/******/ 			}
-/******/ 		}
-/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
-/******/ 			if(dep !== null && typeof dep === "object") {
-/******/ 				if(dep[webpackQueues]) return dep;
-/******/ 				if(dep.then) {
-/******/ 					var queue = [];
-/******/ 					queue.d = 0;
-/******/ 					dep.then((r) => {
-/******/ 						obj[webpackExports] = r;
-/******/ 						resolveQueue(queue);
-/******/ 					}, (e) => {
-/******/ 						obj[webpackError] = e;
-/******/ 						resolveQueue(queue);
-/******/ 					});
-/******/ 					var obj = {};
-/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
-/******/ 					return obj;
-/******/ 				}
-/******/ 			}
-/******/ 			var ret = {};
-/******/ 			ret[webpackQueues] = x => {};
-/******/ 			ret[webpackExports] = dep;
-/******/ 			return ret;
-/******/ 		}));
-/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
-/******/ 			var queue;
-/******/ 			hasAwait && ((queue = []).d = -1);
-/******/ 			var depQueues = new Set();
-/******/ 			var exports = module.exports;
-/******/ 			var currentDeps;
-/******/ 			var outerResolve;
-/******/ 			var reject;
-/******/ 			var promise = new Promise((resolve, rej) => {
-/******/ 				reject = rej;
-/******/ 				outerResolve = resolve;
-/******/ 			});
-/******/ 			promise[webpackExports] = exports;
-/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
-/******/ 			module.exports = promise;
-/******/ 			body((deps) => {
-/******/ 				currentDeps = wrapDeps(deps);
-/******/ 				var fn;
-/******/ 				var getResult = () => (currentDeps.map((d) => {
-/******/ 					if(d[webpackError]) throw d[webpackError];
-/******/ 					return d[webpackExports];
-/******/ 				}))
-/******/ 				var promise = new Promise((resolve) => {
-/******/ 					fn = () => (resolve(getResult));
-/******/ 					fn.r = 0;
-/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
-/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
-/******/ 				});
-/******/ 				return fn.r ? promise : getResult();
-/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
-/******/ 			queue && queue.d < 0 && (queue.d = 0);
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module used 'module' so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__(620);
-/******/ 	
 /******/ })()
 ;

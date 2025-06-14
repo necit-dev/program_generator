@@ -3,7 +3,7 @@ import {program} from "./output.js";
 import yargs from "yargs";
 import {hideBin} from "yargs/helpers"
 
-// import {appendFile} from "fs/promises";
+import {appendFile} from "fs/promises";
 
 import {choice_div_zero_variant} from "./random_generators/div_by_zero.js";
 import {choice_deref_null_pointer} from "./random_generators/deref_null_pointer.js";
@@ -58,10 +58,11 @@ const argv = yargs(hideBin(process.argv))
 	.help('help')
 	.alias('help', ['h', '?'])
 	.argv;
-
-// let t1;
-// let t2;
-// let t3;
+/*
+let t1;
+let t2;
+let t3;
+*/
 switch (argv.n) {
 	case 1:
 		// t1 = performance.now()
@@ -103,15 +104,15 @@ switch (argv.n) {
 			console.log(program(choice_delete_error(argv.v)));
 		}
 }
+/*
+const t4 = performance.now()
+console.log("Обработка аргументов выполнялась:", t1-t0, "ms");
+console.log("Генерация программы выполнялась:", t2-t1, "ms");
+console.log("Вывод на экран готовой программы выполнялся:", t3-t2, "ms");
+console.log("Вся программа выполнялась:", t4, "ms");
 
-// const t4 = performance.now()
-// console.log("Обработка аргументов выполнялась:", t1-t0, "ms");
-// console.log("Генерация программы выполнялась:", t2-t1, "ms");
-// console.log("Вывод на экран готовой программы выполнялся:", t3-t2, "ms");
-// console.log("Вся программа выполнялась:", t4, "ms");
-//
-// await appendFile("time_arguments.txt", (t1-t0).toFixed(3) + '\n', 'utf8')
-// await appendFile("time_generate.txt", (t2-t1).toFixed(3) + '\n', 'utf8')
-// await appendFile("time_console.txt", (t3-t2).toFixed(3) + '\n', 'utf8')
-// await appendFile("time_all.txt", (t4).toFixed(3) + '\n', 'utf8')
-
+await appendFile("time_arguments.txt", (t1-t0).toFixed(3) + '\n', 'utf8')
+await appendFile("time_generate.txt", (t2-t1).toFixed(3) + '\n', 'utf8')
+await appendFile("time_console.txt", (t3-t2).toFixed(3) + '\n', 'utf8')
+await appendFile("time_all.txt", (t4).toFixed(3) + '\n', 'utf8')
+*/
